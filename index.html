@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Man Matters · Retention Journey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0F1117;
+      --bg2: #161922;
+      --bg3: #1E2230;
+      --surface: rgba(255,255,255,0.05);
+      --border: rgba(255,255,255,0.08);
+      --text: #F0F2F8;
+      --muted: #8B93A8;
+      --green: #25D366;
+      --green-soft: #1A8C46;
+      --amber: #F59E0B;
+      --amber-soft: #92600A;
+      --blue: #3B82F6;
+      --blue-soft: #1E3A70;
+      --grey: #4B5563;
+      --wa-bg: #E5DDD5;
+      --wa-bubble: #DCF8C6;
+      --radius: 16px;
+      --font-emoji: "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji","Segoe UI",system-ui,sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', var(--font-emoji);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ────────────────────────────────── */
+    .header {
+      background: linear-gradient(135deg, #1a1f35 0%, #0f1117 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px 16px;
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+    .brand-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+    }
+    .header h1 {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .header h1 span { color: var(--green); }
+    .header-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 2px;
+      padding-left: 20px;
+    }
+
+    /* ── STATS BAR ─────────────────────────────── */
+    .stats-bar {
+      padding: 20px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 680px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .stat-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 14px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .stat-icon { font-size: 22px; margin-bottom: 8px; font-family: var(--font-emoji); }
+    .stat-value {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #fff;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+      font-weight: 500;
+    }
+
+    /* ── LEGEND ────────────────────────────────── */
+    .legend {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 0 24px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .legend-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── PHASE SECTIONS ────────────────────────── */
+    .phase-section {
+      max-width: 1100px;
+      margin: 0 auto 32px;
+      padding: 0 24px;
+    }
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .phase-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 100px;
+      letter-spacing: 0.2px;
+    }
+    .phase-pill.onboarding {
+      background: rgba(37,211,102,0.12);
+      color: var(--green);
+      border: 1px solid rgba(37,211,102,0.25);
+    }
+    .phase-pill.winback {
+      background: rgba(59,130,246,0.12);
+      color: var(--blue);
+      border: 1px solid rgba(59,130,246,0.25);
+    }
+    .phase-range {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* ── TIMELINE TRACK ────────────────────────── */
+    .timeline-scroll {
+      overflow-x: auto;
+      padding-bottom: 16px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+    .timeline-scroll::-webkit-scrollbar { height: 4px; }
+    .timeline-scroll::-webkit-scrollbar-track { background: transparent; }
+    .timeline-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    .timeline-track {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      padding: 8px 4px 8px;
+      min-width: max-content;
+      position: relative;
+    }
+
+    .tl-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .tl-connector {
+      display: flex;
+      align-items: center;
+      margin-top: 20px; /* half of 56px node to vertically center */
+    }
+    .tl-line {
+      height: 2px;
+      width: 28px;
+      background: linear-gradient(90deg, var(--border), var(--border));
+      flex-shrink: 0;
+    }
+    .tl-line.green  { background: linear-gradient(90deg, rgba(37,211,102,0.3), rgba(37,211,102,0.15)); }
+    .tl-line.amber  { background: linear-gradient(90deg, rgba(245,158,11,0.3), rgba(245,158,11,0.15)); }
+    .tl-line.blue   { background: linear-gradient(90deg, rgba(59,130,246,0.3), rgba(59,130,246,0.15)); }
+    .tl-line.grey   { background: linear-gradient(90deg, rgba(107,114,128,0.3), rgba(107,114,128,0.15)); }
+
+    .tl-node-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tl-node {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      border: 2px solid transparent;
+      user-select: none;
+    }
+    .tl-node:hover {
+      transform: scale(1.12);
+    }
+    .tl-node:active { transform: scale(0.96); }
+
+    .tl-node.green {
+      background: radial-gradient(circle at 40% 35%, #2ecc71, #16a34a);
+      border-color: rgba(37,211,102,0.5);
+      box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+    }
+    .tl-node.amber {
+      background: radial-gradient(circle at 40% 35%, #f59e0b, #b45309);
+      border-color: rgba(245,158,11,0.5);
+      box-shadow: 0 4px 20px rgba(245,158,11,0.35);
+    }
+    .tl-node.mixed {
+      background: conic-gradient(#16a34a 0% 50%, #b45309 50% 100%);
+      border-color: rgba(255,255,255,0.2);
+      box-shadow: 0 4px 20px rgba(100,100,100,0.35);
+    }
+    .tl-node.blue {
+      background: radial-gradient(circle at 40% 35%, #60a5fa, #1d4ed8);
+      border-color: rgba(59,130,246,0.5);
+      box-shadow: 0 4px 20px rgba(59,130,246,0.35);
+    }
+    .tl-node.grey {
+      background: radial-gradient(circle at 40% 35%, #6b7280, #374151);
+      border-color: rgba(107,114,128,0.4);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+
+    .tl-day {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+    }
+    .tl-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 18px;
+      height: 18px;
+      background: #fff;
+      color: #111;
+      border-radius: 50%;
+      font-size: 10px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid var(--bg);
+    }
+    .tl-label {
+      font-size: 10px;
+      color: var(--muted);
+      text-align: center;
+      max-width: 64px;
+      line-height: 1.3;
+      font-weight: 500;
+    }
+
+    /* ── MODAL OVERLAY ─────────────────────────── */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    @media (min-width: 600px) {
+      .overlay { align-items: center; }
+    }
+
+    .modal {
+      background: var(--bg2);
+      border-radius: 24px 24px 0 0;
+      width: 100%;
+      max-width: 480px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+      border: 1px solid var(--border);
+      border-bottom: none;
+      overflow: hidden;
+    }
+    .overlay.open .modal {
+      transform: translateY(0);
+    }
+    @media (min-width: 600px) {
+      .modal {
+        border-radius: 24px;
+        border: 1px solid var(--border);
+        max-height: 86vh;
+        transform: translateY(20px) scale(0.97);
+      }
+      .overlay.open .modal {
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .modal-handle {
+      width: 36px; height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      margin: 10px auto 0;
+      flex-shrink: 0;
+    }
+    @media (min-width: 600px) { .modal-handle { display: none; } }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px 12px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .modal-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .modal-day-badge {
+      font-size: 15px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .modal-phase-tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 100px;
+    }
+    .modal-phase-tag.onboarding {
+      background: rgba(37,211,102,0.15);
+      color: var(--green);
+    }
+    .modal-phase-tag.winback {
+      background: rgba(59,130,246,0.15);
+      color: var(--blue);
+    }
+    .modal-close {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+    }
+    .modal-close:hover { background: rgba(255,255,255,0.15); color: #fff; }
+
+    /* ── WHATSAPP CHAT WINDOW ──────────────────── */
+    .chat-window {
+      flex: 1;
+      overflow-y: auto;
+      background: var(--wa-bg);
+      padding: 16px 14px 20px;
+      position: relative;
+      -webkit-overflow-scrolling: touch;
+    }
+    .chat-window::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.04;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .msg-group {
+      margin-bottom: 20px;
+    }
+
+    .cohort-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 100px;
+      margin-bottom: 5px;
+      font-family: var(--font-emoji);
+    }
+    .cohort-pill.all {
+      background: rgba(37,211,102,0.18);
+      color: #16a34a;
+      border: 1px solid rgba(37,211,102,0.3);
+    }
+    .cohort-pill.conditional {
+      background: rgba(245,158,11,0.18);
+      color: #b45309;
+      border: 1px solid rgba(245,158,11,0.3);
+    }
+    .cohort-pill.winback {
+      background: rgba(59,130,246,0.18);
+      color: #1d4ed8;
+      border: 1px solid rgba(59,130,246,0.3);
+    }
+
+    .topic-label {
+      font-size: 10px;
+      color: #666;
+      font-style: italic;
+      margin-bottom: 4px;
+      padding-left: 2px;
+    }
+
+    .bubble {
+      background: var(--wa-bubble);
+      border-radius: 18px 18px 4px 18px;
+      padding: 10px 14px 28px;
+      position: relative;
+      max-width: 92%;
+      margin-left: auto;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    }
+    .bubble.coming-soon {
+      background: #f0f0f0;
+      border: 1.5px dashed #ccc;
+    }
+
+    .bubble-sender {
+      font-size: 11px;
+      font-weight: 700;
+      color: #0a7c42;
+      margin-bottom: 5px;
+      font-family: var(--font-emoji);
+    }
+
+    .bubble-text {
+      font-size: 14px;
+      line-height: 1.55;
+      color: #111;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: var(--font-emoji);
+    }
+    .bubble-text.muted-text {
+      color: #888;
+      font-style: italic;
+    }
+
+    .bubble-time {
+      position: absolute;
+      bottom: 7px;
+      right: 10px;
+      font-size: 10px;
+      color: #888;
+      font-family: var(--font-emoji);
+    }
+
+    /* ── FOOTER ────────────────────────────────── */
+    .page-footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 11px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <div class="brand-dot"></div>
+        <h1><span>Man Matters</span> · Retention Journey</h1>
+      </div>
+      <p class="header-sub">Advanced Hair Regrowth Regime — WhatsApp Engagement Plan</p>
+    </div>
+  </header>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">📨</div>
+        <div class="stat-value">13</div>
+        <div class="stat-label">Total Messages</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📅</div>
+        <div class="stat-value">D0–D50</div>
+        <div class="stat-label">Days Covered</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🗂️</div>
+        <div class="stat-value">2</div>
+        <div class="stat-label">Phases</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">👥</div>
+        <div class="stat-value">4</div>
+        <div class="stat-label">Cohorts</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#25D366"></div>
+      All users (primary)
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#F59E0B"></div>
+      Conditional (behaviour-based)
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:conic-gradient(#16a34a 50%,#b45309 50%)"></div>
+      Both types
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#3B82F6"></div>
+      Winback
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#4B5563"></div>
+      Coming soon
+    </div>
+  </div>
+
+  <!-- PHASE 1: ONBOARDING -->
+  <section class="phase-section" id="phase-onboarding">
+    <div class="phase-header">
+      <span class="phase-pill onboarding">📲 Onboarding Journey</span>
+      <span class="phase-range">D0 – D30</span>
+    </div>
+    <div class="timeline-scroll">
+      <div class="timeline-track" id="track-onboarding"></div>
+    </div>
+  </section>
+
+  <!-- PHASE 2: WINBACK -->
+  <section class="phase-section" id="phase-winback">
+    <div class="phase-header">
+      <span class="phase-pill winback">🔁 Winback</span>
+      <span class="phase-range">D35 – D50</span>
+    </div>
+    <div class="timeline-scroll">
+      <div class="timeline-track" id="track-winback"></div>
+    </div>
+  </section>
+
+  <!-- MODAL OVERLAY -->
+  <div class="overlay" id="overlay" role="dialog" aria-modal="true">
+    <div class="modal" id="modal">
+      <div class="modal-handle"></div>
+      <div class="modal-header">
+        <div class="modal-title">
+          <span class="modal-day-badge" id="modal-day-badge">Day 0</span>
+          <span class="modal-phase-tag onboarding" id="modal-phase-tag">Onboarding</span>
+        </div>
+        <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+      </div>
+      <div class="chat-window" id="chat-window"></div>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    Man Matters · Hair Retention CRM · Internal Use Only
+  </footer>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────────
+
+function formatMessage(text) {
+  return text.replace(/\n/g, '<br>');
+}
+
+const MESSAGES = [
+  // ── D0 ──────────────────────────────────────────────────────────────────
+  {
+    day: 0,
+    phase: 'onboarding',
+    cohort: 'all',
+    cohortLabel: 'Sent to: Everyone',
+    topic: 'First step / App download',
+    text: `Hey Man, your Advanced Hair Regrowth Regime is delivered 📦✨\n\nHair growth takes time, but your first step starts today.\n\nDownload the Man Matters App 📲 and use the Habit Tracker ✅ to stay consistent.`
+  },
+
+  // ── D1 ──────────────────────────────────────────────────────────────────
+  {
+    day: 1,
+    phase: 'onboarding',
+    cohort: 'conditional',
+    cohortLabel: 'Sent to: No Doctor Consult users',
+    topic: 'Download app + Free doctor consult',
+    text: null // coming soon
+  },
+
+  // ── D2 ──────────────────────────────────────────────────────────────────
+  {
+    day: 2,
+    phase: 'onboarding',
+    cohort: 'conditional',
+    cohortLabel: 'Sent to: No App/Habit Tracker users',
+    topic: 'Download app + Habit tracker rewards',
+    text: `🎁 Getting rewarded for staying consistent?\n\nThat's a bonus!\n\nTrack your daily routine on the Man Matters App and earn rewards for your next order. 📲`
+  },
+
+  // ── D4 ──────────────────────────────────────────────────────────────────
+  {
+    day: 4,
+    phase: 'onboarding',
+    cohort: 'all',
+    cohortLabel: 'Sent to: Everyone',
+    topic: 'Consistency check / How to use',
+    text: `Hair growth happens in months, not weeks ⏳\n\nFor best results, stay consistent with all 3:\n\n✅ Apply Minoxidil twice daily as recommended\n🍬 Take your Hair Gummies daily\n⚡ Use the Dermaroller only as guided\n\nDon't skip days. Consistency is what makes the treatment work. 💪`
+  },
+
+  // ── D5 ──────────────────────────────────────────────────────────────────
+  {
+    day: 5,
+    phase: 'onboarding',
+    cohort: 'conditional',
+    cohortLabel: 'Sent to: No App/Habit Tracker users',
+    topic: 'App download + consistency + rewards',
+    text: `🌱 Hair growth isn't won by the best product.\n\nIt's won by a consistent routine.\n\nTrack your routine in the Man Matters App and don't miss the days that matter. 📲`
+  },
+
+  // ── D10 ─────────────────────────────────────────────────────────────────
+  {
+    day: 10,
+    phase: 'onboarding',
+    cohort: 'all',
+    cohortLabel: 'Sent to: Everyone',
+    topic: 'Shedding education',
+    text: `🙌 If you're noticing some extra hair fall, don't worry.\n\nMany men experience a little shedding 🔄 before they notice regrowth 🌱\n\nWeak hair fall out to make way for newer, stronger hair 💪\n\nIt is a sign that your treatment has started working. ✅ Keep going for best results.`
+  },
+  {
+    day: 10,
+    phase: 'onboarding',
+    cohort: 'all',
+    cohortLabel: 'Sent to: Everyone',
+    topic: 'Dermaroller education',
+    text: `Hey Man, time to bring in the Dermaroller ⚡\n\nHow to use:\n- Use it gently, 1–2 times a week. Before using minoxidil.\n- Roll vertically, horizontally, and diagonally over each scalp section\n- Light pressure. No overdoing it.\n\nKeep growing! 🌱`
+  },
+  {
+    day: 10,
+    phase: 'onboarding',
+    cohort: 'conditional',
+    cohortLabel: 'Sent to: No App/Habit Tracker users',
+    topic: 'Consistency hook + rewards',
+    text: `🏆 Consistency is hard. But that's what gets the results. 🌱\n\nThat's why we reward it.\n\nTrack your treatment in the Man Matters App and unlock discounts on your next order. 💰`
+  },
+
+  // ── D15 ─────────────────────────────────────────────────────────────────
+  {
+    day: 15,
+    phase: 'onboarding',
+    cohort: 'all',
+    cohortLabel: 'Sent to: Everyone',
+    topic: 'Consistency – results timeline',
+    text: `You're part of 10L+ men who trusted Man Matters for their hair journey. 💪\n\nHere's what real results look like:\n📅 Month 1: Initial shedding\n🌱 Month 3: Reduced hair fall and new baby hair\n💪 Month 6 onwards: Visible improvements in density and coverage\n\nHair regrowth takes time. Consistency is what gets you there. ✅`
+  },
+  {
+    day: 15,
+    phase: 'onboarding',
+    cohort: 'conditional',
+    cohortLabel: 'Sent to: No App/Habit Tracker users',
+    topic: 'Habit tracker rewards',
+    text: `🏆 Stay consistent. Get rewarded.\n\nSimple as that.\n\nTrack your routine on the Man Matters app and unlock discounts on your next order. 💰📲`
+  },
+
+  // ── D20 ─────────────────────────────────────────────────────────────────
+  {
+    day: 20,
+    phase: 'onboarding',
+    cohort: 'all',
+    cohortLabel: 'Sent to: Everyone',
+    topic: 'Results expectation',
+    text: `⏳ Hey Man, hair growth takes patience.\n\nAt this time, most men are still laying the foundation for results. 🙌\n\nDon't worry if you haven't noticed a visible change yet.\n\nThe goal right now is simple: stay consistent and trust the process. 💪`
+  },
+
+  // ── D25 ─────────────────────────────────────────────────────────────────
+  {
+    day: 25,
+    phase: 'onboarding',
+    cohort: 'conditional',
+    cohortLabel: 'Sent to: No Reorder users',
+    topic: 'Refill message',
+    text: `📅 It's almost time for your first refill.\n\nYou've already put in a month of effort.\n\nNow give your routine the consistency it needs to deliver results.\n\nRefill your Advanced Hair Growth Regime. 💪`
+  },
+
+  // ── D30 ─────────────────────────────────────────────────────────────────
+  {
+    day: 30,
+    phase: 'onboarding',
+    cohort: 'conditional',
+    cohortLabel: 'Sent to: No Reorder users',
+    topic: 'Refill message – consistency gap risk',
+    text: `📦 Running low?\n\n🌱 The results in Month 3 and Month 6 are built by the choices you make in Month 1.\n\nReorder your Advanced Hair Growth Regime and keep going. 🌱`
+  },
+
+  // ── D35 ─────────────────────────────────────────────────────────────────
+  {
+    day: 35,
+    phase: 'winback',
+    cohort: 'winback',
+    cohortLabel: 'Winback',
+    topic: 'Winback – Day 35',
+    text: null
+  },
+
+  // ── D37 ─────────────────────────────────────────────────────────────────
+  {
+    day: 37,
+    phase: 'winback',
+    cohort: 'winback',
+    cohortLabel: 'Winback',
+    topic: 'Winback – Day 37',
+    text: null
+  },
+
+  // ── D40 ─────────────────────────────────────────────────────────────────
+  {
+    day: 40,
+    phase: 'winback',
+    cohort: 'winback',
+    cohortLabel: 'Winback',
+    topic: 'Winback – Day 40',
+    text: null
+  },
+
+  // ── D45 ─────────────────────────────────────────────────────────────────
+  {
+    day: 45,
+    phase: 'winback',
+    cohort: 'winback',
+    cohortLabel: 'Winback',
+    topic: 'Winback – Day 45',
+    text: null
+  },
+
+  // ── D50 ─────────────────────────────────────────────────────────────────
+  {
+    day: 50,
+    phase: 'winback',
+    cohort: 'winback',
+    cohortLabel: 'Winback',
+    topic: 'Winback – Day 50',
+    text: null
+  }
+];
+
+// Group messages by day
+function groupByDay(messages) {
+  const map = {};
+  for (const msg of messages) {
+    if (!map[msg.day]) map[msg.day] = [];
+    map[msg.day].push(msg);
+  }
+  return map;
+}
+
+// Determine node color class for a day's messages
+function nodeColorClass(msgs) {
+  if (!msgs || msgs.length === 0) return 'grey';
+  const cohorts = new Set(msgs.map(m => m.cohort));
+  if (cohorts.has('winback')) return 'blue';
+  if (cohorts.has('all') && cohorts.has('conditional')) return 'mixed';
+  if (cohorts.has('all')) return 'green';
+  if (cohorts.has('conditional')) return 'amber';
+  return 'grey';
+}
+
+function lineColorClass(msgs) {
+  const c = nodeColorClass(msgs);
+  return c === 'mixed' ? 'green' : c;
+}
+
+// Short topic label for node
+function shortTopic(msgs) {
+  if (!msgs || msgs.length === 0) return '';
+  const allNull = msgs.every(m => m.text === null);
+  if (allNull) return 'Planned';
+  return msgs[0].topic.split('/')[0].trim().slice(0, 18);
+}
+
+// Static fake times cycling
+const FAKE_TIMES = ['9:41 AM', '10:03 AM', '11:17 AM', '2:34 PM'];
+let timeIdx = 0;
+function nextTime() { return FAKE_TIMES[timeIdx++ % FAKE_TIMES.length]; }
+
+// ── BUILD TIMELINE ────────────────────────────────────────────────────────────
+
+function buildTimeline(trackId, days, byDay, phase) {
+  const track = document.getElementById(trackId);
+  track.innerHTML = '';
+
+  days.forEach((day, i) => {
+    const msgs = byDay[day] || [];
+    const colorClass = nodeColorClass(msgs);
+    const count = msgs.length;
+    const allNull = msgs.every(m => m.text === null);
+    const label = shortTopic(msgs);
+
+    // connector line (not before first)
+    if (i > 0) {
+      const prevMsgs = byDay[days[i - 1]] || [];
+      const lineClass = lineColorClass(prevMsgs);
+      const connEl = document.createElement('div');
+      connEl.className = 'tl-connector';
+      connEl.innerHTML = `<div class="tl-line ${lineClass}"></div>`;
+      track.appendChild(connEl);
+    }
+
+    const item = document.createElement('div');
+    item.className = 'tl-item';
+
+    const wrap = document.createElement('div');
+    wrap.className = 'tl-node-wrap';
+
+    const node = document.createElement('div');
+    node.className = `tl-node ${colorClass}`;
+    node.setAttribute('role', 'button');
+    node.setAttribute('tabindex', '0');
+    node.setAttribute('aria-label', `Day ${day} — ${count} message${count !== 1 ? 's' : ''}`);
+    node.innerHTML = `<span class="tl-day">D${day}</span>`;
+
+    if (count > 1) {
+      const badge = document.createElement('div');
+      badge.className = 'tl-badge';
+      badge.textContent = count;
+      node.appendChild(badge);
+    }
+
+    node.addEventListener('click', () => openModal(day, msgs, phase));
+    node.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') openModal(day, msgs, phase); });
+
+    const lbl = document.createElement('div');
+    lbl.className = 'tl-label';
+    lbl.textContent = allNull ? 'Planned' : label;
+
+    wrap.appendChild(node);
+    wrap.appendChild(lbl);
+    item.appendChild(wrap);
+    track.appendChild(item);
+  });
+}
+
+// ── MODAL ─────────────────────────────────────────────────────────────────────
+
+const overlay = document.getElementById('overlay');
+const modalClose = document.getElementById('modal-close');
+const chatWindow = document.getElementById('chat-window');
+const modalDayBadge = document.getElementById('modal-day-badge');
+const modalPhaseTag = document.getElementById('modal-phase-tag');
+
+function openModal(day, msgs, phase) {
+  timeIdx = 0;
+  modalDayBadge.textContent = `Day ${day}`;
+  modalPhaseTag.textContent = phase === 'winback' ? 'Winback' : 'Onboarding';
+  modalPhaseTag.className = `modal-phase-tag ${phase}`;
+
+  chatWindow.innerHTML = '';
+
+  if (!msgs || msgs.length === 0) {
+    chatWindow.innerHTML = comingSoonBubble('Message being drafted...');
+  } else {
+    msgs.forEach(msg => {
+      const group = document.createElement('div');
+      group.className = 'msg-group';
+
+      // cohort pill
+      const pill = document.createElement('div');
+      const pillClass = msg.cohort === 'all' ? 'all' : msg.cohort === 'winback' ? 'winback' : 'conditional';
+      const pillEmoji = msg.cohort === 'all' ? '🟢' : msg.cohort === 'winback' ? '🔵' : '🟡';
+      pill.className = `cohort-pill ${pillClass}`;
+      pill.innerHTML = `${pillEmoji} ${msg.cohortLabel}`;
+
+      // topic label
+      const topicEl = document.createElement('div');
+      topicEl.className = 'topic-label';
+      topicEl.textContent = msg.topic;
+
+      // bubble
+      const bubble = document.createElement('div');
+
+      if (msg.text === null) {
+        bubble.className = 'bubble coming-soon';
+        bubble.innerHTML = `
+          <div class="bubble-sender">Man Matters 💚</div>
+          <div class="bubble-text muted-text">🔒 Message being drafted...</div>
+          <div class="bubble-time">-- ✓✓</div>
+        `;
+      } else {
+        bubble.className = 'bubble';
+        bubble.innerHTML = `
+          <div class="bubble-sender">Man Matters 💚</div>
+          <div class="bubble-text">${formatMessage(msg.text)}</div>
+          <div class="bubble-time">${nextTime()} ✓✓</div>
+        `;
+      }
+
+      group.appendChild(pill);
+      group.appendChild(topicEl);
+      group.appendChild(bubble);
+      chatWindow.appendChild(group);
+    });
+  }
+
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function comingSoonBubble(txt) {
+  return `
+    <div class="msg-group">
+      <div class="cohort-pill winback">🔵 Winback</div>
+      <div class="topic-label">Planned message</div>
+      <div class="bubble coming-soon">
+        <div class="bubble-sender">Man Matters 💚</div>
+        <div class="bubble-text muted-text">🔒 ${txt}</div>
+        <div class="bubble-time">-- ✓✓</div>
+      </div>
+    </div>`;
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+modalClose.addEventListener('click', closeModal);
+overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// drag-to-close on mobile
+let startY = 0;
+const modal = document.getElementById('modal');
+modal.addEventListener('touchstart', e => { startY = e.touches[0].clientY; }, { passive: true });
+modal.addEventListener('touchend', e => {
+  const dy = e.changedTouches[0].clientY - startY;
+  if (dy > 80) closeModal();
+}, { passive: true });
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+
+const byDay = groupByDay(MESSAGES);
+
+const onboardingDays = [0, 1, 2, 4, 5, 10, 15, 20, 25, 30];
+const winbackDays    = [35, 37, 40, 45, 50];
+
+buildTimeline('track-onboarding', onboardingDays, byDay, 'onboarding');
+buildTimeline('track-winback',    winbackDays,    byDay, 'winback');
+</script>
+</body>
+</html>
