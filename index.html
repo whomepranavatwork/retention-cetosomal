@@ -11,18 +11,19 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #F5F6F8;
-      --bg2: #FFFFFF;
-      --bg3: #EDEEF1;
-      --border: #E0E2E8;
-      --text: #1A1D27;
-      --muted: #6B7280;
-      --green: #16A34A;
-      --amber: #B45309;
-      --blue: #1D4ED8;
-      --wa-bg: #E5DDD5;
+      --bg:        #F7F8FA;
+      --surface:   #FFFFFF;
+      --border:    #E4E6EA;
+      --border2:   #CDD0D8;
+      --text:      #111318;
+      --text2:     #3D4350;
+      --muted:     #7A8194;
+      --accent-g:  #1A7A43;   /* green — All */
+      --accent-a:  #C47B0B;   /* amber — Conditional */
+      --accent-b:  #2155C4;   /* blue — Winback */
+      --accent-gr: #8A909E;   /* grey — Coming soon */
+      --wa-bg:     #E5DDD5;
       --wa-bubble: #DCF8C6;
-      --radius: 12px;
       --font-emoji: "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji","Segoe UI",system-ui,sans-serif;
     }
 
@@ -32,326 +33,321 @@
       font-family: 'Inter', var(--font-emoji);
       min-height: 100vh;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* ── HEADER ────────────────────────────────── */
+    /* ── HEADER ─────────────────────────────────── */
     .header {
-      background: #FFFFFF;
+      background: var(--surface);
       border-bottom: 1px solid var(--border);
-      padding: 18px 24px 14px;
-    }
-    .header-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .header-brand {
+      padding: 0 32px;
+      height: 56px;
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 3px;
     }
-    .brand-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--green);
+    .header-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
     }
     .header h1 {
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: -0.3px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.1px;
       color: var(--text);
     }
-    .header h1 span { color: var(--green); }
+    .header-divider {
+      width: 1px;
+      height: 14px;
+      background: var(--border2);
+      align-self: center;
+    }
     .header-sub {
       font-size: 12px;
       color: var(--muted);
-      margin-top: 1px;
-      padding-left: 18px;
+      font-weight: 400;
     }
 
-    /* ── STATS BAR ─────────────────────────────── */
+    /* ── STATS BAR ──────────────────────────────── */
     .stats-bar {
-      padding: 20px 24px;
-      max-width: 1100px;
+      padding: 24px 32px 0;
+      max-width: 1160px;
       margin: 0 auto;
     }
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
     }
     @media (max-width: 680px) {
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
     }
     .stat-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 14px 14px 12px;
+      background: var(--surface);
+      padding: 18px 20px 16px;
     }
-    .stat-icon { font-size: 18px; margin-bottom: 6px; font-family: var(--font-emoji); }
     .stat-value {
-      font-size: 20px;
+      font-size: 24px;
       font-weight: 700;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.8px;
       color: var(--text);
+      line-height: 1;
     }
     .stat-label {
       font-size: 11px;
       color: var(--muted);
-      margin-top: 2px;
+      margin-top: 5px;
       font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    /* ── LEGEND ────────────────────────────────── */
+    /* ── LEGEND ─────────────────────────────────── */
     .legend {
       display: flex;
-      gap: 16px;
+      align-items: center;
+      gap: 20px;
       flex-wrap: wrap;
-      padding: 0 24px 20px;
-      max-width: 1100px;
+      padding: 20px 32px;
+      max-width: 1160px;
       margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+    }
+    .legend-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-right: 4px;
     }
     .legend-item {
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 11.5px;
-      color: var(--muted);
-      font-weight: 500;
+      font-size: 12px;
+      color: var(--text2);
+      font-weight: 450;
     }
-    .legend-dot {
-      width: 10px; height: 10px;
-      border-radius: 3px;
+    .legend-swatch {
+      width: 8px; height: 8px;
+      border-radius: 2px;
       flex-shrink: 0;
     }
+    .legend-swatch.g  { background: var(--accent-g); }
+    .legend-swatch.a  { background: var(--accent-a); }
+    .legend-swatch.m  { background: linear-gradient(135deg, var(--accent-g) 50%, var(--accent-a) 50%); }
+    .legend-swatch.b  { background: var(--accent-b); }
+    .legend-swatch.gr { background: var(--border2); }
 
-    /* ── PHASE SECTIONS ────────────────────────── */
+    /* ── PHASE SECTIONS ──────────────────────────── */
     .phase-section {
-      max-width: 1100px;
-      margin: 0 auto 28px;
-      padding: 0 24px;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 28px 32px;
+      border-bottom: 1px solid var(--border);
     }
     .phase-header {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 16px;
+      gap: 12px;
+      margin-bottom: 20px;
     }
-    .phase-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
+    .phase-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      color: var(--muted);
+    }
+    .phase-title {
+      font-size: 14px;
       font-weight: 600;
-      padding: 5px 12px;
-      border-radius: 6px;
-      letter-spacing: 0.1px;
-    }
-    .phase-pill.onboarding {
-      background: #DCFCE7;
-      color: var(--green);
-      border: 1px solid #BBF7D0;
-    }
-    .phase-pill.winback {
-      background: #DBEAFE;
-      color: var(--blue);
-      border: 1px solid #BFDBFE;
+      color: var(--text);
     }
     .phase-range {
       font-size: 12px;
       color: var(--muted);
-      font-weight: 500;
+      font-weight: 400;
+      margin-left: auto;
+    }
+    .phase-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
     }
 
-    /* ── TIMELINE TRACK ────────────────────────── */
+    /* ── TIMELINE ────────────────────────────────── */
     .timeline-scroll {
       overflow-x: auto;
-      padding-bottom: 16px;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: thin;
       scrollbar-color: var(--border) transparent;
+      padding-bottom: 4px;
     }
     .timeline-scroll::-webkit-scrollbar { height: 3px; }
-    .timeline-scroll::-webkit-scrollbar-track { background: transparent; }
-    .timeline-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+    .timeline-scroll::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
 
     .timeline-track {
       display: flex;
       align-items: flex-start;
-      gap: 0;
-      padding: 8px 4px 8px;
       min-width: max-content;
-      position: relative;
+      padding: 4px 0 12px;
     }
 
     .tl-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      position: relative;
     }
 
     .tl-connector {
       display: flex;
       align-items: center;
-      margin-top: 22px;
+      margin-top: 28px; /* half node height */
     }
     .tl-line {
-      height: 2px;
-      width: 24px;
-      background: var(--border);
+      height: 1px;
+      width: 20px;
+      background: var(--border2);
       flex-shrink: 0;
     }
-    .tl-line.green  { background: #BBF7D0; }
-    .tl-line.amber  { background: #FDE68A; }
-    .tl-line.blue   { background: #BFDBFE; }
-    .tl-line.grey   { background: var(--border); }
 
     .tl-node-wrap {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 7px;
+      gap: 8px;
     }
 
     .tl-node {
-      width: 56px;
-      height: 56px;
-      border-radius: 12px;
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       position: relative;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-      border: 1.5px solid transparent;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: box-shadow 0.14s ease, border-color 0.14s ease;
       user-select: none;
     }
     .tl-node:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.10);
+      border-color: var(--border2);
     }
-    .tl-node:active { transform: translateY(0); }
+    .tl-node:active { opacity: 0.8; }
 
-    .tl-node.green {
-      background: #DCFCE7;
-      border-color: #86EFAC;
-      color: #15803D;
-      box-shadow: 0 1px 4px rgba(22,163,74,0.15);
+    /* color accent: 3px top border only */
+    .tl-node::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: -1px; right: -1px;
+      height: 3px;
+      border-radius: 8px 8px 0 0;
     }
-    .tl-node.amber {
-      background: #FEF3C7;
-      border-color: #FCD34D;
-      color: #92400E;
-      box-shadow: 0 1px 4px rgba(180,83,9,0.15);
-    }
-    .tl-node.mixed {
-      background: linear-gradient(135deg, #DCFCE7 50%, #FEF3C7 50%);
-      border-color: #D1D5DB;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.10);
-    }
-    .tl-node.blue {
-      background: #DBEAFE;
-      border-color: #93C5FD;
-      color: #1E40AF;
-      box-shadow: 0 1px 4px rgba(29,78,216,0.15);
-    }
-    .tl-node.grey {
-      background: #F3F4F6;
-      border-color: #D1D5DB;
-      color: #6B7280;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    }
+    .tl-node.green::before  { background: var(--accent-g); }
+    .tl-node.amber::before  { background: var(--accent-a); }
+    .tl-node.mixed::before  { background: linear-gradient(90deg, var(--accent-g) 50%, var(--accent-a) 50%); }
+    .tl-node.blue::before   { background: var(--accent-b); }
+    .tl-node.grey::before   { background: var(--border2); }
+
+    .tl-node.green { border-top-color: var(--accent-g); }
+    .tl-node.amber { border-top-color: var(--accent-a); }
+    .tl-node.blue  { border-top-color: var(--accent-b); }
 
     .tl-day {
-      font-size: 12px;
-      font-weight: 700;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
       line-height: 1;
-      color: inherit;
+      letter-spacing: -0.2px;
     }
+    .tl-node.grey .tl-day { color: var(--muted); }
+
     .tl-badge {
       position: absolute;
-      top: -5px;
-      right: -5px;
-      width: 17px;
-      height: 17px;
-      background: #1A1D27;
+      top: -6px;
+      right: -6px;
+      min-width: 16px;
+      height: 16px;
+      padding: 0 4px;
+      background: var(--text);
       color: #fff;
-      border-radius: 50%;
+      border-radius: 8px;
       font-size: 9px;
-      font-weight: 800;
+      font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: center;
       border: 1.5px solid var(--bg);
+      letter-spacing: 0;
     }
     .tl-label {
       font-size: 10px;
       color: var(--muted);
       text-align: center;
-      max-width: 64px;
-      line-height: 1.3;
-      font-weight: 500;
+      max-width: 68px;
+      line-height: 1.35;
+      font-weight: 450;
     }
 
-    /* ── MODAL OVERLAY ─────────────────────────── */
+    /* ── MODAL ───────────────────────────────────── */
     .overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.35);
-      backdrop-filter: blur(2px);
-      -webkit-backdrop-filter: blur(2px);
+      background: rgba(17,19,24,0.40);
       z-index: 100;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.22s ease;
+      transition: opacity 0.2s ease;
       display: flex;
       align-items: flex-end;
       justify-content: center;
     }
-    .overlay.open {
-      opacity: 1;
-      pointer-events: all;
-    }
-    @media (min-width: 600px) {
-      .overlay { align-items: center; }
-    }
+    .overlay.open { opacity: 1; pointer-events: all; }
+    @media (min-width: 600px) { .overlay { align-items: center; } }
 
     .modal {
-      background: #FFFFFF;
-      border-radius: 20px 20px 0 0;
+      background: var(--surface);
+      border-radius: 12px 12px 0 0;
       width: 100%;
-      max-width: 480px;
+      max-width: 500px;
       max-height: 90vh;
       display: flex;
       flex-direction: column;
       transform: translateY(100%);
-      transition: transform 0.28s ease;
+      transition: transform 0.26s cubic-bezier(0.32,0.72,0,1);
       border: 1px solid var(--border);
       border-bottom: none;
       overflow: hidden;
     }
-    .overlay.open .modal {
-      transform: translateY(0);
-    }
+    .overlay.open .modal { transform: translateY(0); }
+
     @media (min-width: 600px) {
       .modal {
-        border-radius: 16px;
+        border-radius: 10px;
         border: 1px solid var(--border);
-        max-height: 86vh;
-        transform: translateY(12px) scale(0.98);
-        box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        max-height: 84vh;
+        transform: translateY(8px);
+        box-shadow: 0 8px 40px rgba(0,0,0,0.14), 0 0 0 1px rgba(0,0,0,0.04);
       }
-      .overlay.open .modal {
-        transform: translateY(0) scale(1);
-      }
+      .overlay.open .modal { transform: translateY(0); }
     }
 
     .modal-handle {
-      width: 32px; height: 3px;
-      background: #D1D5DB;
+      width: 28px; height: 3px;
+      background: var(--border2);
       border-radius: 2px;
       margin: 10px auto 0;
       flex-shrink: 0;
@@ -362,51 +358,52 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 18px 10px;
+      padding: 14px 18px 13px;
       border-bottom: 1px solid var(--border);
       flex-shrink: 0;
-      background: #FFFFFF;
     }
-    .modal-title {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+    .modal-title { display: flex; align-items: center; gap: 10px; }
     .modal-day-badge {
-      font-size: 15px;
-      font-weight: 700;
+      font-size: 14px;
+      font-weight: 600;
       color: var(--text);
+      letter-spacing: -0.2px;
     }
     .modal-phase-tag {
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 600;
-      padding: 2px 8px;
-      border-radius: 5px;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      border: 1px solid;
     }
     .modal-phase-tag.onboarding {
-      background: #DCFCE7;
-      color: var(--green);
+      color: var(--accent-g);
+      border-color: #A7F3C0;
+      background: #F0FDF6;
     }
     .modal-phase-tag.winback {
-      background: #DBEAFE;
-      color: var(--blue);
+      color: var(--accent-b);
+      border-color: #BFDBFE;
+      background: #EFF6FF;
     }
     .modal-close {
-      width: 28px; height: 28px;
-      border-radius: 6px;
-      background: var(--bg3);
+      width: 26px; height: 26px;
+      border-radius: 5px;
+      background: transparent;
       border: 1px solid var(--border);
       color: var(--muted);
       cursor: pointer;
-      font-size: 14px;
+      font-size: 13px;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.12s;
+      transition: background 0.1s, color 0.1s;
     }
-    .modal-close:hover { background: var(--border); color: var(--text); }
+    .modal-close:hover { background: var(--bg); color: var(--text); }
 
-    /* ── WHATSAPP CHAT WINDOW ──────────────────── */
+    /* ── WHATSAPP CHAT — unchanged ───────────────── */
     .chat-window {
       flex: 1;
       overflow-y: auto;
@@ -424,43 +421,45 @@
       background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     }
 
-    .msg-group {
-      margin-bottom: 20px;
-    }
+    .msg-group { margin-bottom: 20px; }
 
     .cohort-pill {
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 600;
-      padding: 3px 9px;
-      border-radius: 100px;
+      padding: 2px 8px;
+      border-radius: 4px;
       margin-bottom: 5px;
       font-family: var(--font-emoji);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      border: 1px solid;
     }
     .cohort-pill.all {
-      background: rgba(37,211,102,0.18);
-      color: #16a34a;
-      border: 1px solid rgba(37,211,102,0.3);
+      color: var(--accent-g);
+      border-color: #A7F3C0;
+      background: #F0FDF6;
     }
     .cohort-pill.conditional {
-      background: rgba(245,158,11,0.18);
-      color: #b45309;
-      border: 1px solid rgba(245,158,11,0.3);
+      color: var(--accent-a);
+      border-color: #FDE68A;
+      background: #FFFBEB;
     }
     .cohort-pill.winback {
-      background: rgba(59,130,246,0.18);
-      color: #1d4ed8;
-      border: 1px solid rgba(59,130,246,0.3);
+      color: var(--accent-b);
+      border-color: #BFDBFE;
+      background: #EFF6FF;
     }
 
     .topic-label {
       font-size: 10px;
-      color: #666;
-      font-style: italic;
+      color: #777;
       margin-bottom: 4px;
-      padding-left: 2px;
+      padding-left: 1px;
+      font-style: normal;
+      font-weight: 500;
     }
 
     .bubble {
@@ -470,13 +469,12 @@
       position: relative;
       max-width: 92%;
       margin-left: auto;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.12);
     }
     .bubble.coming-soon {
-      background: #f0f0f0;
-      border: 1.5px dashed #ccc;
+      background: #F3F4F6;
+      border: 1px dashed #D1D5DB;
     }
-
     .bubble-sender {
       font-size: 11px;
       font-weight: 700;
@@ -484,7 +482,6 @@
       margin-bottom: 5px;
       font-family: var(--font-emoji);
     }
-
     .bubble-text {
       font-size: 14px;
       line-height: 1.55;
@@ -493,11 +490,7 @@
       word-break: break-word;
       font-family: var(--font-emoji);
     }
-    .bubble-text.muted-text {
-      color: #888;
-      font-style: italic;
-    }
-
+    .bubble-text.muted-text { color: #999; font-style: italic; }
     .bubble-time {
       position: absolute;
       bottom: 7px;
@@ -507,15 +500,15 @@
       font-family: var(--font-emoji);
     }
 
-    /* ── FOOTER ────────────────────────────────── */
+    /* ── FOOTER ──────────────────────────────────── */
     .page-footer {
       text-align: center;
-      padding: 20px 24px;
+      padding: 18px 32px;
       font-size: 11px;
       color: var(--muted);
       border-top: 1px solid var(--border);
-      margin-top: 8px;
-      background: #FFFFFF;
+      background: var(--surface);
+      letter-spacing: 0.2px;
     }
   </style>
 </head>
@@ -524,11 +517,9 @@
   <!-- HEADER -->
   <header class="header">
     <div class="header-inner">
-      <div class="header-brand">
-        <div class="brand-dot"></div>
-        <h1><span>Man Matters</span> · Retention Journey</h1>
-      </div>
-      <p class="header-sub">Advanced Hair Regrowth Regime — WhatsApp Engagement Plan</p>
+      <h1>Man Matters — Retention Journey</h1>
+      <div class="header-divider"></div>
+      <span class="header-sub">Advanced Hair Regrowth Regime · WhatsApp CRM Plan</span>
     </div>
   </header>
 
@@ -536,22 +527,18 @@
   <div class="stats-bar">
     <div class="stats-grid">
       <div class="stat-card">
-        <div class="stat-icon">📨</div>
         <div class="stat-value">13</div>
         <div class="stat-label">Total Messages</div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon">📅</div>
-        <div class="stat-value">D0–D50</div>
+        <div class="stat-value">D0 – D50</div>
         <div class="stat-label">Days Covered</div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon">🗂️</div>
         <div class="stat-value">2</div>
         <div class="stat-label">Phases</div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon">👥</div>
         <div class="stat-value">4</div>
         <div class="stat-label">Cohorts</div>
       </div>
@@ -560,32 +547,20 @@
 
   <!-- LEGEND -->
   <div class="legend">
-    <div class="legend-item">
-      <div class="legend-dot" style="background:#25D366"></div>
-      All users (primary)
-    </div>
-    <div class="legend-item">
-      <div class="legend-dot" style="background:#F59E0B"></div>
-      Conditional (behaviour-based)
-    </div>
-    <div class="legend-item">
-      <div class="legend-dot" style="background:conic-gradient(#16a34a 50%,#b45309 50%)"></div>
-      Both types
-    </div>
-    <div class="legend-item">
-      <div class="legend-dot" style="background:#3B82F6"></div>
-      Winback
-    </div>
-    <div class="legend-item">
-      <div class="legend-dot" style="background:#4B5563"></div>
-      Coming soon
-    </div>
+    <span class="legend-label">Key</span>
+    <div class="legend-item"><div class="legend-swatch g"></div>All users</div>
+    <div class="legend-item"><div class="legend-swatch a"></div>Conditional</div>
+    <div class="legend-item"><div class="legend-swatch m"></div>Both</div>
+    <div class="legend-item"><div class="legend-swatch b"></div>Winback</div>
+    <div class="legend-item"><div class="legend-swatch gr"></div>Coming soon</div>
   </div>
 
   <!-- PHASE 1: ONBOARDING -->
   <section class="phase-section" id="phase-onboarding">
     <div class="phase-header">
-      <span class="phase-pill onboarding">📲 Onboarding Journey</span>
+      <span class="phase-label">Phase 1</span>
+      <span class="phase-title">Onboarding Journey</span>
+      <div class="phase-rule"></div>
       <span class="phase-range">D0 – D30</span>
     </div>
     <div class="timeline-scroll">
@@ -596,7 +571,9 @@
   <!-- PHASE 2: WINBACK -->
   <section class="phase-section" id="phase-winback">
     <div class="phase-header">
-      <span class="phase-pill winback">🔁 Winback</span>
+      <span class="phase-label">Phase 2</span>
+      <span class="phase-title">Winback</span>
+      <div class="phase-rule"></div>
       <span class="phase-range">D35 – D50</span>
     </div>
     <div class="timeline-scroll">
