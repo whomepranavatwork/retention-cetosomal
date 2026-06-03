@@ -527,11 +527,11 @@
   <div class="stats-bar">
     <div class="stats-grid">
       <div class="stat-card">
-        <div class="stat-value">19</div>
+        <div class="stat-value">22</div>
         <div class="stat-label">Total Messages</div>
       </div>
       <div class="stat-card">
-        <div class="stat-value">D0 – D50</div>
+        <div class="stat-value">D0 – D66</div>
         <div class="stat-label">Days Covered</div>
       </div>
       <div class="stat-card">
@@ -780,6 +780,36 @@ const MESSAGES = [
     cohortLabel: 'Winback',
     topic: 'Final nudge – long-term commitment',
     text: `📌 It's been nearly 50 days since your last order.\n\nHair regrowth is a long-term commitment, not a one-month fix.\n\nDon't let your progress stall.\n\n🛒 Reorder your Hair Growth Regime today.`
+  },
+
+  // ── D55 ─────────────────────────────────────────────────────────────────
+  {
+    day: 55,
+    phase: 'winback',
+    cohort: 'winback',
+    cohortLabel: 'Winback',
+    topic: 'Almost 2 months – give it a fair chance',
+    text: `It's been almost 2 months since your last order.\n\nThe hardest part isn't starting treatment.\n\nIt's staying with it long enough to see what it can do.\n\nDon't stop before you've given yourself a fair chance.\n\n🛒 REORDER NOW`
+  },
+
+  // ── D60 ─────────────────────────────────────────────────────────────────
+  {
+    day: 60,
+    phase: 'winback',
+    cohort: 'winback',
+    cohortLabel: 'Winback',
+    topic: 'Reality check – get back on track',
+    text: `📌 A quick reality check.\n\nHair regrowth doesn't happen when treatment is sitting on pause.\n\nIf better hair is still the goal, it's time to get back on track.\n\n🛒 REORDER NOW`
+  },
+
+  // ── D66 ─────────────────────────────────────────────────────────────────
+  {
+    day: 66,
+    phase: 'winback',
+    cohort: 'winback',
+    cohortLabel: 'Winback',
+    topic: 'Imagine 66 days from now',
+    text: `🙌 Hey Man,\n\nImagine where your hair could be 66 days from now if you restarted today.\n\nNow imagine where it will be if you don't.\n\nThe choice is still in your hands.\n\n🛒 REORDER NOW`
   }
 ];
 
@@ -980,7 +1010,7 @@ modal.addEventListener('touchend', e => {
 const byDay = groupByDay(MESSAGES);
 
 const onboardingDays = [0, 1, 2, 4, 5, 10, 15, 20, 25, 30];
-const winbackDays    = [35, 37, 40, 45, 50];
+const winbackDays    = [35, 37, 40, 45, 50, 55, 60, 66];
 
 buildTimeline('track-onboarding', onboardingDays, byDay, 'onboarding');
 buildTimeline('track-winback',    winbackDays,    byDay, 'winback');
