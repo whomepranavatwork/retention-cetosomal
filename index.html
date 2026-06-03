@@ -500,6 +500,29 @@
       font-family: var(--font-emoji);
     }
 
+    /* ── SWIMLANES ───────────────────────────────── */
+    .swimlane {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+    .swimlane:last-child { margin-bottom: 0; }
+    .swimlane-label {
+      flex-shrink: 0;
+      width: 84px;
+      padding-top: 20px; /* vertically centre with node */
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      text-align: right;
+    }
+    .swimlane-label--general   { color: var(--accent-g); }
+    .swimlane-label--conditional { color: var(--accent-a); }
+    .swimlane-label--winback   { color: var(--accent-b); }
+    .swimlane .timeline-scroll { flex: 1; min-width: 0; }
+
     /* ── FOOTER ──────────────────────────────────── */
     .page-footer {
       text-align: center;
@@ -563,8 +586,17 @@
       <div class="phase-rule"></div>
       <span class="phase-range">D0 – D30</span>
     </div>
-    <div class="timeline-scroll">
-      <div class="timeline-track" id="track-onboarding"></div>
+    <div class="swimlane">
+      <div class="swimlane-label swimlane-label--general">General</div>
+      <div class="timeline-scroll">
+        <div class="timeline-track" id="track-onboarding-general"></div>
+      </div>
+    </div>
+    <div class="swimlane">
+      <div class="swimlane-label swimlane-label--conditional">Conditional</div>
+      <div class="timeline-scroll">
+        <div class="timeline-track" id="track-onboarding-conditional"></div>
+      </div>
     </div>
   </section>
 
@@ -574,10 +606,13 @@
       <span class="phase-label">Phase 2</span>
       <span class="phase-title">Winback</span>
       <div class="phase-rule"></div>
-      <span class="phase-range">D35 – D50</span>
+      <span class="phase-range">D35 – D66</span>
     </div>
-    <div class="timeline-scroll">
-      <div class="timeline-track" id="track-winback"></div>
+    <div class="swimlane">
+      <div class="swimlane-label swimlane-label--winback">Winback</div>
+      <div class="timeline-scroll">
+        <div class="timeline-track" id="track-winback"></div>
+      </div>
     </div>
   </section>
 
@@ -658,15 +693,17 @@ const MESSAGES = [
     text: `🌱 Hair growth isn't won by the best product.\n\nIt's won by a consistent routine.\n\nTrack your routine in the Man Matters App and don't miss the days that matter. 📲`
   },
 
-  // ── D10 ─────────────────────────────────────────────────────────────────
+  // ── D7 ──────────────────────────────────────────────────────────────────
   {
-    day: 10,
+    day: 7,
     phase: 'onboarding',
     cohort: 'all',
     cohortLabel: 'Sent to: Everyone',
     topic: 'Shedding education',
     text: `🙌 If you're noticing some extra hair fall, don't worry.\n\nMany men experience a little shedding 🔄 before they notice regrowth 🌱\n\nWeak hair fall out to make way for newer, stronger hair 💪\n\nIt is a sign that your treatment has started working. ✅ Keep going for best results.`
   },
+
+  // ── D10 ─────────────────────────────────────────────────────────────────
   {
     day: 10,
     phase: 'onboarding',
@@ -854,24 +891,32 @@ function nextTime() { return FAKE_TIMES[timeIdx++ % FAKE_TIMES.length]; }
 
 // ── BUILD TIMELINE ────────────────────────────────────────────────────────────
 
-function buildTimeline(trackId, days, byDay, phase) {
+// cohortFilter: 'all' | 'conditional' | 'winback' | null (show all)
+function buildTimeline(trackId, allDays, byDay, phase, cohortFilter) {
   const track = document.getElementById(trackId);
   track.innerHTML = '';
 
-  days.forEach((day, i) => {
+  // Keep only days that have at least one message matching the filter
+  const days = allDays.filter(day => {
     const msgs = byDay[day] || [];
-    const colorClass = nodeColorClass(msgs);
+    return cohortFilter ? msgs.some(m => m.cohort === cohortFilter) : msgs.length > 0;
+  });
+
+  const colorForFilter = { all: 'green', conditional: 'amber', winback: 'blue' };
+  const laneColor = cohortFilter ? colorForFilter[cohortFilter] : null;
+
+  days.forEach((day, i) => {
+    const allMsgs = byDay[day] || [];
+    const msgs = cohortFilter ? allMsgs.filter(m => m.cohort === cohortFilter) : allMsgs;
+    const colorClass = laneColor || nodeColorClass(msgs);
     const count = msgs.length;
     const allNull = msgs.every(m => m.text === null);
     const label = shortTopic(msgs);
 
-    // connector line (not before first)
     if (i > 0) {
-      const prevMsgs = byDay[days[i - 1]] || [];
-      const lineClass = lineColorClass(prevMsgs);
       const connEl = document.createElement('div');
       connEl.className = 'tl-connector';
-      connEl.innerHTML = `<div class="tl-line ${lineClass}"></div>`;
+      connEl.innerHTML = `<div class="tl-line ${colorClass}"></div>`;
       track.appendChild(connEl);
     }
 
@@ -1009,11 +1054,12 @@ modal.addEventListener('touchend', e => {
 
 const byDay = groupByDay(MESSAGES);
 
-const onboardingDays = [0, 1, 2, 4, 5, 10, 15, 20, 25, 30];
+const onboardingDays = [0, 1, 2, 4, 5, 7, 10, 15, 20, 25, 30];
 const winbackDays    = [35, 37, 40, 45, 50, 55, 60, 66];
 
-buildTimeline('track-onboarding', onboardingDays, byDay, 'onboarding');
-buildTimeline('track-winback',    winbackDays,    byDay, 'winback');
+buildTimeline('track-onboarding-general',     onboardingDays, byDay, 'onboarding', 'all');
+buildTimeline('track-onboarding-conditional', onboardingDays, byDay, 'onboarding', 'conditional');
+buildTimeline('track-winback',                winbackDays,    byDay, 'winback',    'winback');
 </script>
 </body>
 </html>
