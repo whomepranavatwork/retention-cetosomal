@@ -354,44 +354,9 @@
     }
     @media (min-width: 600px) { .modal-handle { display: none; } }
 
-    .modal-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 18px 13px;
-      border-bottom: 1px solid var(--border);
-      flex-shrink: 0;
-    }
-    .modal-title { display: flex; align-items: center; gap: 10px; }
-    .modal-day-badge {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
-      letter-spacing: -0.2px;
-    }
-    .modal-phase-tag {
-      font-size: 10px;
-      font-weight: 600;
-      padding: 2px 7px;
-      border-radius: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-      border: 1px solid;
-    }
-    .modal-phase-tag.onboarding {
-      color: var(--accent-g);
-      border-color: #A7F3C0;
-      background: #F0FDF6;
-    }
-    .modal-phase-tag.winback {
-      color: var(--accent-b);
-      border-color: #BFDBFE;
-      background: #EFF6FF;
-    }
     .modal-close {
-      width: 26px; height: 26px;
-      border-radius: 5px;
-      background: transparent;
+      /* used by .wa-back */
+      display: none;
       border: 1px solid var(--border);
       color: var(--muted);
       cursor: pointer;
@@ -403,12 +368,56 @@
     }
     .modal-close:hover { background: var(--bg); color: var(--text); }
 
-    /* ── WHATSAPP CHAT — unchanged ───────────────── */
+    /* ── WHATSAPP HEADER ─────────────────────────── */
+    .wa-header {
+      background: #075E54;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 12px 6px 4px;
+      flex-shrink: 0;
+    }
+    .wa-back {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.9);
+      font-size: 22px;
+      cursor: pointer;
+      padding: 4px 6px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+    }
+    .wa-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: #fff;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .wa-avatar svg { display: block; width: 100%; height: 100%; }
+    .wa-contact { flex: 1; min-width: 0; }
+    .wa-contact-name {
+      font-size: 15.5px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.2;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+    }
+    .wa-contact-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.68);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+    }
+    .wa-header-icons { display: flex; gap: 20px; align-items: center; }
+    .wa-header-icons svg { width: 20px; height: 20px; fill: rgba(255,255,255,0.85); }
+
+    /* ── WHATSAPP CHAT WINDOW ────────────────────── */
     .chat-window {
       flex: 1;
       overflow-y: auto;
-      background: var(--wa-bg);
-      padding: 16px 14px 20px;
+      background: #E5DDD5;
+      padding: 10px 10px 16px;
       position: relative;
       -webkit-overflow-scrolling: touch;
     }
@@ -421,7 +430,20 @@
       background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     }
 
-    .msg-group { margin-bottom: 20px; }
+    /* Date chip */
+    .chat-date-wrap { display: flex; justify-content: center; margin-bottom: 10px; position: relative; z-index: 1; }
+    .chat-date-chip {
+      background: rgba(225,245,254,0.88);
+      color: #54656F;
+      font-size: 11.5px;
+      font-weight: 500;
+      padding: 4px 11px;
+      border-radius: 6px;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.07);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+    }
+
+    .msg-group { margin-bottom: 8px; }
 
     .cohort-pill {
       display: inline-flex;
@@ -431,73 +453,73 @@
       font-weight: 600;
       padding: 2px 8px;
       border-radius: 4px;
-      margin-bottom: 5px;
-      font-family: var(--font-emoji);
+      margin-bottom: 3px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif, var(--font-emoji);
       text-transform: uppercase;
       letter-spacing: 0.3px;
       border: 1px solid;
     }
-    .cohort-pill.all {
-      color: var(--accent-g);
-      border-color: #A7F3C0;
-      background: #F0FDF6;
-    }
-    .cohort-pill.conditional {
-      color: var(--accent-a);
-      border-color: #FDE68A;
-      background: #FFFBEB;
-    }
-    .cohort-pill.winback {
-      color: var(--accent-b);
-      border-color: #BFDBFE;
-      background: #EFF6FF;
-    }
+    .cohort-pill.all        { color: var(--accent-g); border-color: #A7F3C0; background: #F0FDF6; }
+    .cohort-pill.conditional{ color: var(--accent-a); border-color: #FDE68A; background: #FFFBEB; }
+    .cohort-pill.winback    { color: var(--accent-b); border-color: #BFDBFE; background: #EFF6FF; }
 
     .topic-label {
       font-size: 10px;
-      color: #777;
-      margin-bottom: 4px;
-      padding-left: 1px;
-      font-style: normal;
+      color: #6B7280;
+      margin-bottom: 3px;
+      padding-left: 2px;
       font-weight: 500;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
     }
 
+    /* ── RECEIVED BUBBLE (left-aligned, white) ───── */
     .bubble {
-      background: var(--wa-bubble);
-      border-radius: 18px 18px 4px 18px;
-      padding: 10px 14px 28px;
+      background: #FFFFFF;
+      border-radius: 0px 10px 10px 10px;
+      padding: 5px 9px 18px 9px;
       position: relative;
-      max-width: 92%;
-      margin-left: auto;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.12);
+      max-width: 88%;
+      margin-right: auto;
+      margin-left: 0;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.09);
     }
-    .bubble.coming-soon {
-      background: #F3F4F6;
-      border: 1px dashed #D1D5DB;
+    /* tail — top-left */
+    .bubble::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -8px;
+      width: 0; height: 0;
+      border-style: solid;
+      border-width: 0 8px 9px 0;
+      border-color: transparent #fff transparent transparent;
     }
+    .bubble.coming-soon { background: #F1F3F4; border: 1px dashed #CBD5E1; }
+    .bubble.coming-soon::before { border-color: transparent #F1F3F4 transparent transparent; }
+
     .bubble-sender {
-      font-size: 11px;
-      font-weight: 700;
-      color: #0a7c42;
-      margin-bottom: 5px;
-      font-family: var(--font-emoji);
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #075E54;
+      margin-bottom: 2px;
+      line-height: 1.3;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif, var(--font-emoji);
     }
     .bubble-text {
-      font-size: 14px;
-      line-height: 1.55;
-      color: #111;
-      white-space: pre-wrap;
+      font-size: 14.2px;
+      line-height: 1.44;
+      color: #111B21;
       word-break: break-word;
-      font-family: var(--font-emoji);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif, var(--font-emoji);
     }
-    .bubble-text.muted-text { color: #999; font-style: italic; }
+    .bubble-text.muted-text { color: #8696A0; font-style: italic; }
     .bubble-time {
       position: absolute;
-      bottom: 7px;
-      right: 10px;
-      font-size: 10px;
-      color: #888;
-      font-family: var(--font-emoji);
+      bottom: 4px;
+      right: 7px;
+      font-size: 11px;
+      color: #8696A0;
+      white-space: nowrap;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
     }
 
     /* ── SWIMLANES ───────────────────────────────── */
@@ -620,12 +642,32 @@
   <div class="overlay" id="overlay" role="dialog" aria-modal="true">
     <div class="modal" id="modal">
       <div class="modal-handle"></div>
-      <div class="modal-header">
-        <div class="modal-title">
-          <span class="modal-day-badge" id="modal-day-badge">Day 0</span>
-          <span class="modal-phase-tag onboarding" id="modal-phase-tag">Onboarding</span>
+      <!-- WhatsApp-style chat header -->
+      <div class="wa-header">
+        <button class="wa-back" id="modal-close" aria-label="Close">&#8592;</button>
+        <div class="wa-avatar">
+          <!-- Man Matters logo mark (simplified SVG) -->
+          <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <rect width="40" height="40" fill="#ffffff"/>
+            <!-- Face silhouette in MM blue -->
+            <g fill="#2B52A0">
+              <!-- Head -->
+              <ellipse cx="20" cy="13" rx="7" ry="7.5"/>
+              <!-- Neck + shoulders -->
+              <path d="M11 40 Q11 28 20 26 Q29 28 29 40 Z"/>
+            </g>
+          </svg>
         </div>
-        <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+        <div class="wa-contact">
+          <div class="wa-contact-name">Man Matters</div>
+          <div class="wa-contact-sub" id="modal-day-badge">Hair Growth</div>
+        </div>
+        <div class="wa-header-icons">
+          <!-- Video icon -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+          <!-- Phone icon -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        </div>
       </div>
       <div class="chat-window" id="chat-window"></div>
     </div>
@@ -960,51 +1002,51 @@ const overlay = document.getElementById('overlay');
 const modalClose = document.getElementById('modal-close');
 const chatWindow = document.getElementById('chat-window');
 const modalDayBadge = document.getElementById('modal-day-badge');
-const modalPhaseTag = document.getElementById('modal-phase-tag');
 
 function openModal(day, msgs, phase) {
   timeIdx = 0;
-  modalDayBadge.textContent = `Day ${day}`;
-  modalPhaseTag.textContent = phase === 'winback' ? 'Winback' : 'Onboarding';
-  modalPhaseTag.className = `modal-phase-tag ${phase}`;
+  modalDayBadge.textContent = `Day ${day} · ${phase === 'winback' ? 'Winback' : 'Onboarding'}`;
 
   chatWindow.innerHTML = '';
 
+  // Date chip
+  const dateWrap = document.createElement('div');
+  dateWrap.className = 'chat-date-wrap';
+  dateWrap.innerHTML = `<div class="chat-date-chip">Day ${day}</div>`;
+  chatWindow.appendChild(dateWrap);
+
   if (!msgs || msgs.length === 0) {
-    chatWindow.innerHTML = comingSoonBubble('Message being drafted...');
+    chatWindow.innerHTML += comingSoonBubble('Message being drafted...');
   } else {
     msgs.forEach(msg => {
       const group = document.createElement('div');
       group.className = 'msg-group';
 
-      // cohort pill
       const pill = document.createElement('div');
       const pillClass = msg.cohort === 'all' ? 'all' : msg.cohort === 'winback' ? 'winback' : 'conditional';
       const pillEmoji = msg.cohort === 'all' ? '🟢' : msg.cohort === 'winback' ? '🔵' : '🟡';
       pill.className = `cohort-pill ${pillClass}`;
       pill.innerHTML = `${pillEmoji} ${msg.cohortLabel}`;
 
-      // topic label
       const topicEl = document.createElement('div');
       topicEl.className = 'topic-label';
       topicEl.textContent = msg.topic;
 
-      // bubble
       const bubble = document.createElement('div');
 
       if (msg.text === null) {
         bubble.className = 'bubble coming-soon';
         bubble.innerHTML = `
-          <div class="bubble-sender">Man Matters 💚</div>
+          <div class="bubble-sender">Man Matters</div>
           <div class="bubble-text muted-text">🔒 Message being drafted...</div>
-          <div class="bubble-time">-- ✓✓</div>
+          <div class="bubble-time">--</div>
         `;
       } else {
         bubble.className = 'bubble';
         bubble.innerHTML = `
-          <div class="bubble-sender">Man Matters 💚</div>
+          <div class="bubble-sender">Man Matters</div>
           <div class="bubble-text">${formatMessage(msg.text)}</div>
-          <div class="bubble-time">${nextTime()} ✓✓</div>
+          <div class="bubble-time">${nextTime()}</div>
         `;
       }
 
@@ -1025,9 +1067,9 @@ function comingSoonBubble(txt) {
       <div class="cohort-pill winback">🔵 Winback</div>
       <div class="topic-label">Planned message</div>
       <div class="bubble coming-soon">
-        <div class="bubble-sender">Man Matters 💚</div>
+        <div class="bubble-sender">Man Matters</div>
         <div class="bubble-text muted-text">🔒 ${txt}</div>
-        <div class="bubble-time">-- ✓✓</div>
+        <div class="bubble-time">--</div>
       </div>
     </div>`;
 }
