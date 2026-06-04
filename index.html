@@ -3,36 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Man Matters · Retention Journey</title>
+  <title>Man Matters · Minoxidil Retention Journey</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg:        #F7F8FA;
-      --surface:   #FFFFFF;
-      --border:    #E4E6EA;
-      --border2:   #CDD0D8;
-      --text:      #111318;
-      --text2:     #3D4350;
-      --muted:     #7A8194;
-      --accent-g:  #1A7A43;   /* green — All */
-      --accent-a:  #C47B0B;   /* amber — Conditional */
-      --accent-b:  #2155C4;   /* blue — Winback */
-      --accent-gr: #8A909E;   /* grey — Coming soon */
-      --wa-bg:     #E5DDD5;
-      --wa-bubble: #DCF8C6;
-      --font-emoji: "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji","Segoe UI",system-ui,sans-serif;
+      --bg:       #F4F5F7;
+      --surface:  #FFFFFF;
+      --border:   #E4E6EA;
+      --border2:  #CDD0D8;
+      --text:     #111318;
+      --text2:    #3D4350;
+      --muted:    #7A8194;
+      --wa:       #25D366;
+      --wa-dark:  #1A9E4D;
+      --wa-bg:    #E7F9EF;
+      --push:     #FF6B35;
+      --push-dark:#C84B16;
+      --push-bg:  #FFF0EB;
+      --sms:      #4A90D9;
+      --sms-dark: #2563EB;
+      --sms-bg:   #EBF4FF;
+      --ph-act:   #7C3AED;
+      --ph-hab:   #059669;
+      --ph-rea:   #D97706;
+      --ph-con:   #DC2626;
+      --ph-win:   #2563EB;
+      --co-all:   #1A7A43;
+      --co-app:   #7C3AED;
+      --co-doc:   #EA580C;
+      --co-hab:   #2563EB;
+      --co-rew:   #0891B2;
+      --co-wb:    #DC2626;
     }
-
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Inter', var(--font-emoji);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       min-height: 100vh;
-      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -41,1394 +51,1445 @@
       background: var(--surface);
       border-bottom: 1px solid var(--border);
       padding: 0 32px;
-      height: 56px;
+      height: 52px;
       display: flex;
       align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 60;
     }
     .header-inner {
-      max-width: 1160px;
+      max-width: 1280px;
       margin: 0 auto;
       width: 100%;
       display: flex;
-      align-items: baseline;
-      gap: 16px;
+      align-items: center;
+      gap: 12px;
     }
-    .header h1 {
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: -0.1px;
-      color: var(--text);
-    }
-    .header-divider {
-      width: 1px;
-      height: 14px;
-      background: var(--border2);
-      align-self: center;
-    }
-    .header-sub {
-      font-size: 12px;
-      color: var(--muted);
-      font-weight: 400;
+    .brand { font-size: 13px; font-weight: 700; letter-spacing: -0.2px; }
+    .brand-sep { width: 1px; height: 14px; background: var(--border2); }
+    .header-sub { font-size: 12px; color: var(--muted); }
+    .header-badge {
+      margin-left: auto;
+      background: #FEF3C7; color: #92400E;
+      font-size: 10px; font-weight: 600;
+      padding: 3px 8px; border-radius: 4px;
+      border: 1px solid #FDE68A;
     }
 
     /* ── STATS BAR ──────────────────────────────── */
-    .stats-bar {
-      padding: 24px 32px 0;
-      max-width: 1160px;
-      margin: 0 auto;
+    .stats-wrap {
+      max-width: 1280px;
+      margin: 20px auto 0;
+      padding: 0 32px;
     }
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       gap: 1px;
       background: var(--border);
       border: 1px solid var(--border);
       border-radius: 8px;
       overflow: hidden;
     }
-    @media (max-width: 680px) {
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    .stat-card {
+    .stat {
       background: var(--surface);
-      padding: 18px 20px 16px;
+      padding: 12px 16px;
     }
-    .stat-value {
-      font-size: 24px;
-      font-weight: 700;
-      letter-spacing: -0.8px;
-      color: var(--text);
-      line-height: 1;
+    .stat-val {
+      font-size: 20px; font-weight: 700;
+      letter-spacing: -0.6px; line-height: 1;
+      display: flex; align-items: center; gap: 5px;
     }
-    .stat-label {
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 5px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    /* ── LEGEND ─────────────────────────────────── */
-    .legend {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      padding: 20px 32px;
-      max-width: 1160px;
-      margin: 0 auto;
-      border-bottom: 1px solid var(--border);
-    }
-    .legend-label {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      margin-right: 4px;
-    }
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      color: var(--text2);
-      font-weight: 450;
-    }
-    .legend-swatch {
+    .ch-dot {
       width: 8px; height: 8px;
-      border-radius: 2px;
-      flex-shrink: 0;
+      border-radius: 50%; flex-shrink: 0;
     }
-    .legend-swatch.g  { background: var(--accent-g); }
-    .legend-swatch.a  { background: var(--accent-a); }
-    .legend-swatch.m  { background: linear-gradient(135deg, var(--accent-g) 50%, var(--accent-a) 50%); }
-    .legend-swatch.b  { background: var(--accent-b); }
-    .legend-swatch.gr { background: var(--border2); }
+    .ch-dot.wa   { background: var(--wa); }
+    .ch-dot.push { background: var(--push); }
+    .ch-dot.sms  { background: var(--sms); }
+    .stat-lab {
+      font-size: 10px; color: var(--muted);
+      margin-top: 4px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
 
-    /* ── PHASE SECTIONS ──────────────────────────── */
-    .phase-section {
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 28px 32px;
+    /* ── STRATEGY CARDS ─────────────────────────── */
+    .strategy-wrap {
+      max-width: 1280px;
+      margin: 16px auto 0;
+      padding: 0 32px;
+    }
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .s-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .s-card-title {
+      font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.6px;
+      color: var(--muted); margin-bottom: 9px;
+    }
+    .s-item {
+      display: flex; align-items: flex-start;
+      gap: 7px; margin-bottom: 5px;
+      font-size: 11.5px; color: var(--text2); line-height: 1.4;
+    }
+    .s-item:last-child { margin-bottom: 0; }
+    .s-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      flex-shrink: 0; margin-top: 4px;
+    }
+
+    /* ── PHASE STRIP ────────────────────────────── */
+    .phase-wrap {
+      max-width: 1280px;
+      margin: 16px auto 0;
+      padding: 0 32px;
+    }
+    .phase-strip-label {
+      font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.6px;
+      color: var(--muted); margin-bottom: 7px;
+    }
+    .phase-strip {
+      display: flex; border-radius: 8px;
+      overflow: hidden; border: 1px solid var(--border);
+      height: 44px;
+    }
+    .ph-block {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 1px; cursor: pointer;
+      transition: filter 0.12s;
+    }
+    .ph-block:hover { filter: brightness(1.08); }
+    .ph-name { font-size: 10px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.3px; }
+    .ph-days { font-size: 9px; color: rgba(255,255,255,0.72); font-weight: 500; }
+
+    /* ── FILTER BAR ─────────────────────────────── */
+    .filter-bar {
+      position: sticky; top: 52px; z-index: 50;
+      background: rgba(244,245,247,0.97);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       border-bottom: 1px solid var(--border);
     }
-    .phase-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
+    .filter-inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 8px 32px;
+      display: flex; align-items: center;
+      gap: 16px; flex-wrap: wrap;
     }
-    .phase-label {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.7px;
-      color: var(--muted);
+    .filter-group { display: flex; align-items: center; gap: 6px; }
+    .filter-lbl {
+      font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.6px;
+      color: var(--muted); flex-shrink: 0;
     }
-    .phase-title {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
+    .pills { display: flex; gap: 4px; flex-wrap: wrap; }
+    .pill {
+      font-size: 11px; font-weight: 500;
+      padding: 4px 10px; border-radius: 20px;
+      border: 1.5px solid var(--border2);
+      background: var(--surface); color: var(--text2);
+      cursor: pointer; transition: all 0.1s;
+      display: flex; align-items: center; gap: 4px;
+      white-space: nowrap; user-select: none;
     }
-    .phase-range {
-      font-size: 12px;
-      color: var(--muted);
-      font-weight: 400;
-      margin-left: auto;
-    }
-    .phase-rule {
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
+    .pill:hover { background: var(--bg); }
+    .pill.on { color: #fff; border-color: transparent; }
+    .pill.on.p-all  { background: #374151; }
+    .pill.on.p-wa   { background: var(--wa-dark); }
+    .pill.on.p-push { background: var(--push-dark); }
+    .pill.on.p-sms  { background: var(--sms-dark); }
+    .pill.on.c-all  { background: var(--co-all); }
+    .pill.on.c-app  { background: var(--co-app); }
+    .pill.on.c-doc  { background: var(--co-doc); }
+    .pill.on.c-hab  { background: var(--co-hab); }
+    .pill.on.c-rew  { background: var(--co-rew); }
+    .pill.on.c-wb   { background: var(--co-wb); }
 
-    /* ── TIMELINE ────────────────────────────────── */
-    .timeline-scroll {
-      overflow-x: auto;
+    /* ── SWIMLANES ──────────────────────────────── */
+    .lanes-wrap {
+      max-width: 1280px;
+      margin: 16px auto 32px;
+      padding: 0 32px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .lane {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex; align-items: stretch;
+      overflow: hidden; transition: opacity 0.15s;
+    }
+    .lane.dimmed { opacity: 0.32; }
+
+    .lane-hdr {
+      flex-shrink: 0; width: 152px;
+      border-right: 1px solid var(--border);
+      padding: 12px 12px 12px 15px;
+      display: flex; flex-direction: column;
+      justify-content: center; gap: 3px;
+    }
+    .lane[data-cohort="all"]        .lane-hdr { border-left: 3px solid var(--co-all); }
+    .lane[data-cohort="no-app"]     .lane-hdr { border-left: 3px solid var(--co-app); }
+    .lane[data-cohort="no-doctor"]  .lane-hdr { border-left: 3px solid var(--co-doc); }
+    .lane[data-cohort="no-habit"]   .lane-hdr { border-left: 3px solid var(--co-hab); }
+    .lane[data-cohort="no-rewards"] .lane-hdr { border-left: 3px solid var(--co-rew); }
+    .lane[data-cohort="winback"]    .lane-hdr { border-left: 3px solid var(--co-wb); }
+
+    .lane-name { font-size: 11.5px; font-weight: 700; color: var(--text); }
+    .lane-cond { font-size: 9.5px; color: var(--muted); line-height: 1.35; margin-top: 1px; }
+    .lane-count { font-size: 9px; color: var(--muted); margin-top: 4px; }
+
+    .lane-tl {
+      flex: 1; overflow-x: auto;
+      padding: 14px 16px;
+      display: flex; align-items: center;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: thin;
       scrollbar-color: var(--border) transparent;
-      padding-bottom: 4px;
     }
-    .timeline-scroll::-webkit-scrollbar { height: 3px; }
-    .timeline-scroll::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+    .lane-tl::-webkit-scrollbar { height: 3px; }
+    .lane-tl::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
 
-    .timeline-track {
-      display: flex;
-      align-items: flex-start;
+    /* ── NODES ──────────────────────────────────── */
+    .tl-track {
+      display: flex; align-items: center;
       min-width: max-content;
-      padding: 4px 0 12px;
     }
-
-    .tl-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .tl-conn {
+      width: 18px; height: 1.5px;
+      background: var(--border2); flex-shrink: 0;
     }
-
-    .tl-connector {
-      display: flex;
-      align-items: center;
-      margin-top: 28px; /* half node height */
-    }
-    .tl-line {
-      height: 1px;
-      width: 20px;
-      background: var(--border2);
-      flex-shrink: 0;
-    }
-
-    .tl-node-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-
+    .tl-group { display: flex; flex-direction: column; align-items: center; }
     .tl-node {
-      width: 60px;
-      height: 60px;
-      border-radius: 8px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      position: relative;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      transition: box-shadow 0.14s ease, border-color 0.14s ease;
+      width: 60px; min-height: 64px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px; background: var(--surface);
+      cursor: pointer; position: relative;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 4px; padding: 8px 4px 5px;
+      transition: box-shadow 0.12s, transform 0.1s;
       user-select: none;
     }
     .tl-node:hover {
-      box-shadow: 0 2px 10px rgba(0,0,0,0.10);
-      border-color: var(--border2);
+      box-shadow: 0 3px 14px rgba(0,0,0,0.12);
+      transform: translateY(-1px);
     }
-    .tl-node:active { opacity: 0.8; }
-
-    /* color accent: 3px top border only */
+    .tl-node:active { transform: translateY(0); }
     .tl-node::before {
       content: '';
       position: absolute;
-      top: -1px; left: -1px; right: -1px;
-      height: 3px;
-      border-radius: 8px 8px 0 0;
+      top: -1.5px; left: -1.5px; right: -1.5px;
+      height: 3px; border-radius: 8px 8px 0 0;
     }
-    .tl-node.green::before  { background: var(--accent-g); }
-    .tl-node.amber::before  { background: var(--accent-a); }
-    .tl-node.mixed::before  { background: linear-gradient(90deg, var(--accent-g) 50%, var(--accent-a) 50%); }
-    .tl-node.blue::before   { background: var(--accent-b); }
-    .tl-node.grey::before   { background: var(--border2); }
+    .tl-node.tc-wa::before      { background: var(--wa); }
+    .tl-node.tc-push::before    { background: var(--push); }
+    .tl-node.tc-sms::before     { background: var(--sms); }
+    .tl-node.tc-wa-push::before { background: linear-gradient(90deg,var(--wa) 50%,var(--push) 50%); }
+    .tl-node.tc-wa-sms::before  { background: linear-gradient(90deg,var(--wa) 50%,var(--sms) 50%); }
+    .tl-node.tc-push-sms::before{ background: linear-gradient(90deg,var(--push) 50%,var(--sms) 50%); }
+    .tl-node.tc-all3::before    { background: linear-gradient(90deg,var(--wa) 33%,var(--push) 33% 66%,var(--sms) 66%); }
 
-    .tl-node.green { border-top-color: var(--accent-g); }
-    .tl-node.amber { border-top-color: var(--accent-a); }
-    .tl-node.blue  { border-top-color: var(--accent-b); }
-
-    .tl-day {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text);
-      line-height: 1;
-      letter-spacing: -0.2px;
-    }
-    .tl-node.grey .tl-day { color: var(--muted); }
-
-    .tl-badge {
-      position: absolute;
-      top: -6px;
-      right: -6px;
-      min-width: 16px;
-      height: 16px;
-      padding: 0 4px;
-      background: var(--text);
-      color: #fff;
-      border-radius: 8px;
-      font-size: 9px;
+    .tl-day { font-size: 12px; font-weight: 700; letter-spacing: -0.2px; line-height: 1; }
+    .tl-icons { display: flex; gap: 2px; align-items: center; margin-top: 2px; }
+    .tl-ico {
+      font-size: 7px; width: 15px; height: 13px;
+      border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
       font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1.5px solid var(--bg);
-      letter-spacing: 0;
     }
-    .tl-label {
-      font-size: 10px;
-      color: var(--muted);
-      text-align: center;
-      max-width: 68px;
-      line-height: 1.35;
-      font-weight: 450;
+    .tl-ico.wa   { background: var(--wa-bg);   color: var(--wa-dark); }
+    .tl-ico.push { background: var(--push-bg); color: var(--push-dark); font-size:9px; }
+    .tl-ico.sms  { background: var(--sms-bg);  color: var(--sms-dark); }
+    .tl-badge {
+      position: absolute; top: -7px; right: -7px;
+      min-width: 16px; height: 16px; padding: 0 3px;
+      background: var(--text); color: #fff;
+      border-radius: 8px; font-size: 9px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      border: 1.5px solid var(--bg);
+    }
+    .tl-node-lbl {
+      font-size: 8.5px; color: var(--muted);
+      text-align: center; max-width: 62px;
+      margin-top: 4px; line-height: 1.2;
     }
 
     /* ── MODAL ───────────────────────────────────── */
     .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(17,19,24,0.40);
-      z-index: 100;
-      opacity: 0;
+      position: fixed; inset: 0;
+      background: rgba(17,19,24,0.48);
+      z-index: 200; opacity: 0;
       pointer-events: none;
       transition: opacity 0.2s ease;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
+      display: flex; align-items: flex-end; justify-content: center;
     }
     .overlay.open { opacity: 1; pointer-events: all; }
     @media (min-width: 600px) { .overlay { align-items: center; } }
 
     .modal {
       background: var(--surface);
-      border-radius: 12px 12px 0 0;
-      width: 100%;
-      max-width: 500px;
-      max-height: 90vh;
-      display: flex;
-      flex-direction: column;
+      width: 100%; max-width: 460px;
+      max-height: 92vh;
+      border-radius: 14px 14px 0 0;
+      display: flex; flex-direction: column;
       transform: translateY(100%);
-      transition: transform 0.26s cubic-bezier(0.32,0.72,0,1);
-      border: 1px solid var(--border);
-      border-bottom: none;
+      transition: transform 0.28s cubic-bezier(0.32,0.72,0,1);
       overflow: hidden;
     }
     .overlay.open .modal { transform: translateY(0); }
-
     @media (min-width: 600px) {
       .modal {
-        border-radius: 10px;
-        border: 1px solid var(--border);
-        max-height: 84vh;
-        transform: translateY(8px);
-        box-shadow: 0 8px 40px rgba(0,0,0,0.14), 0 0 0 1px rgba(0,0,0,0.04);
+        border-radius: 12px;
+        box-shadow: 0 8px 48px rgba(0,0,0,0.2);
+        transform: translateY(10px) scale(0.97);
       }
-      .overlay.open .modal { transform: translateY(0); }
+      .overlay.open .modal { transform: translateY(0) scale(1); }
     }
 
     .modal-handle {
-      width: 28px; height: 3px;
-      background: var(--border2);
-      border-radius: 2px;
-      margin: 10px auto 0;
-      flex-shrink: 0;
+      width: 32px; height: 4px; background: var(--border2);
+      border-radius: 2px; margin: 10px auto; flex-shrink: 0;
     }
     @media (min-width: 600px) { .modal-handle { display: none; } }
 
-    .modal-close {
-      /* used by .wa-back */
-      display: none;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      cursor: pointer;
-      font-size: 13px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.1s, color 0.1s;
+    .modal-meta {
+      background: #F8F9FB; border-bottom: 1px solid var(--border);
+      padding: 10px 14px; flex-shrink: 0;
     }
-    .modal-close:hover { background: var(--bg); color: var(--text); }
+    .meta-row { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+    .m-chip {
+      font-size: 10px; font-weight: 600;
+      padding: 2px 7px; border-radius: 4px;
+    }
+    .m-chip.day   { background: #E8EAF0; color: var(--text2); }
+    .m-chip.chn   { color: #fff; }
+    .m-chip.chn-whatsapp { background: var(--wa-dark); }
+    .m-chip.chn-push { background: var(--push-dark); }
+    .m-chip.chn-sms  { background: var(--sms-dark); }
+    .m-chip.coh { border: 1px solid; }
+    .m-chip.coh-all { color: var(--co-all); background: #F0FDF6; border-color: #A7F3C0; }
+    .m-chip.coh-app { color: var(--co-app); background: #F5F3FF; border-color: #DDD6FE; }
+    .m-chip.coh-doc { color: var(--co-doc); background: #FFF7ED; border-color: #FED7AA; }
+    .m-chip.coh-hab { color: var(--co-hab); background: #EFF6FF; border-color: #BFDBFE; }
+    .m-chip.coh-rew { color: var(--co-rew); background: #ECFEFF; border-color: #A5F3FC; }
+    .m-chip.coh-wb  { color: var(--co-wb);  background: #FFF1F2; border-color: #FECDD3; }
+    .meta-trigger {
+      margin-top: 5px; font-size: 10.5px; color: var(--muted);
+      line-height: 1.4; display: flex; align-items: flex-start; gap: 4px;
+    }
 
-    /* ── WHATSAPP HEADER ─────────────────────────── */
+    .modal-tabs {
+      display: flex; border-bottom: 1px solid var(--border);
+      flex-shrink: 0; background: var(--surface);
+    }
+    .modal-tab {
+      flex: 1; padding: 9px 8px;
+      font-size: 11.5px; font-weight: 600;
+      color: var(--muted); border: none;
+      background: none; cursor: pointer;
+      border-bottom: 2.5px solid transparent;
+      transition: color 0.1s, border-color 0.1s;
+    }
+    .modal-tab:hover { color: var(--text); }
+    .modal-tab.on { color: var(--text); }
+    .modal-tab.on.tab-whatsapp { border-bottom-color: var(--wa-dark); }
+    .modal-tab.on.tab-push     { border-bottom-color: var(--push-dark); }
+    .modal-tab.on.tab-sms      { border-bottom-color: var(--sms-dark); }
+
+    /* ── WA PREVIEW ─────────────────────────────── */
     .wa-header {
       background: #075E54;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 6px 12px 6px 4px;
-      flex-shrink: 0;
+      display: flex; align-items: center;
+      gap: 10px; padding: 6px 12px 6px 4px; flex-shrink: 0;
     }
     .wa-back {
-      background: none;
-      border: none;
+      background: none; border: none;
       color: rgba(255,255,255,0.9);
-      font-size: 22px;
-      cursor: pointer;
-      padding: 4px 6px;
-      line-height: 1;
-      display: flex;
-      align-items: center;
+      font-size: 22px; cursor: pointer; padding: 4px 6px; line-height: 1;
     }
-    .wa-avatar {
-      width: 38px; height: 38px;
-      border-radius: 50%;
-      background: #fff;
-      flex-shrink: 0;
-      overflow: hidden;
+    .wa-ava {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: #fff; flex-shrink: 0; overflow: hidden;
     }
-    .wa-avatar svg { display: block; width: 100%; height: 100%; }
-    .wa-contact { flex: 1; min-width: 0; }
-    .wa-contact-name {
-      font-size: 15.5px;
-      font-weight: 600;
-      color: #fff;
-      line-height: 1.2;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
-    }
-    .wa-contact-sub {
-      font-size: 12px;
-      color: rgba(255,255,255,0.68);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
-    }
-    .wa-header-icons { display: flex; gap: 20px; align-items: center; }
-    .wa-header-icons svg { width: 20px; height: 20px; fill: rgba(255,255,255,0.85); }
+    .wa-ava svg { display: block; width: 100%; height: 100%; }
+    .wa-cnt { flex: 1; min-width: 0; }
+    .wa-cname { font-size: 15px; font-weight: 600; color: #fff; font-family: -apple-system, sans-serif; }
+    .wa-csub  { font-size: 12px; color: rgba(255,255,255,0.68); font-family: -apple-system, sans-serif; }
+    .wa-icons { display: flex; gap: 18px; }
+    .wa-icons svg { width: 20px; height: 20px; fill: rgba(255,255,255,0.85); }
 
-    /* ── WHATSAPP CHAT WINDOW ────────────────────── */
-    .chat-window {
-      flex: 1;
-      overflow-y: auto;
-      background: #E5DDD5;
-      padding: 10px 10px 16px;
-      position: relative;
-      -webkit-overflow-scrolling: touch;
+    .chat-win {
+      flex: 1; overflow-y: auto;
+      background: #E5DDD5; padding: 10px 10px 16px; position: relative;
     }
-    .chat-window::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      opacity: 0.04;
-      pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    .chat-win::before {
+      content: ''; position: absolute; inset: 0; opacity: 0.04; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
     }
-
-    /* Date chip */
-    .chat-date-wrap { display: flex; justify-content: center; margin-bottom: 10px; position: relative; z-index: 1; }
-    .chat-date-chip {
-      background: rgba(225,245,254,0.88);
-      color: #54656F;
-      font-size: 11.5px;
-      font-weight: 500;
-      padding: 4px 11px;
-      border-radius: 6px;
-      box-shadow: 0 1px 1px rgba(0,0,0,0.07);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+    .date-wrap { display: flex; justify-content: center; margin-bottom: 10px; position: relative; z-index: 1; }
+    .date-chip {
+      background: rgba(225,245,254,0.88); color: #54656F;
+      font-size: 11px; font-weight: 500; padding: 3px 10px;
+      border-radius: 6px; box-shadow: 0 1px 1px rgba(0,0,0,0.07);
+      font-family: -apple-system, sans-serif;
     }
-
-    .msg-group { margin-bottom: 8px; }
-
-    .cohort-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 10px;
-      font-weight: 600;
-      padding: 2px 8px;
-      border-radius: 4px;
-      margin-bottom: 3px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif, var(--font-emoji);
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-      border: 1px solid;
-    }
-    .cohort-pill.all        { color: var(--accent-g); border-color: #A7F3C0; background: #F0FDF6; }
-    .cohort-pill.conditional{ color: var(--accent-a); border-color: #FDE68A; background: #FFFBEB; }
-    .cohort-pill.winback    { color: var(--accent-b); border-color: #BFDBFE; background: #EFF6FF; }
-
-    .topic-label {
-      font-size: 10px;
-      color: #6B7280;
-      margin-bottom: 3px;
-      padding-left: 2px;
-      font-weight: 500;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
-    }
-
-    /* ── RECEIVED BUBBLE (left-aligned, white) ───── */
     .bubble {
-      background: #FFFFFF;
-      border-radius: 0px 10px 10px 10px;
-      padding: 5px 9px 18px 9px;
-      position: relative;
-      max-width: 88%;
-      margin-right: auto;
-      margin-left: 0;
-      box-shadow: 0 1px 1px rgba(0,0,0,0.09);
+      background: #fff; border-radius: 0 8px 8px 8px;
+      padding: 6px 9px 18px; position: relative;
+      max-width: 90%; box-shadow: 0 1px 1px rgba(0,0,0,0.09);
     }
-    /* tail — top-left */
     .bubble::before {
-      content: '';
-      position: absolute;
-      top: 0; left: -8px;
-      width: 0; height: 0;
-      border-style: solid;
-      border-width: 0 8px 9px 0;
+      content: ''; position: absolute; top: 0; left: -7px;
+      border-style: solid; border-width: 0 7px 8px 0;
       border-color: transparent #fff transparent transparent;
     }
-    .bubble.coming-soon { background: #F1F3F4; border: 1px dashed #CBD5E1; }
-    .bubble.coming-soon::before { border-color: transparent #F1F3F4 transparent transparent; }
+    .bubble-sender { font-size: 12px; font-weight: 600; color: #075E54; margin-bottom: 2px; font-family: -apple-system, sans-serif; }
+    .bubble-text { font-size: 13.5px; line-height: 1.44; color: #111B21; word-break: break-word; font-family: -apple-system, sans-serif; }
+    .bubble-time { position: absolute; bottom: 4px; right: 7px; font-size: 11px; color: #8696A0; font-family: -apple-system, sans-serif; }
 
-    /* Testimonial card — WhatsApp image-message style */
-    .testimonial-bubble {
-      background: #FFFFFF;
-      border-radius: 0px 10px 10px 10px;
-      padding: 0;
-      margin-right: auto; margin-left: 0;
-      margin-top: 4px;
-      box-shadow: 0 1px 1px rgba(0,0,0,0.09);
-      max-width: 268px;
-      overflow: hidden;
-      position: relative;
+    .test-wrap {
+      background: #fff; border-radius: 0 8px 8px 8px;
+      max-width: 250px; overflow: hidden; margin-top: 4px;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.09); position: relative;
     }
-    .testimonial-bubble::before {
-      content: '';
-      position: absolute;
-      top: 0; left: -8px;
-      border-style: solid;
-      border-width: 0 8px 9px 0;
+    .test-wrap::before {
+      content: ''; position: absolute; top: 0; left: -7px;
+      border-style: solid; border-width: 0 7px 8px 0;
       border-color: transparent #fff transparent transparent;
     }
-    .testimonial-img-row {
-      display: flex;
-      gap: 0;
+    .test-imgs { display: flex; }
+    .test-half {
+      flex: 1; height: 88px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 3px;
+      font-size: 8.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px;
     }
-    .testimonial-img-half {
-      flex: 1;
-      height: 120px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      gap: 6px;
-    }
-    .testimonial-img-half.before {
-      background: #D8D8D8;
-      color: #666;
-    }
-    .testimonial-img-half.after {
-      background: #C8E6C9;
-      color: #2E7D32;
-    }
-    .testimonial-img-half svg { opacity: 0.5; }
-    .testimonial-img-divider {
-      width: 1.5px;
-      background: #fff;
-      align-self: stretch;
-    }
-    .testimonial-body {
-      padding: 8px 9px 6px 9px;
-    }
-    .testimonial-name {
-      font-size: 12.5px;
-      font-weight: 700;
-      color: #111;
-    }
-    .testimonial-meta {
-      font-size: 11px;
-      color: #8696A0;
-      margin-top: 1px;
-    }
-    .testimonial-quote {
-      font-size: 12px;
-      color: #333;
-      margin-top: 5px;
-      line-height: 1.4;
-      font-style: italic;
-    }
-    .testimonial-time {
-      font-size: 11px;
-      color: #8696A0;
-      text-align: right;
-      margin-top: 4px;
-    }
+    .test-half.bf { background: #D8D8D8; color: #666; }
+    .test-half.af { background: #C8E6C9; color: #2E7D32; }
+    .test-div { width: 1.5px; background: #fff; }
+    .test-body { padding: 7px 9px 6px; }
+    .test-name { font-size: 12px; font-weight: 700; color: #111; }
+    .test-meta { font-size: 10.5px; color: #8696A0; }
+    .test-q { font-size: 11.5px; color: #333; font-style: italic; margin-top: 4px; line-height: 1.4; }
+    .test-time { font-size: 11px; color: #8696A0; text-align: right; margin-top: 3px; }
 
-    .bubble-sender {
-      font-size: 12.5px;
-      font-weight: 600;
-      color: #075E54;
-      margin-bottom: 2px;
-      line-height: 1.3;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif, var(--font-emoji);
+    /* ── PUSH PREVIEW ───────────────────────────── */
+    .push-wrap {
+      flex: 1; overflow-y: auto;
+      background: linear-gradient(160deg, #1a1a2e 0%, #0f3460 100%);
+      padding: 20px 16px;
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
     }
-    .bubble-text {
-      font-size: 14.2px;
-      line-height: 1.44;
-      color: #111B21;
-      word-break: break-word;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif, var(--font-emoji);
+    .push-time { font-size: 38px; font-weight: 200; color: #fff; letter-spacing: -1px; font-family: -apple-system, sans-serif; }
+    .push-date { font-size: 13px; color: rgba(255,255,255,0.65); margin-top: -10px; font-family: -apple-system, sans-serif; }
+    .push-card {
+      background: rgba(255,255,255,0.14); backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px); border-radius: 14px;
+      padding: 12px 14px; width: 100%; max-width: 320px;
+      border: 1px solid rgba(255,255,255,0.18);
     }
-    .bubble-text.muted-text { color: #8696A0; font-style: italic; }
-    .bubble-time {
-      position: absolute;
-      bottom: 4px;
-      right: 7px;
-      font-size: 11px;
-      color: #8696A0;
-      white-space: nowrap;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+    .push-card-top { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+    .push-app-icon {
+      width: 22px; height: 22px; background: #2B52A0; border-radius: 5px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 9px; color: #fff; font-weight: 800; flex-shrink: 0;
     }
+    .push-app-name { font-size: 11px; color: rgba(255,255,255,0.72); font-weight: 500; flex: 1; font-family: -apple-system, sans-serif; }
+    .push-card-time { font-size: 11px; color: rgba(255,255,255,0.45); font-family: -apple-system, sans-serif; }
+    .push-title { font-size: 14px; font-weight: 600; color: #fff; line-height: 1.3; font-family: -apple-system, sans-serif; }
+    .push-body  { font-size: 12.5px; color: rgba(255,255,255,0.78); line-height: 1.4; margin-top: 3px; font-family: -apple-system, sans-serif; }
 
-    /* ── SWIMLANES ───────────────────────────────── */
-    .swimlane {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 8px;
+    /* ── SMS PREVIEW ────────────────────────────── */
+    .sms-wrap { flex: 1; overflow-y: auto; background: var(--bg); display: flex; flex-direction: column; }
+    .sms-top { background: #F2F2F7; border-bottom: 1px solid #E5E5EA; padding: 10px 16px; text-align: center; flex-shrink: 0; }
+    .sms-name { font-size: 15px; font-weight: 600; color: #000; font-family: -apple-system, sans-serif; }
+    .sms-num  { font-size: 12px; color: #8E8E93; font-family: -apple-system, sans-serif; }
+    .sms-msgs { flex: 1; padding: 16px 14px; display: flex; flex-direction: column; gap: 6px; }
+    .sms-bubble {
+      background: #E5E5EA; border-radius: 18px 18px 18px 4px;
+      padding: 9px 13px; max-width: 88%; width: fit-content;
+      font-size: 13.5px; line-height: 1.4; color: #000; font-family: -apple-system, sans-serif;
     }
-    .swimlane:last-child { margin-bottom: 0; }
-    .swimlane-label {
-      flex-shrink: 0;
-      width: 84px;
-      padding-top: 20px; /* vertically centre with node */
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      text-align: right;
+    .sms-time { font-size: 10.5px; color: #8E8E93; padding-left: 4px; font-family: -apple-system, sans-serif; }
+
+    /* ── CLOSE BUTTON (generic) ─────────────────── */
+    .close-link {
+      background: none; border: none; cursor: pointer;
+      font-size: 13px; padding: 8px 14px;
+      font-family: inherit; align-self: flex-start;
+      color: var(--muted);
     }
-    .swimlane-label--general   { color: var(--accent-g); }
-    .swimlane-label--conditional { color: var(--accent-a); }
-    .swimlane-label--winback   { color: var(--accent-b); }
-    .swimlane .timeline-scroll { flex: 1; min-width: 0; }
 
     /* ── FOOTER ──────────────────────────────────── */
-    .page-footer {
-      text-align: center;
-      padding: 18px 32px;
-      font-size: 11px;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-      background: var(--surface);
-      letter-spacing: 0.2px;
+    .footer {
+      background: var(--surface); border-top: 1px solid var(--border);
+      text-align: center; padding: 14px;
+      font-size: 11px; color: var(--muted);
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 900px) {
+      .strategy-grid { grid-template-columns: 1fr 1fr; }
+      .stats-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .strategy-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .lane-hdr { width: 110px; }
+      .lane-cond { display: none; }
+      .stats-wrap, .strategy-wrap, .phase-wrap, .lanes-wrap { padding: 0 16px; }
+      .filter-inner { padding: 8px 16px; }
+      .header { padding: 0 16px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="header-inner">
-      <h1>Man Matters — Retention Journey</h1>
-      <div class="header-divider"></div>
-      <span class="header-sub">Advanced Hair Regrowth Regime · WhatsApp CRM Plan</span>
-    </div>
-  </header>
+<header class="header">
+  <div class="header-inner">
+    <span class="brand">Man Matters</span>
+    <div class="brand-sep"></div>
+    <span class="header-sub">Minoxidil Advanced · 45-Day Retention Journey</span>
+    <span class="header-badge">CleverTap · M1 Retention</span>
+  </div>
+</header>
 
-  <!-- STATS BAR -->
-  <div class="stats-bar">
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-value">22</div>
-        <div class="stat-label">Total Messages</div>
+<div class="stats-wrap">
+  <div class="stats-grid">
+    <div class="stat"><div class="stat-val">38</div><div class="stat-lab">Total Touchpoints</div></div>
+    <div class="stat"><div class="stat-val"><span class="ch-dot wa"></span>19</div><div class="stat-lab">WhatsApp</div></div>
+    <div class="stat"><div class="stat-val"><span class="ch-dot push"></span>12</div><div class="stat-lab">Push Notifs</div></div>
+    <div class="stat"><div class="stat-val"><span class="ch-dot sms"></span>7</div><div class="stat-lab">SMS</div></div>
+    <div class="stat"><div class="stat-val">5</div><div class="stat-lab">Phases</div></div>
+    <div class="stat"><div class="stat-val">6</div><div class="stat-lab">Cohort Paths</div></div>
+  </div>
+</div>
+
+<div class="strategy-wrap">
+  <div class="strategy-grid">
+    <div class="s-card">
+      <div class="s-card-title">First-Principles Engine</div>
+      <div class="s-item"><div class="s-dot" style="background:var(--ph-act)"></div>Users need to TRUST the product works → education at anxiety moments (shedding, D7; no results, D20)</div>
+      <div class="s-item"><div class="s-dot" style="background:var(--ph-hab)"></div>Users need to REMEMBER → habit loop: cue (push) → routine (log) → reward (coins)</div>
+      <div class="s-item"><div class="s-dot" style="background:var(--ph-rea)"></div>Users need PROGRESS signals → timeline education at D7, D14, D20 resets expectations before they quit</div>
+      <div class="s-item"><div class="s-dot" style="background:var(--ph-con)"></div>Users need NO SUPPLY GAP → reorder journey starts D22, a full 8 days before physical supply ends</div>
+    </div>
+    <div class="s-card">
+      <div class="s-card-title">Cohort Segmentation (CleverTap)</div>
+      <div class="s-item"><div class="s-dot" style="background:var(--co-app)"></div><strong>No App</strong> — app_install event never fired → push unavailable, use WA + SMS only</div>
+      <div class="s-item"><div class="s-dot" style="background:var(--co-doc)"></div><strong>No Doctor</strong> — doctor_consult_completed = false → 3-touch nurture over 17 days</div>
+      <div class="s-item"><div class="s-dot" style="background:var(--co-hab)"></div><strong>No Habit Log</strong> — habit_log_count = 0 on trigger day → inconsistency = highest churn signal</div>
+      <div class="s-item"><div class="s-dot" style="background:var(--co-rew)"></div><strong>No Rewards</strong> — rewards_earned = 0 → unlock reward loop to increase reorder intent</div>
+      <div class="s-item"><div class="s-dot" style="background:var(--co-wb)"></div><strong>Winback</strong> — order_count &lt; 2 after D25 → escalating urgency + discount ladder</div>
+    </div>
+    <div class="s-card">
+      <div class="s-card-title">Channel Selection Rules</div>
+      <div class="s-item"><div class="s-dot" style="background:var(--wa-dark)"></div><strong>WhatsApp</strong> — rich education, social proof, emotional re-engagement. Primary channel for all cohorts regardless of app status.</div>
+      <div class="s-item"><div class="s-dot" style="background:var(--push-dark)"></div><strong>Push</strong> — short habit nudges, streak alerts, supply countdowns. App users only. High frequency acceptable.</div>
+      <div class="s-item"><div class="s-dot" style="background:var(--sms-dark)"></div><strong>SMS</strong> — universal reach (no app needed). Reserved for critical reorder CTAs + time-limited discount codes.</div>
+      <div class="s-item"><div class="s-dot" style="background:#374151"></div>D0–D21 educate + activate. D22–D30 convert. D33–D45 recover.</div>
+    </div>
+  </div>
+</div>
+
+<div class="phase-wrap">
+  <div class="phase-strip-label">Journey Phases — click any phase to filter</div>
+  <div class="phase-strip" id="phaseStrip">
+    <div class="ph-block" data-phase="activation"  style="background:var(--ph-act);flex:7"><span class="ph-name">Activation</span><span class="ph-days">D0 – D6</span></div>
+    <div class="ph-block" data-phase="habit"        style="background:var(--ph-hab);flex:7"><span class="ph-name">Habit</span><span class="ph-days">D7 – D13</span></div>
+    <div class="ph-block" data-phase="reassurance"  style="background:var(--ph-rea);flex:8"><span class="ph-name">Reassurance</span><span class="ph-days">D14 – D21</span></div>
+    <div class="ph-block" data-phase="conversion"   style="background:var(--ph-con);flex:9"><span class="ph-name">Conversion</span><span class="ph-days">D22 – D30</span></div>
+    <div class="ph-block" data-phase="winback"      style="background:var(--ph-win);flex:13"><span class="ph-name">Winback</span><span class="ph-days">D33 – D45</span></div>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <div class="filter-inner">
+    <div class="filter-group">
+      <span class="filter-lbl">Channel</span>
+      <div class="pills" id="channelPills">
+        <button class="pill on p-all"  data-ch="all">All channels</button>
+        <button class="pill p-wa"      data-ch="whatsapp">💬 WhatsApp</button>
+        <button class="pill p-push"    data-ch="push">🔔 Push</button>
+        <button class="pill p-sms"     data-ch="sms">📱 SMS</button>
       </div>
-      <div class="stat-card">
-        <div class="stat-value">D0 – D66</div>
-        <div class="stat-label">Days Covered</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">2</div>
-        <div class="stat-label">Phases</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">4</div>
-        <div class="stat-label">Cohorts</div>
+    </div>
+    <div class="filter-group">
+      <span class="filter-lbl">Cohort</span>
+      <div class="pills" id="cohortPills">
+        <button class="pill on c-all" data-co="all">All cohorts</button>
+        <button class="pill c-app"    data-co="no-app">No App</button>
+        <button class="pill c-doc"    data-co="no-doctor">No Doctor</button>
+        <button class="pill c-hab"    data-co="no-habit">No Habit</button>
+        <button class="pill c-rew"    data-co="no-rewards">No Rewards</button>
+        <button class="pill c-wb"     data-co="winback">Winback</button>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- LEGEND -->
-  <div class="legend">
-    <span class="legend-label">Key</span>
-    <div class="legend-item"><div class="legend-swatch g"></div>All users</div>
-    <div class="legend-item"><div class="legend-swatch a"></div>Conditional</div>
-    <div class="legend-item"><div class="legend-swatch m"></div>Both</div>
-    <div class="legend-item"><div class="legend-swatch b"></div>Winback</div>
-    <div class="legend-item"><div class="legend-swatch gr"></div>Coming soon</div>
+<div class="lanes-wrap" id="lanesWrap"></div>
+
+<div class="overlay" id="overlay">
+  <div class="modal" id="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-meta" id="modalMeta"></div>
+    <div class="modal-tabs" id="modalTabs"></div>
+    <div id="modalBody" style="display:flex;flex-direction:column;flex:1;overflow:hidden;min-height:0"></div>
   </div>
+</div>
 
-  <!-- PHASE 1: ONBOARDING -->
-  <section class="phase-section" id="phase-onboarding">
-    <div class="phase-header">
-      <span class="phase-label">Phase 1</span>
-      <span class="phase-title">Onboarding Journey</span>
-      <div class="phase-rule"></div>
-      <span class="phase-range">D0 – D30</span>
-    </div>
-    <div class="swimlane">
-      <div class="swimlane-label swimlane-label--general">General</div>
-      <div class="timeline-scroll">
-        <div class="timeline-track" id="track-onboarding-general"></div>
-      </div>
-    </div>
-    <div class="swimlane">
-      <div class="swimlane-label swimlane-label--conditional">Conditional</div>
-      <div class="timeline-scroll">
-        <div class="timeline-track" id="track-onboarding-conditional"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PHASE 2: WINBACK -->
-  <section class="phase-section" id="phase-winback">
-    <div class="phase-header">
-      <span class="phase-label">Phase 2</span>
-      <span class="phase-title">Winback</span>
-      <div class="phase-rule"></div>
-      <span class="phase-range">D35 – D66</span>
-    </div>
-    <div class="swimlane">
-      <div class="swimlane-label swimlane-label--winback">Winback</div>
-      <div class="timeline-scroll">
-        <div class="timeline-track" id="track-winback"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MODAL OVERLAY -->
-  <div class="overlay" id="overlay" role="dialog" aria-modal="true">
-    <div class="modal" id="modal">
-      <div class="modal-handle"></div>
-      <!-- WhatsApp-style chat header -->
-      <div class="wa-header">
-        <button class="wa-back" id="modal-close" aria-label="Close">&#8592;</button>
-        <div class="wa-avatar">
-          <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-            <rect width="40" height="40" fill="#ffffff"/>
-            <!-- "man" line -->
-            <text x="4" y="17" fill="#2B52A0"
-              font-family="Arial Black, 'Arial Bold', Helvetica, sans-serif"
-              font-size="12.5" font-weight="900" letter-spacing="-0.3">man</text>
-            <!-- "matters" line -->
-            <text x="2" y="30" fill="#2B52A0"
-              font-family="Arial Black, 'Arial Bold', Helvetica, sans-serif"
-              font-size="12.5" font-weight="900" letter-spacing="-0.3">matters</text>
-            <!-- face profile silhouette in the 'a' of matters — small circle cutout -->
-            <circle cx="22.5" cy="25.5" r="3.2" fill="#ffffff"/>
-            <path d="M20.8 23.5 Q21.5 22 22.8 22.2 Q24.5 22.5 24.8 24 Q25 24.8 24.5 25.6 Q23.8 24.8 23 25 Q22 25.2 21.5 26 Q20.5 25.5 20.8 23.5Z" fill="#2B52A0"/>
-          </svg>
-        </div>
-        <div class="wa-contact">
-          <div class="wa-contact-name">Man Matters</div>
-          <div class="wa-contact-sub" id="modal-day-badge">Hair Growth</div>
-        </div>
-        <div class="wa-header-icons">
-          <!-- Video icon -->
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
-          <!-- Phone icon -->
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-        </div>
-      </div>
-      <div class="chat-window" id="chat-window"></div>
-    </div>
-  </div>
-
-  <footer class="page-footer">
-    Man Matters &middot; Hair Retention CRM &middot; Internal Use Only
-  </footer>
+<footer class="footer">Man Matters · Hair Retention CRM · Internal Use Only · Powered by CleverTap</footer>
 
 <script>
-// ── DATA ──────────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────
+// CONFIG
+// ─────────────────────────────────────────────────────────
+const COHORTS = {
+  'all':        { label: 'All Users',    cond: 'Sent to everyone after order_delivered',      cls: 'coh-all' },
+  'no-app':     { label: 'No App',       cond: 'app_install never fired',                     cls: 'coh-app' },
+  'no-doctor':  { label: 'No Doctor',    cond: 'doctor_consult_completed = false',             cls: 'coh-doc' },
+  'no-habit':   { label: 'No Habit Log', cond: 'habit_log_count = 0 on trigger day',          cls: 'coh-hab' },
+  'no-rewards': { label: 'No Rewards',   cond: 'rewards_earned = 0 on trigger day',           cls: 'coh-rew' },
+  'winback':    { label: 'Winback',      cond: 'order_count < 2 after Day 25',                cls: 'coh-wb'  },
+};
+const COHORT_ORDER = ['all','no-app','no-doctor','no-habit','no-rewards','winback'];
 
-function formatMessage(text) {
-  return text.replace(/\n/g, '<br>');
-}
+const PHASES = {
+  activation:  { label: 'Activation',  color: 'var(--ph-act)' },
+  habit:       { label: 'Habit',       color: 'var(--ph-hab)' },
+  reassurance: { label: 'Reassurance', color: 'var(--ph-rea)' },
+  conversion:  { label: 'Conversion',  color: 'var(--ph-con)' },
+  winback:     { label: 'Winback',     color: 'var(--ph-win)' },
+};
 
+// ─────────────────────────────────────────────────────────
+// MESSAGES
+// ─────────────────────────────────────────────────────────
 const MESSAGES = [
-  // ── D0 ──────────────────────────────────────────────────────────────────
-  {
-    day: 0,
-    phase: 'onboarding',
-    cohort: 'all',
-    cohortLabel: 'Sent to: Everyone',
-    topic: 'First step / App download',
-    text: `📦 Your hair comeback starts today.
+  // ══ PHASE 1: ACTIVATION D0–D6 ════════════════════════
+  { day:0, phase:'activation', channel:'whatsapp', cohort:'all',
+    topic:'Welcome + Kit Guide', goal:'Education',
+    trigger:'order_delivered event',
+    text:`📦 Your hair comeback starts today.
 
-Your Advanced Hair Regrowth Regime just landed. Here's your kit:
+Your Advanced Hair Regrowth Regime is here. Here's how the system works:
 
-✅ Minoxidil: twice daily on the scalp. Wakes dormant follicles, extends the growth phase.
-🍬 Hair Gummies: one daily. Biotin + Vit A, C & E to nourish follicles from the inside.
-⚡ Dermaroller: once a week. Boosts blood flow, drives products deeper into the scalp.
+✅ *Minoxidil* (twice daily on scalp) — wakes dormant follicles, extends the growth phase
+🍬 *Hair Gummies* (1 daily) — Biotin + Vitamins A, C & E, nourishing follicles from within
+⚡ *Dermaroller* (once a week) — boosts blood flow, drives Minoxidil 40% deeper
 
 All three work as a system. Skip one and you slow the others. 🔄
 
-📲 Download the Man Matters App and switch on your Habit Tracker.
-It reminds you, keeps you on track, and rewards your consistency. 🎁
+📲 Download the *Man Matters App* → switch on *Habit Tracker* → earn coins on every dose you log. Redeem for up to 30% off your next order. 🎁
 
-Let's go. 💪`
-  },
+Let's go. 💪` },
 
-  // ── D1 ──────────────────────────────────────────────────────────────────
-  {
-    day: 1,
-    phase: 'onboarding',
-    cohort: 'conditional',
-    cohortLabel: 'Sent to: No Doctor Consult users',
-    topic: 'Free doctor consult',
-    text: `🚨 You're leaving free money on the table. Most men don't even know it's there.
+  { day:0, phase:'activation', channel:'sms', cohort:'all',
+    topic:'Kit delivery + App download CTA', goal:'App Download',
+    trigger:'order_delivered event',
+    text:`Hi [Name]! Your Minoxidil Advanced kit is here 📦 Download the Man Matters app to track doses, earn rewards & get expert guidance: [DEEP_LINK] — Team Man Matters` },
 
-A FREE doctor consultation is included with your order.
+  { day:1, phase:'activation', channel:'whatsapp', cohort:'no-doctor',
+    topic:'Free doctor consult nudge', goal:'Doctor Activation',
+    trigger:'24h after order_delivered AND doctor_consult_completed = false',
+    text:`👨‍⚕️ One thing most men skip — that makes a huge difference.
 
-Use it to:
-→ Understand what's actually happening with your hair right now
-→ Know what to expect at Month 1, 3, and 6 🗓️
-→ Get real answers to the questions you've been googling
+A *FREE doctor consultation* came with your order.
 
-Not a generic chat. A consult built around your treatment. 👨‍⚕️
+Why it matters:
+→ Understand exactly what stage your hair loss is at
+→ Get a personalised timeline — Month 1, 3 & 6
+→ Know if your Minoxidil concentration needs adjusting
 
-Book it now on the Man Matters App. 📲`
-  },
+Not a generic chatbot. A real expert reviewing your case.
 
-  // ── D2 ──────────────────────────────────────────────────────────────────
-  {
-    day: 2,
-    phase: 'onboarding',
-    cohort: 'conditional',
-    cohortLabel: 'Sent to: No App/Habit Tracker users',
-    topic: 'Download app + Habit tracker rewards',
-    text: `💸 Men who use the Habit Tracker pay up to 30% less. You're not using it yet.
+📲 Book it in the Man Matters App → *Consult* section.` },
 
-The Man Matters Habit Tracker does two things:
-→ Sends daily reminders so you never miss Minoxidil, Gummies, or Dermaroller 🔔
-→ Earns you coins for every activity you log. Redeem for up to 30% off your next order 💰
+  { day:1, phase:'activation', channel:'push', cohort:'no-app',
+    topic:'App download nudge', goal:'App Download',
+    trigger:'24h after order_delivered AND app_install = false',
+    pushTitle:'📦 Your kit arrived. Track it in the app.',
+    pushBody:'Download Man Matters → turn on Habit Tracker → earn coins on every dose. 30% off your next order.' },
+
+  { day:2, phase:'activation', channel:'whatsapp', cohort:'no-app',
+    topic:'App + Habit Tracker + Rewards', goal:'App Download',
+    trigger:'48h after order_delivered AND app_install = false',
+    text:`💸 Men who use the Habit Tracker pay up to 30% less on their next kit.
+
+The Man Matters Habit Tracker:
+→ Daily reminders for Minoxidil, Gummies & Dermaroller 🔔
+→ Earns coins for every dose you log
+→ Redeem for up to 30% off your next order 💰
 
 10 seconds to log. Your streak stays alive.
 
-Download the app and start tracking today. 📲`
-  },
+📲 Download the app and start tracking today.` },
 
-  // ── D4 ──────────────────────────────────────────────────────────────────
-  {
-    day: 4,
-    phase: 'onboarding',
-    cohort: 'all',
-    cohortLabel: 'Sent to: Everyone',
-    topic: 'Consistency check / How to use',
-    text: `⚡ Week 1 down. This is where most men commit or quietly quit.
+  { day:2, phase:'activation', channel:'push', cohort:'all',
+    topic:'Day 2 dose reminder', goal:'Habit Formation',
+    trigger:'48h after order_delivered (app users only)',
+    pushTitle:'⚡ Day 2 — Applied your Minoxidil today?',
+    pushBody:'2× daily = active follicles. Log it in the app and earn coins. Don\'t skip today.' },
 
-Most quit before Month 3, right before results start showing.
+  { day:3, phase:'activation', channel:'sms', cohort:'no-app',
+    topic:'App download SMS (3rd touch)', goal:'App Download',
+    trigger:'72h after order_delivered AND app_install = false',
+    text:`[Name], consistency is the #1 driver of hair results. The Man Matters app tracks your doses & rewards you for every day you show up. Download: [LINK]` },
 
-Your 3-step regime works as a system:
-✅ Minoxidil: twice daily on the scalp. Stimulates follicles, extends the growth phase.
-🍬 Hair Gummies: one daily. Biotin + Vit A, C & E to feed follicles from within.
-⚡ Dermaroller: once a week. Micro-needles boost blood flow and drive Minoxidil deeper.
+  { day:4, phase:'activation', channel:'whatsapp', cohort:'all',
+    topic:'The 3-product system explained', goal:'Education',
+    trigger:'4 days after order_delivered',
+    text:`⚡ Day 4. This is where most men start cutting corners. Here's why that's a mistake.
 
-Skip one step and you slow the other two. 🔄
+Your regime is a *system*. Each product amplifies the others:
 
-Stay consistent. This is where it starts. 💪`
-  },
+🔬 *Minoxidil* + *Dermaroller* → Minoxidil absorbs 40% deeper through micro-channels
+🍬 *Hair Gummies* → nourishes follicles that Minoxidil just activated
+⚡ *Dermaroller* → doubles blood flow while Minoxidil is fresh on the scalp
 
-  // ── D5 ──────────────────────────────────────────────────────────────────
-  {
-    day: 5,
-    phase: 'onboarding',
-    cohort: 'conditional',
-    cohortLabel: 'Sent to: No App/Habit Tracker users',
-    topic: 'App download + consistency + rewards',
-    text: `⚠️ Most men fail at hair growth at exactly Day 5. Here's why.
+Skip one and you slow all three. 🔄
 
-The Man Matters Habit Tracker makes it effortless:
-→ Daily reminders for Minoxidil, Gummies and Dermaroller 🔔
-→ Log your routine in 10 seconds. Keep your streak alive.
-→ Earn coins every consistent day. Redeem for up to 30% off 💰
+Keep the system going. The compound effect kicks in at Month 3. 💪` },
+
+  // ══ PHASE 2: HABIT FORMATION D7–D13 ══════════════════
+  { day:5, phase:'habit', channel:'push', cohort:'all',
+    topic:'Day 5 consistency nudge', goal:'Habit Formation',
+    trigger:'5 days after order_delivered (app users)',
+    pushTitle:'🔥 Day 5 streak — keep it alive',
+    pushBody:'Most men quit by week 2. You\'re still here. Log today\'s dose and earn coins.' },
+
+  { day:7, phase:'habit', channel:'whatsapp', cohort:'all',
+    topic:'Week 1 check-in + Shedding education', goal:'Education',
+    trigger:'7 days after order_delivered',
+    text:`🚨 More hair fall this week? Good — it means it's working.
+
+This is the *shedding phase*, and it's a positive sign. Here's the science:
+
+Minoxidil wakes dormant follicles. Old, weak hairs shed first to make room for thicker, stronger ones growing underneath. 🌱
+
+What to do: *keep applying*. Don't stop.
+
+Most men who quit, quit right here — during the shedding phase.
+The ones who stay see real density from Month 3.
+
+Trust the process. Week 1 is done. 💪` },
+
+  { day:7, phase:'habit', channel:'push', cohort:'no-habit',
+    topic:'7-day habit tracker nudge', goal:'Habit Tracker Activation',
+    trigger:'7 days after order_delivered AND habit_log_count = 0',
+    pushTitle:'7 days in — are you tracking your doses?',
+    pushBody:'Log your routine → build your streak → earn coins for 30% off. Takes 10 seconds.' },
+
+  { day:9, phase:'habit', channel:'whatsapp', cohort:'no-habit',
+    topic:'Habit Tracker + Rewards (re-engagement)', goal:'Habit Tracker Activation',
+    trigger:'9 days after order_delivered AND habit_log_count = 0',
+    text:`⚠️ Most men fail at hair growth at exactly Day 9. Here's why.
+
+It's not the product. It's missing days.
+
+The *Man Matters Habit Tracker* makes consistency effortless:
+→ Daily reminders for Minoxidil, Gummies & Dermaroller 🔔
+→ Log in 10 seconds. Never lose your streak.
+→ Earn coins every consistent day. Redeem for *up to 30% off* 💰
 
 Hair growth isn't won by the best product.
 It's won by the most consistent routine.
 
-Download the app. Don't miss the days that matter. 📲`
-  },
+📲 Open the app → tap *Habit Tracker* → log today.` },
 
-  // ── D7 ──────────────────────────────────────────────────────────────────
-  {
-    day: 7,
-    phase: 'onboarding',
-    cohort: 'all',
-    cohortLabel: 'Sent to: Everyone',
-    topic: 'Shedding education',
-    text: `🚨 More hair fall this week? Before you panic, read this.
+  { day:10, phase:'habit', channel:'whatsapp', cohort:'all',
+    topic:'Dermaroller deep-dive education', goal:'Education',
+    trigger:'10 days after order_delivered',
+    text:`⚡ Day 10. Time to bring in your secret weapon: the *Dermaroller*.
 
-Your Minoxidil is activating dormant follicles.
-Old, weak hairs shed to make room for newer, stronger ones. 🌱
+🔬 *Stimulates follicles* — tiny needles activate dormant roots for thicker regrowth
+🩸 *Boosts blood flow* — delivers oxygen & nutrients directly to the scalp
+💧 *Deepens absorption* — Minoxidil penetrates 40% further via micro-channels
 
-This is the shedding phase. It means your treatment is working. ✅
+*How to use it right:*
+→ Once a week, BEFORE applying Minoxidil 🗓️
+→ Roll vertically, then horizontally, then diagonally
+→ Light pressure only — let the needles do the work
+→ Apply Minoxidil immediately after rolling
 
-What to do: keep going. Don't stop now.
+One step that makes everything else work harder.
+Don't skip dermaroller day. 🌱` },
 
-The hair that grows back will be thicker, healthier, and stronger. 💪
-Keep applying. Keep tracking. Trust the process.`
-  },
+  { day:10, phase:'habit', channel:'sms', cohort:'no-doctor',
+    topic:'Doctor consult SMS reminder', goal:'Doctor Activation',
+    trigger:'10 days after order_delivered AND doctor_consult_completed = false',
+    text:`[Name], your FREE doctor consultation is still waiting. Our expert will personalise your timeline & check your dosage. Book in 2 mins: [LINK] — Man Matters` },
 
-  // ── D10 ─────────────────────────────────────────────────────────────────
-  {
-    day: 10,
-    phase: 'onboarding',
-    cohort: 'all',
-    cohortLabel: 'Sent to: Everyone',
-    topic: 'Dermaroller education',
-    text: `⚡ Day 10. Time to bring in your secret weapon: the Dermaroller.
+  { day:12, phase:'habit', channel:'push', cohort:'no-rewards',
+    topic:'Unclaimed rewards nudge', goal:'Reward Activation',
+    trigger:'12 days after order_delivered AND rewards_earned = 0',
+    pushTitle:'🎁 You have unclaimed coins',
+    pushBody:'Log your doses in Habit Tracker → earn coins → save up to 30% on your next kit.' },
 
-Here's why it's not optional:
+  // ══ PHASE 3: REASSURANCE D14–D21 ════════════════════
+  { day:14, phase:'reassurance', channel:'whatsapp', cohort:'all',
+    topic:'2-week milestone + Results timeline', goal:'Retention',
+    trigger:'14 days after order_delivered',
+    text:`📅 2 weeks in. Here's what's happening under the surface.
 
-🔬 Stimulates follicles: tiny needles activate dormant roots for thicker regrowth
-🩸 Boosts blood flow: delivers oxygen and nutrients directly to your scalp
-💧 Deepens absorption: micro-channels let Minoxidil penetrate further into the scalp
+You won't see it yet. But your follicles are being reactivated. 🔬
 
-How to use it:
-→ Once a week, before Minoxidil 🗓️
-→ Roll gently: vertical, horizontal, diagonal sections
-→ Light pressure only. Let the needles do the work.
+*The real Minoxidil timeline:*
+📅 *Month 1* — Foundation phase. Shedding may occur as scalp adjusts.
+🌱 *Month 3* — Hair fall reduces. Fine new hairs begin to appear.
+💪 *Month 6* — Visible density. Stronger, thicker coverage.
 
-One step that makes everything else work harder. Don't skip it. 🌱`
-  },
-  {
-    day: 10,
-    phase: 'onboarding',
-    cohort: 'conditional',
-    cohortLabel: 'Sent to: No App/Habit Tracker users',
-    topic: 'Consistency hook + rewards',
-    text: `🔥 Day 10. Your routine is either working or silently failing. Here's the difference.
+You're part of 10 lakh+ men across India who trusted Man Matters with their hair. 🙌
 
-It's not missing days.
+The ones who got results had one thing in common: they made it to Month 6.
 
-The Man Matters Habit Tracker keeps your streak alive:
-→ Reminders for Minoxidil, Gummies and Dermaroller 🔔
-→ Log in seconds. Never lose your streak.
-→ Earn coins every consistent day. Redeem for up to 30% off 💰
+You're 2 weeks in. Keep building.` },
 
-Consistency is hard. We made it easier. And we reward it. 🎁
+  { day:14, phase:'reassurance', channel:'push', cohort:'all',
+    topic:'2-week streak celebration', goal:'Retention',
+    trigger:'14 days after order_delivered (app users)',
+    pushTitle:'🔥 2 weeks done. You\'re in the top 30%.',
+    pushBody:'70% of men quit before week 3. You\'re still here. Month 3 is where it shows.' },
 
-Download the app. 📲`
-  },
+  { day:17, phase:'reassurance', channel:'whatsapp', cohort:'no-doctor',
+    topic:'Doctor consult — final nudge', goal:'Doctor Activation',
+    trigger:'17 days after order_delivered AND doctor_consult_completed = false',
+    text:`👨‍⚕️ Still haven't spoken to a doctor? Here's why it matters more now.
 
-  // ── D15 ─────────────────────────────────────────────────────────────────
-  {
-    day: 15,
-    phase: 'onboarding',
-    cohort: 'all',
-    cohortLabel: 'Sent to: Everyone',
-    topic: 'Consistency: results timeline',
-    text: `📅 2 weeks in. Here's what's happening under the surface.
+At Day 17, a consultation tells you:
+→ Your exact hair loss stage and what it means for your timeline
+→ Whether your Minoxidil concentration needs adjusting
+→ What to specifically watch for at Month 1, 3, and 6
+→ Confidence that you're on the right track
 
-You won't see it yet, but your follicles are waking up. 🌱
+Men who complete a consultation are *2× more likely to reach Month 3*.
 
-The real timeline:
-📅 Month 1: Foundation phase. Shedding may occur as your scalp adjusts.
-🌱 Month 3: Hair fall reduces. Fine new hairs begin to appear.
-💪 Month 6: Visible density. Stronger, thicker coverage.
+It's FREE. It's 15 minutes. It's built into your plan.
 
-You're part of 10L+ men who trusted Man Matters with their hair. 🙌
+📲 Book now in the Man Matters App → *Consult* section.` },
 
-The ones who got results made it to Month 6.
+  { day:17, phase:'reassurance', channel:'push', cohort:'no-habit',
+    topic:'Missing doses intervention', goal:'Habit Tracker Activation',
+    trigger:'17 days after order_delivered AND habit_log_count < 7',
+    pushTitle:'⚠️ 17 days in — missing doses?',
+    pushBody:'Irregular use slows results. Turn on Habit Tracker for daily reminders + coin rewards.' },
 
-Stay in. ✅`
-  },
-  {
-    day: 15,
-    phase: 'onboarding',
-    cohort: 'conditional',
-    cohortLabel: 'Sent to: No App/Habit Tracker users',
-    topic: 'Habit tracker rewards',
-    text: `💰 14 days of effort. You haven't claimed a single reward for it. Change that now.
+  { day:20, phase:'reassurance', channel:'whatsapp', cohort:'all',
+    topic:'Day 20 — no results yet is normal', goal:'Retention',
+    trigger:'20 days after order_delivered',
+    text:`⏳ Day 20. No visible change yet? Good. That's exactly where you should be.
 
-The Man Matters Habit Tracker logs every day you show up and rewards you for it:
-→ Earn coins for every Minoxidil, Gummies and Dermaroller log 💰
-→ Redeem for up to 30% off your next order
-→ Never miss a dose with smart daily reminders 🔔
+Hair grows at roughly *1.5 cm per month*.
+Your follicles are still in the activation phase right now. 🔬
 
-Your streak is worth something. Don't let it go untracked.
-
-Download the app. Start earning. 📲`
-  },
-
-  // ── D20 ─────────────────────────────────────────────────────────────────
-  {
-    day: 20,
-    phase: 'onboarding',
-    cohort: 'all',
-    cohortLabel: 'Sent to: Everyone',
-    topic: 'Results expectation',
-    text: `⏳ Day 20. No visible change yet? Good. That's completely normal.
-
-Hair grows at roughly 1.5 cm per month.
-Your follicles are still in the activation phase. 🔬
-
-Real, visible results come after consistent months, not weeks.
+Real, visible results come after consistent months — not weeks.
 
 Right now: keep doing exactly what you've been doing. 💪
 
 The foundation you're building today delivers results at Month 3 and beyond.
 
-Don't judge the treatment at Day 20.`
-  },
+Don't judge the treatment at Day 20. The men who got results didn't.` },
 
-  // ── D25 ─────────────────────────────────────────────────────────────────
-  {
-    day: 25,
-    phase: 'onboarding',
-    cohort: 'conditional',
-    cohortLabel: 'Sent to: No Reorder users',
-    topic: 'Refill message',
-    text: `⏰ Running out in a few days. If your regime stops, so does your progress.
+  { day:20, phase:'reassurance', channel:'push', cohort:'all',
+    topic:'Day 20 reassurance push', goal:'Retention',
+    trigger:'20 days after order_delivered (app users)',
+    pushTitle:'Day 20 — no visible change? Normal.',
+    pushBody:'Follicles take 90 days to visibly respond. Your job: stay consistent. Log today\'s dose.' },
 
-You've done the hard part: starting and staying consistent. 💪
+  // ══ PHASE 4: CONVERSION D22–D30 ═════════════════════
+  { day:22, phase:'conversion', channel:'push', cohort:'all',
+    topic:'8 days of supply left', goal:'Reorder',
+    trigger:'22 days after order_delivered AND order_count < 2',
+    pushTitle:'⏰ ~8 days of kit left',
+    pushBody:'Don\'t let a supply gap undo 22 days of progress. Reorder now before stock runs out.' },
 
-Don't let a stock-out break your streak now.
+  { day:22, phase:'conversion', channel:'whatsapp', cohort:'no-rewards',
+    topic:'Use coins on reorder — unlock reward loop', goal:'Reward + Reorder',
+    trigger:'22 days after order_delivered AND rewards_earned = 0 AND order_count < 2',
+    text:`💰 You've been consistent for 22 days. You haven't claimed a single reward for it.
 
-What happens when treatment pauses:
-❌ Follicle stimulation stops
-❌ Progress begins to reverse
-❌ You're back to square one 🔄
+The Man Matters Habit Tracker logs every day you show up and rewards you:
+→ Earn coins for every Minoxidil, Gummies & Dermaroller log
+→ Redeem for *up to 30% off* your next order
 
-Refill your Advanced Hair Growth Regime now. Keep the momentum going. 🌱`
-  },
+Your kit runs out in about 8 days. Your next order is coming.
 
-  // ── D30 ─────────────────────────────────────────────────────────────────
-  {
-    day: 30,
-    phase: 'onboarding',
-    cohort: 'conditional',
-    cohortLabel: 'Sent to: No Reorder users',
-    topic: 'Refill message: consistency gap risk',
-    text: `📦 Month 1 done. 80% of men stop here. Most of them regret it at Month 6.
+Why not pay less for it?
 
-And it's exactly why most men don't see results. 😔
+📲 Open the app → start logging → let coins stack up before you reorder.` },
 
-The timeline is clear:
-🌱 Month 3: hair fall reduces
-💪 Month 6: density visibly improves
+  { day:25, phase:'conversion', channel:'whatsapp', cohort:'all',
+    topic:'Refill reminder — ~5 days of supply left', goal:'Reorder',
+    trigger:'25 days after order_delivered AND order_count < 2',
+    text:`⏰ Running out in ~5 days. If your regime stops, so does your progress.
 
-Both are only reachable from here.
+You've done the hard part: staying consistent for 25 days. 💪
 
-Reorder your Advanced Hair Growth Regime.
-Don't let Month 1 be the only month you tried. 🔄`
-  },
+*What happens when treatment pauses:*
+❌ Follicle stimulation stops immediately
+❌ Progress begins reversing within 2–4 weeks
+❌ You're effectively restarting from scratch 🔄
 
-  // ── D35 ─────────────────────────────────────────────────────────────────
-  {
-    day: 35,
-    phase: 'winback',
-    cohort: 'winback',
-    cohortLabel: 'Winback',
-    topic: 'Re-engagement: finish what you started',
-    testimonial: { name: 'Avinash R.', city: 'Pune', duration: '6 months', quote: 'I almost stopped at month 2. Glad I didn\'t. My hair is noticeably thicker now.' },
-    text: `🙌 You're part of something bigger than you think.
+Refill your *Advanced Hair Growth Regime* now.
+Use your coins at checkout for up to 30% off. 🌱` },
 
-Over 10 lakh men across India are actively working on their hair with Man Matters right now.
+  { day:25, phase:'conversion', channel:'push', cohort:'all',
+    topic:'5 days left — reorder push', goal:'Reorder',
+    trigger:'25 days after order_delivered AND order_count < 2 (app users)',
+    pushTitle:'⏳ ~5 days of Minoxidil left',
+    pushBody:'A supply gap resets follicle progress. Reorder now, stay on track for Month 3 results.' },
+
+  { day:25, phase:'conversion', channel:'sms', cohort:'all',
+    topic:'Reorder SMS with discount code', goal:'Reorder',
+    trigger:'25 days after order_delivered AND order_count < 2',
+    text:`[Name], your Minoxidil kit runs out in ~5 days. A supply gap reverses your progress. Reorder now: [LINK] — Use code HAIR30 for 30% off. Man Matters` },
+
+  { day:28, phase:'conversion', channel:'whatsapp', cohort:'winback',
+    topic:'Urgent reorder — 2 days left', goal:'Reorder',
+    trigger:'28 days after order_delivered AND order_count < 2',
+    text:`⚠️ 2 days of kit left.
+
+This is the moment most men slip — not because they stop caring, but because they don't reorder in time.
+
+*What a 3-day gap means for your hair:*
+→ Follicles that were waking up go dormant
+→ The shedding phase you pushed through at Week 2? Restarts.
+→ You lose the foundation you built over 28 days
+
+You're this close to Month 1 complete. Don't waste it.
+
+📦 Reorder your *Advanced Hair Growth Regime* now.` },
+
+  { day:28, phase:'conversion', channel:'push', cohort:'winback',
+    topic:'Last chance reorder push', goal:'Reorder',
+    trigger:'28 days after order_delivered AND order_count < 2 (app users)',
+    pushTitle:'⚠️ 2 days of kit remaining',
+    pushBody:'Reorder now to avoid a gap. A gap resets your follicle progress. 28-day streak on the line.' },
+
+  { day:28, phase:'conversion', channel:'sms', cohort:'winback',
+    topic:'Discount code SMS — last chance', goal:'Reorder',
+    trigger:'28 days after order_delivered AND order_count < 2',
+    text:`[Name], 2 days of Minoxidil left! A supply gap reverses your 28-day progress. Use HAIR30 for 30% off — reorder: [LINK] — Man Matters` },
+
+  { day:30, phase:'conversion', channel:'whatsapp', cohort:'all',
+    topic:'Month 1 milestone (celebration / final push)', goal:'Retention',
+    trigger:'30 days after order_delivered. If order_count >= 2: celebration variant; if < 2: urgency variant',
+    text:`🎉 Month 1 complete. You're officially in the minority.
+
+80% of men who start hair treatment don't make it to Month 2. You just did.
+
+*What Month 1 built for you:*
+✅ Follicles activated and in growth phase
+✅ Scalp adjusted to Minoxidil
+✅ Shedding phase behind you
+✅ Foundation set for real, visible results
+
+Month 3 is where hair fall reduces.
+Month 6 is where people notice.
+
+You're heading there. Keep going. 💪` },
+
+  // ══ PHASE 5: WINBACK D33–D45 ════════════════════════
+  { day:33, phase:'winback', channel:'whatsapp', cohort:'winback',
+    topic:'Gap warning — re-engagement (D33)', goal:'Winback',
+    trigger:'33 days after order_delivered AND order_count < 2',
+    text:`⏳ It's been 3 days since your kit ran out.
+
+Here's what's happening to your follicles right now:
+
+Without Minoxidil stimulation, follicles that were active begin reverting. The process starts within days, not weeks.
+
+*You don't need to start over. You just need to restart.*
+
+→ Your scalp already knows Minoxidil. Reactivation is faster the second time.
+→ The shedding phase? You won't have to go through it again.
+→ Your 30 days of progress isn't lost — yet.
+
+📦 Reorder today. Pick up exactly where you left off. 🌱` },
+
+  { day:35, phase:'winback', channel:'whatsapp', cohort:'winback',
+    topic:'Social proof + Testimonial (D35)', goal:'Winback',
+    trigger:'35 days after order_delivered AND order_count < 2',
+    testimonial: { name:'Avinash R.', city:'Pune', duration:'6 months', quote:'I almost stopped at month 2. Glad I didn\'t. My hair is noticeably thicker now.' },
+    text:`🙌 Over 10 lakh men across India are on their hair journey with Man Matters right now.
 
 In Maharashtra alone, 3 lakh+ men stayed consistent this month. 📍
+
 They didn't have better genetics.
+They didn't have more time.
 They just didn't stop at Day 35.
 
-Here's the science: follicles need months of stimulation to visibly respond.
-A pause now means starting almost from scratch. 🔄
+Here's the science: follicles need months of stimulation to visibly respond. A pause now means starting almost from scratch. 🔄
 
 You've done the hard part: you started.
 Now do the one thing that separates starters from success stories.
 
-🛒 Reorder your regime today.`
-  },
+🛒 *Reorder your regime today.*` },
 
-  // ── D37 ─────────────────────────────────────────────────────────────────
-  {
-    day: 37,
-    phase: 'winback',
-    cohort: 'winback',
-    cohortLabel: 'Winback',
-    topic: 'Gap warning: stay on track',
-    text: `⏳ Every week, thousands of men open the Man Matters app and complete their routine.
+  { day:37, phase:'winback', channel:'push', cohort:'winback',
+    topic:'Social proof push (D37)', goal:'Winback',
+    trigger:'37 days after order_delivered AND order_count < 2 (app users)',
+    pushTitle:'Others are seeing results. Are you?',
+    pushBody:'Men who stayed consistent are at Month 2 this week. Your follicles are waiting. Come back.' },
 
-Not because it's exciting.
-Because they know future results depend on today's action. 📈
+  { day:37, phase:'winback', channel:'sms', cohort:'winback',
+    topic:'Winback SMS with offer (D37)', goal:'Winback',
+    trigger:'37 days after order_delivered AND order_count < 2',
+    text:`[Name], it's been a week since your kit ran out. Getting back on track now still puts you on schedule for Month 3 results. Use COMEBACK20 for 20% off: [LINK] — Man Matters` },
 
-A 3-day gap becomes a 3-week gap faster than you think.
-Follicles that were just waking up quietly go back to sleep. 🔄
-
-The men seeing results at Month 6?
-They didn't skip Day 37.
-
-You don't need to restart. Just continue. 📦
-
-Refill your regime today.`
-  },
-
-  // ── D40 ─────────────────────────────────────────────────────────────────
-  {
-    day: 40,
-    phase: 'winback',
-    cohort: 'winback',
-    cohortLabel: 'Winback',
-    topic: 'Next month due: reorder',
-    text: `📈 Most men worry about their hair. Very few actually do something about it.
+  { day:40, phase:'winback', channel:'whatsapp', cohort:'winback',
+    topic:'Reality check + Peer pressure (D40)', goal:'Winback',
+    trigger:'40 days after order_delivered AND order_count < 2',
+    text:`📈 Most men worry about their hair. Very few actually do something about it.
 
 You already took that step.
-Don't become someone who almost fixed it.
+
+*Don't become someone who almost fixed it.*
 
 From Bangalore to Pune to Hyderabad, men are completing Month 2 this week. 📍
+
 The ones who reordered by Day 40 are exactly on track for Month 3 results.
 
 The math:
-🌱 Month 3: real results begin
-💪 Month 6: people start noticing
+🌱 *Month 3* → real results begin
+💪 *Month 6* → people start noticing
 
 Neither happens without Month 2.
 
-Reorder now and keep going. 🛒`
-  },
+🛒 Reorder now and keep going.` },
 
-  // ── D45 ─────────────────────────────────────────────────────────────────
-  {
-    day: 45,
-    phase: 'winback',
-    cohort: 'winback',
-    cohortLabel: 'Winback',
-    topic: 'Break becoming routine: act now',
-    testimonial: { name: 'Rohan M.', city: 'Bangalore', duration: '5 months', quote: 'Took a break around month 2. Restarted. The difference at month 5 was real.' },
-    text: `⏳ You've already invested 35+ days into your hair.
+  { day:45, phase:'winback', channel:'whatsapp', cohort:'winback',
+    topic:'Final winback + Testimonial (D45)', goal:'Winback',
+    testimonial: { name:'Rohan M.', city:'Bangalore', duration:'5 months', quote:'Took a break at month 2. Restarted. The difference at month 5 was real.' },
+    trigger:'45 days after order_delivered AND order_count < 2',
+    text:`⏳ You've already invested 30 days into your hair.
 
 The easiest way to waste that effort? Stopping now.
 
-Your hair doesn't know you've been busy.
-It only knows whether treatment continued or stopped. 📉
+Your hair doesn't know you've been busy. It only knows whether treatment continued or stopped. 📉
 
-And here's the thing most men miss: getting follicles active again takes just as long as getting them active the first time.
-
-You don't get to fast-forward.
-You'd have to earn those weeks back. 🔄
+Here's what most men miss: *restarting your follicles takes just as long as activating them the first time*. You can't fast-forward. You'd earn those weeks back from zero.
 
 50,000+ men in Mumbai are staying consistent this month.
 You're closer to their results than you realise.
 
-🛒 REORDER NOW`
-  },
+This is your last reminder for a while. After this, the decision is yours. 🪞
 
-  // ── D50 ─────────────────────────────────────────────────────────────────
-  {
-    day: 50,
-    phase: 'winback',
-    cohort: 'winback',
-    cohortLabel: 'Winback',
-    topic: 'Long-term commitment',
-    text: `📌 50 days since your last order.
+🛒 *REORDER NOW*` },
 
-Let's be direct: hair regrowth is a 6-month commitment.
-At Day 50, you're not even at the halfway point yet.
-
-The men who see results at Month 6?
-They reordered at Day 30. And Day 60. And Day 90.
-
-That's the only difference between them and the ones who didn't.
-
-🛒 Reorder your Hair Growth Regime. Get back in it.`
-  },
-
-  // ── D55 ─────────────────────────────────────────────────────────────────
-  {
-    day: 55,
-    phase: 'winback',
-    cohort: 'winback',
-    cohortLabel: 'Winback',
-    topic: 'Almost 2 months: give it a fair chance',
-    text: `📸 Better hair was never really the goal.
-
-Feeling confident when you look in the mirror was.
-
-From Mumbai to Nagpur to Chennai, thousands of men are on the same journey right now. 📍
-The difference isn't who started. It's who stayed consistent.
-
-Most men who quit, quit just before Month 3.
-That's exactly when hair fall starts to reduce. 🌱
-
-Imagine getting to December and realising your hair could have been 4 months ahead.
-That's what consistency buys you.
-
-Don't stop before you've given yourself a real shot.
-
-🛒 REORDER NOW`
-  },
-
-  // ── D60 ─────────────────────────────────────────────────────────────────
-  {
-    day: 60,
-    phase: 'winback',
-    cohort: 'winback',
-    cohortLabel: 'Winback',
-    topic: 'Reality check: get back on track',
-    text: `📌 A quick reality check.
-
-Hair doesn't grow on pause.
-Follicles don't stay active without stimulation.
-Progress doesn't wait for you to come back.
-
-If better hair is still the goal, and we think it is, it's time to act.
-
-Not tomorrow. Today.
-
-🛒 REORDER NOW`
-  },
-
-  // ── D66 ─────────────────────────────────────────────────────────────────
-  {
-    day: 66,
-    phase: 'winback',
-    cohort: 'winback',
-    cohortLabel: 'Winback',
-    topic: 'Imagine 66 days from now',
-    testimonial: { name: 'Karthik S.', city: 'Chennai', duration: '6 months', quote: 'At month 6 my barber asked what I was doing differently. That said everything.' },
-    text: `🤔 Six months from now, you'll wish one of two things.
-
-"I stayed consistent."
-Or: "I hadn't stopped."
-
-You're at Day 66. Men who restarted today are seeing real changes by Month 5.
-Men who didn't are still asking the same questions. 🪞
-
-Over 10 lakh men chose to keep going.
-The only thing separating you from them is today's decision.
-
-🌱 Restart today. Your hair's next chapter is still yours to write.
-
-🛒 REORDER NOW`
-  }
+  { day:45, phase:'winback', channel:'sms', cohort:'winback',
+    topic:'Final winback SMS — max discount (D45)', goal:'Winback',
+    trigger:'45 days after order_delivered AND order_count < 2',
+    text:`[Name], last chance — use code HAIR35 for 35% off your Minoxidil kit. Your 30 days of progress deserves a fair shot. Reorder: [LINK] — Man Matters` },
 ];
 
-// Group messages by day
-function groupByDay(messages) {
+// ─────────────────────────────────────────────────────────
+// STATE
+// ─────────────────────────────────────────────────────────
+let activeChannel = 'all';
+let activeCohort  = 'all';
+let activePhase   = null;
+
+// ─────────────────────────────────────────────────────────
+// HELPERS
+// ─────────────────────────────────────────────────────────
+function fmt(t) {
+  if (!t) return '';
+  return t
+    .replace(/\*(.*?)\*/g, '<strong>$1</strong>')
+    .replace(/\n/g, '<br>');
+}
+
+const TIMES = ['9:12 AM','10:38 AM','11:54 AM','2:17 PM','3:45 PM'];
+let _ti = 0;
+const nt = () => TIMES[_ti++ % TIMES.length];
+
+function channelCls(channels) {
+  const w = channels.includes('whatsapp');
+  const p = channels.includes('push');
+  const s = channels.includes('sms');
+  if (w && p && s) return 'tc-all3';
+  if (w && p) return 'tc-wa-push';
+  if (w && s) return 'tc-wa-sms';
+  if (p && s) return 'tc-push-sms';
+  if (w) return 'tc-wa';
+  if (p) return 'tc-push';
+  if (s) return 'tc-sms';
+  return '';
+}
+
+function cohortChip(cohort) {
+  const c = COHORTS[cohort];
+  return c ? `<span class="m-chip coh ${c.cls}">${c.label}</span>` : '';
+}
+
+function channelChip(channel) {
+  const icon = { whatsapp:'💬', push:'🔔', sms:'📱' }[channel] || '';
+  return `<span class="m-chip chn chn-${channel}">${icon} ${channel.toUpperCase()}</span>`;
+}
+
+// ─────────────────────────────────────────────────────────
+// GROUP BY COHORT + DAY
+// ─────────────────────────────────────────────────────────
+function groupMessages() {
   const map = {};
-  for (const msg of messages) {
-    if (!map[msg.day]) map[msg.day] = [];
-    map[msg.day].push(msg);
+  for (const c of COHORT_ORDER) map[c] = {};
+  for (const m of MESSAGES) {
+    if (!map[m.cohort][m.day]) map[m.cohort][m.day] = [];
+    map[m.cohort][m.day].push(m);
   }
   return map;
 }
 
-// Determine node color class for a day's messages
-function nodeColorClass(msgs) {
-  if (!msgs || msgs.length === 0) return 'grey';
-  const cohorts = new Set(msgs.map(m => m.cohort));
-  if (cohorts.has('winback')) return 'blue';
-  if (cohorts.has('all') && cohorts.has('conditional')) return 'mixed';
-  if (cohorts.has('all')) return 'green';
-  if (cohorts.has('conditional')) return 'amber';
-  return 'grey';
+// ─────────────────────────────────────────────────────────
+// BUILD LANES
+// ─────────────────────────────────────────────────────────
+function buildLanes() {
+  const wrap = document.getElementById('lanesWrap');
+  wrap.innerHTML = '';
+  const grouped = groupMessages();
+
+  for (const cohort of COHORT_ORDER) {
+    const info = COHORTS[cohort];
+    const lane = document.createElement('div');
+    lane.className = 'lane';
+    lane.dataset.cohort = cohort;
+
+    const hdr = document.createElement('div');
+    hdr.className = 'lane-hdr';
+    const total = MESSAGES.filter(m => m.cohort === cohort).length;
+    hdr.innerHTML = `
+      <div class="lane-name">${info.label}</div>
+      <div class="lane-cond">${info.cond}</div>
+      <div class="lane-count">${total} touchpoint${total !== 1 ? 's' : ''}</div>
+    `;
+
+    const tl = document.createElement('div');
+    tl.className = 'lane-tl';
+    const track = document.createElement('div');
+    track.className = 'tl-track';
+    track.dataset.cohort = cohort;
+    tl.appendChild(track);
+
+    lane.appendChild(hdr);
+    lane.appendChild(tl);
+    wrap.appendChild(lane);
+  }
+
+  renderAllTracks(grouped);
+  applyFilters(grouped);
 }
 
-function lineColorClass(msgs) {
-  const c = nodeColorClass(msgs);
-  return c === 'mixed' ? 'green' : c;
+// ─────────────────────────────────────────────────────────
+// RENDER TRACKS
+// ─────────────────────────────────────────────────────────
+function renderAllTracks(grouped) {
+  document.querySelectorAll('.tl-track').forEach(track => {
+    const cohort = track.dataset.cohort;
+    renderTrack(track, cohort, grouped[cohort] || {});
+  });
 }
 
-// Short topic label for node
-function shortTopic(msgs) {
-  if (!msgs || msgs.length === 0) return '';
-  const allNull = msgs.every(m => m.text === null);
-  if (allNull) return 'Planned';
-  return msgs[0].topic.split('/')[0].trim().slice(0, 18);
-}
-
-// Static fake times cycling
-const FAKE_TIMES = ['9:41 AM', '10:03 AM', '11:17 AM', '2:34 PM'];
-let timeIdx = 0;
-function nextTime() { return FAKE_TIMES[timeIdx++ % FAKE_TIMES.length]; }
-
-// ── BUILD TIMELINE ────────────────────────────────────────────────────────────
-
-// cohortFilter: 'all' | 'conditional' | 'winback' | null (show all)
-function buildTimeline(trackId, allDays, byDay, phase, cohortFilter) {
-  const track = document.getElementById(trackId);
+function renderTrack(track, cohort, dayMap) {
   track.innerHTML = '';
+  const allDays = Object.keys(dayMap).map(Number).sort((a, b) => a - b);
 
-  // Keep only days that have at least one message matching the filter
-  const days = allDays.filter(day => {
-    const msgs = byDay[day] || [];
-    return cohortFilter ? msgs.some(m => m.cohort === cohortFilter) : msgs.length > 0;
+  // Filter days based on current filters
+  const visibleDays = allDays.filter(day => {
+    const msgs = dayMap[day];
+    let filtered = msgs;
+    if (activeChannel !== 'all') filtered = filtered.filter(m => m.channel === activeChannel);
+    if (activePhase)             filtered = filtered.filter(m => m.phase === activePhase);
+    return filtered.length > 0;
   });
 
-  const colorForFilter = { all: 'green', conditional: 'amber', winback: 'blue' };
-  const laneColor = cohortFilter ? colorForFilter[cohortFilter] : null;
+  if (visibleDays.length === 0) {
+    const emp = document.createElement('span');
+    emp.style.cssText = 'font-size:11px;color:var(--muted);font-style:italic;padding:0 4px;';
+    emp.textContent = activeChannel !== 'all' || activePhase
+      ? 'No matching touchpoints'
+      : 'No touchpoints';
+    track.appendChild(emp);
+    return;
+  }
 
-  days.forEach((day, i) => {
-    const allMsgs = byDay[day] || [];
-    const msgs = cohortFilter ? allMsgs.filter(m => m.cohort === cohortFilter) : allMsgs;
-    const colorClass = laneColor || nodeColorClass(msgs);
-    const count = msgs.length;
-    const allNull = msgs.every(m => m.text === null);
-    const label = shortTopic(msgs);
+  visibleDays.forEach((day, i) => {
+    const msgs = dayMap[day];
+    let displayMsgs = msgs;
+    if (activeChannel !== 'all') displayMsgs = msgs.filter(m => m.channel === activeChannel);
+    if (activePhase)             displayMsgs = displayMsgs.filter(m => m.phase === activePhase);
 
     if (i > 0) {
-      const connEl = document.createElement('div');
-      connEl.className = 'tl-connector';
-      connEl.innerHTML = `<div class="tl-line ${colorClass}"></div>`;
-      track.appendChild(connEl);
+      const conn = document.createElement('div');
+      conn.className = 'tl-conn';
+      track.appendChild(conn);
     }
 
-    const item = document.createElement('div');
-    item.className = 'tl-item';
+    const grp = document.createElement('div');
+    grp.className = 'tl-group';
 
-    const wrap = document.createElement('div');
-    wrap.className = 'tl-node-wrap';
-
+    const channels = [...new Set(displayMsgs.map(m => m.channel))];
     const node = document.createElement('div');
-    node.className = `tl-node ${colorClass}`;
-    node.setAttribute('role', 'button');
-    node.setAttribute('tabindex', '0');
-    node.setAttribute('aria-label', `Day ${day} — ${count} message${count !== 1 ? 's' : ''}`);
-    node.innerHTML = `<span class="tl-day">D${day}</span>`;
+    node.className = `tl-node ${channelCls(channels)}`;
 
-    if (count > 1) {
+    const dayEl = document.createElement('div');
+    dayEl.className = 'tl-day';
+    dayEl.textContent = `D${day}`;
+
+    const iconsEl = document.createElement('div');
+    iconsEl.className = 'tl-icons';
+    const seenCh = new Set();
+    for (const ch of channels) {
+      if (seenCh.has(ch)) continue;
+      seenCh.add(ch);
+      const ico = document.createElement('div');
+      if (ch === 'whatsapp') { ico.className = 'tl-ico wa'; ico.textContent = 'WA'; }
+      else if (ch === 'push') { ico.className = 'tl-ico push'; ico.textContent = '🔔'; }
+      else { ico.className = 'tl-ico sms'; ico.textContent = 'SMS'; }
+      iconsEl.appendChild(ico);
+    }
+
+    node.appendChild(dayEl);
+    node.appendChild(iconsEl);
+
+    if (displayMsgs.length > 1) {
       const badge = document.createElement('div');
       badge.className = 'tl-badge';
-      badge.textContent = count;
+      badge.textContent = displayMsgs.length;
       node.appendChild(badge);
     }
 
-    node.addEventListener('click', () => openModal(day, msgs, phase));
-    node.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') openModal(day, msgs, phase); });
+    node.addEventListener('click', () => openModal(day, msgs, cohort));
 
     const lbl = document.createElement('div');
-    lbl.className = 'tl-label';
-    lbl.textContent = allNull ? 'Planned' : label;
+    lbl.className = 'tl-node-lbl';
+    const shortTopic = displayMsgs[0].topic.split('—')[0].split('(')[0].trim();
+    lbl.textContent = shortTopic.length > 20 ? shortTopic.substring(0, 18) + '…' : shortTopic;
 
-    wrap.appendChild(node);
-    wrap.appendChild(lbl);
-    item.appendChild(wrap);
-    track.appendChild(item);
+    grp.appendChild(node);
+    grp.appendChild(lbl);
+    track.appendChild(grp);
   });
 }
 
-// ── MODAL ─────────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────
+// FILTERS
+// ─────────────────────────────────────────────────────────
+function applyFilters(grouped) {
+  if (!grouped) grouped = groupMessages();
 
-const overlay = document.getElementById('overlay');
-const modalClose = document.getElementById('modal-close');
-const chatWindow = document.getElementById('chat-window');
-const modalDayBadge = document.getElementById('modal-day-badge');
+  // Dim/show lanes
+  document.querySelectorAll('.lane').forEach(lane => {
+    const cohort = lane.dataset.cohort;
+    lane.classList.toggle('dimmed', activeCohort !== 'all' && activeCohort !== cohort);
+  });
 
-function openModal(day, msgs, phase) {
-  timeIdx = 0;
-  modalDayBadge.textContent = `Day ${day} · ${phase === 'winback' ? 'Winback' : 'Onboarding'}`;
+  // Re-render all tracks
+  document.querySelectorAll('.tl-track').forEach(track => {
+    const cohort = track.dataset.cohort;
+    renderTrack(track, cohort, grouped[cohort] || {});
+  });
+}
 
-  chatWindow.innerHTML = '';
+// ─────────────────────────────────────────────────────────
+// MODAL
+// ─────────────────────────────────────────────────────────
+const overlay   = document.getElementById('overlay');
+const modalMeta = document.getElementById('modalMeta');
+const modalTabs = document.getElementById('modalTabs');
+const modalBody = document.getElementById('modalBody');
+let currentMsgs = [], currentTabCh = null;
 
-  // Date chip
-  const dateWrap = document.createElement('div');
-  dateWrap.className = 'chat-date-wrap';
-  dateWrap.innerHTML = `<div class="chat-date-chip">Day ${day}</div>`;
-  chatWindow.appendChild(dateWrap);
-
-  if (!msgs || msgs.length === 0) {
-    chatWindow.innerHTML += comingSoonBubble('Message being drafted...');
-  } else {
-    msgs.forEach(msg => {
-      const group = document.createElement('div');
-      group.className = 'msg-group';
-
-      const pill = document.createElement('div');
-      const pillClass = msg.cohort === 'all' ? 'all' : msg.cohort === 'winback' ? 'winback' : 'conditional';
-      const pillEmoji = msg.cohort === 'all' ? '🟢' : msg.cohort === 'winback' ? '🔵' : '🟡';
-      pill.className = `cohort-pill ${pillClass}`;
-      pill.innerHTML = `${pillEmoji} ${msg.cohortLabel}`;
-
-      const topicEl = document.createElement('div');
-      topicEl.className = 'topic-label';
-      topicEl.textContent = msg.topic;
-
-      const bubble = document.createElement('div');
-
-      if (msg.text === null) {
-        bubble.className = 'bubble coming-soon';
-        bubble.innerHTML = `
-          <div class="bubble-sender">Man Matters</div>
-          <div class="bubble-text muted-text">🔒 Message being drafted...</div>
-          <div class="bubble-time">--</div>
-        `;
-      } else {
-        bubble.className = 'bubble';
-        bubble.innerHTML = `
-          <div class="bubble-sender">Man Matters</div>
-          <div class="bubble-text">${formatMessage(msg.text)}</div>
-          <div class="bubble-time">${nextTime()}</div>
-        `;
-      }
-
-      group.appendChild(pill);
-      group.appendChild(topicEl);
-      group.appendChild(bubble);
-
-      if (msg.testimonial) {
-        const t = msg.testimonial;
-        const tBubble = document.createElement('div');
-        tBubble.className = 'testimonial-bubble';
-        tBubble.innerHTML = `
-          <div class="testimonial-img-row">
-            <div class="testimonial-img-half before">
-              <svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="10" r="6" fill="#aaa"/><path d="M4 26c0-5.5 4.5-10 10-10s10 4.5 10 10" fill="#aaa"/></svg>
-              BEFORE
-            </div>
-            <div class="testimonial-img-divider"></div>
-            <div class="testimonial-img-half after">
-              <svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="10" r="6" fill="#4CAF50"/><path d="M4 26c0-5.5 4.5-10 10-10s10 4.5 10 10" fill="#4CAF50"/></svg>
-              AFTER
-            </div>
-          </div>
-          <div class="testimonial-body">
-            <div class="testimonial-name">${t.name}</div>
-            <div class="testimonial-meta">📍 ${t.city} · ${t.duration}</div>
-            <div class="testimonial-quote">"${t.quote}"</div>
-            <div class="testimonial-time">${nextTime()}</div>
-          </div>
-        `;
-        group.appendChild(tBubble);
-      }
-
-      chatWindow.appendChild(group);
-    });
+function openModal(day, msgs, cohort) {
+  _ti = 0;
+  let filtered = [...msgs];
+  if (activeChannel !== 'all') {
+    const f = filtered.filter(m => m.channel === activeChannel);
+    if (f.length) filtered = f;
   }
+  currentMsgs = filtered;
+  currentTabCh = filtered[0].channel;
+
+  renderModalMeta(day, filtered, cohort);
+  renderModalTabs(filtered);
+  renderModalBody(currentTabCh, filtered);
 
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
-function comingSoonBubble(txt) {
-  return `
-    <div class="msg-group">
-      <div class="cohort-pill winback">🔵 Winback</div>
-      <div class="topic-label">Planned message</div>
-      <div class="bubble coming-soon">
-        <div class="bubble-sender">Man Matters</div>
-        <div class="bubble-text muted-text">🔒 ${txt}</div>
-        <div class="bubble-time">--</div>
+function renderModalMeta(day, msgs, cohort) {
+  const m = msgs[0];
+  const ph = PHASES[m.phase] || {};
+  modalMeta.innerHTML = `
+    <div class="meta-row">
+      <span class="m-chip day">Day ${day}</span>
+      <span class="m-chip day" style="background:${ph.color}22;color:${ph.color}">${ph.label || m.phase}</span>
+      ${cohortChip(cohort)}
+      ${[...new Set(msgs.map(m=>m.channel))].map(channelChip).join('')}
+    </div>
+    <div class="meta-trigger">
+      <span>⚡</span>
+      <span><strong>CleverTap trigger:</strong> ${m.trigger}</span>
+    </div>
+    <div class="meta-trigger" style="margin-top:2px">
+      <span>🎯</span>
+      <span><strong>Goal:</strong> ${m.goal}</span>
+    </div>
+  `;
+}
+
+function renderModalTabs(msgs) {
+  const channels = [...new Set(msgs.map(m => m.channel))];
+  if (channels.length <= 1) { modalTabs.innerHTML = ''; return; }
+  const icons = { whatsapp:'💬 WhatsApp', push:'🔔 Push', sms:'📱 SMS' };
+  modalTabs.innerHTML = channels.map(ch =>
+    `<button class="modal-tab tab-${ch}${ch === currentTabCh ? ' on' : ''}" data-ch="${ch}">${icons[ch]||ch}</button>`
+  ).join('');
+  modalTabs.querySelectorAll('.modal-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentTabCh = btn.dataset.ch;
+      modalTabs.querySelectorAll('.modal-tab').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      renderModalBody(currentTabCh, currentMsgs);
+    });
+  });
+}
+
+function renderModalBody(channel, msgs) {
+  const msg = msgs.find(m => m.channel === channel) || msgs[0];
+  modalBody.innerHTML = '';
+  if (channel === 'whatsapp') waPreview(msg);
+  else if (channel === 'push') pushPreview(msg);
+  else smsPreview(msg);
+}
+
+// ── WhatsApp ──────────────────────────────────
+function waPreview(msg) {
+  const hdr = document.createElement('div');
+  hdr.className = 'wa-header';
+  hdr.innerHTML = `
+    <button class="wa-back" id="waClose">&#8592;</button>
+    <div class="wa-ava">
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <rect width="40" height="40" fill="#fff"/>
+        <text x="4" y="17" fill="#2B52A0" font-family="Arial Black,Helvetica,sans-serif" font-size="12" font-weight="900">man</text>
+        <text x="2" y="30" fill="#2B52A0" font-family="Arial Black,Helvetica,sans-serif" font-size="12" font-weight="900">matters</text>
+      </svg>
+    </div>
+    <div class="wa-cnt">
+      <div class="wa-cname">Man Matters</div>
+      <div class="wa-csub">Hair Growth · Day ${msg.day}</div>
+    </div>
+    <div class="wa-icons">
+      <svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    </div>
+  `;
+  hdr.querySelector('#waClose').addEventListener('click', closeModal);
+
+  const win = document.createElement('div');
+  win.className = 'chat-win';
+  win.innerHTML = `<div class="date-wrap"><div class="date-chip">Day ${msg.day}</div></div>`;
+
+  const bbl = document.createElement('div');
+  bbl.className = 'bubble';
+  bbl.innerHTML = `<div class="bubble-sender">Man Matters</div><div class="bubble-text">${fmt(msg.text)}</div><div class="bubble-time">${nt()}</div>`;
+  win.appendChild(bbl);
+
+  if (msg.testimonial) {
+    const t = msg.testimonial;
+    const tw = document.createElement('div');
+    tw.className = 'test-wrap';
+    tw.innerHTML = `
+      <div class="test-imgs">
+        <div class="test-half bf">
+          <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5" fill="#999" opacity=".5"/><path d="M3 22c0-5 4-8 9-8s9 3 9 8" fill="#999" opacity=".5"/></svg>
+          BEFORE
+        </div>
+        <div class="test-div"></div>
+        <div class="test-half af">
+          <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5" fill="#4CAF50"/><path d="M3 22c0-5 4-8 9-8s9 3 9 8" fill="#4CAF50"/></svg>
+          AFTER
+        </div>
       </div>
-    </div>`;
+      <div class="test-body">
+        <div class="test-name">${t.name}</div>
+        <div class="test-meta">📍 ${t.city} · ${t.duration}</div>
+        <div class="test-q">"${t.quote}"</div>
+        <div class="test-time">${nt()}</div>
+      </div>
+    `;
+    win.appendChild(tw);
+  }
+
+  modalBody.appendChild(hdr);
+  modalBody.appendChild(win);
+}
+
+// ── Push ──────────────────────────────────────
+function pushPreview(msg) {
+  const now = new Date();
+  const h = now.getHours() % 12 || 12;
+  const mn = String(now.getMinutes()).padStart(2,'0');
+  const ampm = now.getHours() >= 12 ? 'PM' : 'AM';
+  const ds = now.toLocaleDateString('en-IN',{weekday:'long',month:'long',day:'numeric'});
+
+  const wrap = document.createElement('div');
+  wrap.className = 'push-wrap';
+  wrap.innerHTML = `
+    <div class="push-time">${h}:${mn} <span style="font-size:18px;font-weight:300">${ampm}</span></div>
+    <div class="push-date">${ds}</div>
+    <div class="push-card">
+      <div class="push-card-top">
+        <div class="push-app-icon">MM</div>
+        <div class="push-app-name">Man Matters</div>
+        <div class="push-card-time">now</div>
+      </div>
+      <div class="push-title">${msg.pushTitle || msg.topic}</div>
+      <div class="push-body">${msg.pushBody || ''}</div>
+    </div>
+  `;
+  const closeBtn = document.createElement('button');
+  closeBtn.textContent = '← Close';
+  closeBtn.style.cssText = 'background:none;border:none;color:rgba(255,255,255,0.5);font-size:13px;cursor:pointer;padding:4px 14px;font-family:inherit;margin-top:4px;';
+  closeBtn.addEventListener('click', closeModal);
+  wrap.appendChild(closeBtn);
+  modalBody.appendChild(wrap);
+}
+
+// ── SMS ───────────────────────────────────────
+function smsPreview(msg) {
+  const wrap = document.createElement('div');
+  wrap.className = 'sms-wrap';
+  wrap.innerHTML = `
+    <div class="sms-top">
+      <div class="sms-name">Man Matters</div>
+      <div class="sms-num">+91 80478 63601</div>
+    </div>
+    <div class="sms-msgs">
+      <div class="sms-bubble">${fmt(msg.text)}</div>
+      <div class="sms-time">${nt()}</div>
+    </div>
+  `;
+  const closeBtn = document.createElement('button');
+  closeBtn.textContent = '← Close';
+  closeBtn.className = 'close-link';
+  closeBtn.addEventListener('click', closeModal);
+  wrap.appendChild(closeBtn);
+  modalBody.appendChild(wrap);
 }
 
 function closeModal() {
@@ -1436,29 +1497,54 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
-modalClose.addEventListener('click', closeModal);
 overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-// drag-to-close on mobile
-let startY = 0;
+let _sy = 0;
 const modal = document.getElementById('modal');
-modal.addEventListener('touchstart', e => { startY = e.touches[0].clientY; }, { passive: true });
-modal.addEventListener('touchend', e => {
-  const dy = e.changedTouches[0].clientY - startY;
-  if (dy > 80) closeModal();
-}, { passive: true });
+modal.addEventListener('touchstart', e => { _sy = e.touches[0].clientY; }, { passive:true });
+modal.addEventListener('touchend',   e => { if (e.changedTouches[0].clientY - _sy > 80) closeModal(); }, { passive:true });
 
-// ── INIT ──────────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────
+// FILTER EVENT HANDLERS
+// ─────────────────────────────────────────────────────────
+document.getElementById('channelPills').addEventListener('click', e => {
+  const btn = e.target.closest('.pill');
+  if (!btn) return;
+  activeChannel = btn.dataset.ch;
+  document.querySelectorAll('#channelPills .pill').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  applyFilters();
+});
 
-const byDay = groupByDay(MESSAGES);
+document.getElementById('cohortPills').addEventListener('click', e => {
+  const btn = e.target.closest('.pill');
+  if (!btn) return;
+  activeCohort = btn.dataset.co;
+  document.querySelectorAll('#cohortPills .pill').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  applyFilters();
+});
 
-const onboardingDays = [0, 1, 2, 4, 5, 7, 10, 15, 20, 25, 30];
-const winbackDays    = [35, 37, 40, 45, 50, 55, 60, 66];
+document.getElementById('phaseStrip').addEventListener('click', e => {
+  const blk = e.target.closest('.ph-block');
+  if (!blk) return;
+  const phase = blk.dataset.phase;
+  if (activePhase === phase) {
+    activePhase = null;
+    document.querySelectorAll('.ph-block').forEach(b => b.style.opacity = '1');
+  } else {
+    activePhase = phase;
+    document.querySelectorAll('.ph-block').forEach(b => {
+      b.style.opacity = b.dataset.phase === phase ? '1' : '0.4';
+    });
+  }
+  applyFilters();
+});
 
-buildTimeline('track-onboarding-general',     onboardingDays, byDay, 'onboarding', 'all');
-buildTimeline('track-onboarding-conditional', onboardingDays, byDay, 'onboarding', 'conditional');
-buildTimeline('track-winback',                winbackDays,    byDay, 'winback',    'winback');
+// ─────────────────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────────────────
+buildLanes();
 </script>
 </body>
 </html>
