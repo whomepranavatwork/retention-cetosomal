@@ -496,6 +496,84 @@
     .bubble.coming-soon { background: #F1F3F4; border: 1px dashed #CBD5E1; }
     .bubble.coming-soon::before { border-color: transparent #F1F3F4 transparent transparent; }
 
+    /* Testimonial card — WhatsApp image-message style */
+    .testimonial-bubble {
+      background: #FFFFFF;
+      border-radius: 0px 10px 10px 10px;
+      padding: 0;
+      margin-right: auto; margin-left: 0;
+      margin-top: 4px;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.09);
+      max-width: 268px;
+      overflow: hidden;
+      position: relative;
+    }
+    .testimonial-bubble::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -8px;
+      border-style: solid;
+      border-width: 0 8px 9px 0;
+      border-color: transparent #fff transparent transparent;
+    }
+    .testimonial-img-row {
+      display: flex;
+      gap: 0;
+    }
+    .testimonial-img-half {
+      flex: 1;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      gap: 6px;
+    }
+    .testimonial-img-half.before {
+      background: #D8D8D8;
+      color: #666;
+    }
+    .testimonial-img-half.after {
+      background: #C8E6C9;
+      color: #2E7D32;
+    }
+    .testimonial-img-half svg { opacity: 0.5; }
+    .testimonial-img-divider {
+      width: 1.5px;
+      background: #fff;
+      align-self: stretch;
+    }
+    .testimonial-body {
+      padding: 8px 9px 6px 9px;
+    }
+    .testimonial-name {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #111;
+    }
+    .testimonial-meta {
+      font-size: 11px;
+      color: #8696A0;
+      margin-top: 1px;
+    }
+    .testimonial-quote {
+      font-size: 12px;
+      color: #333;
+      margin-top: 5px;
+      line-height: 1.4;
+      font-style: italic;
+    }
+    .testimonial-time {
+      font-size: 11px;
+      color: #8696A0;
+      text-align: right;
+      margin-top: 4px;
+    }
+
     .bubble-sender {
       font-size: 12.5px;
       font-weight: 600;
@@ -963,6 +1041,7 @@ Don't let Month 1 be the only month you tried. 🔄`
     cohort: 'winback',
     cohortLabel: 'Winback',
     topic: 'Re-engagement: finish what you started',
+    testimonial: { name: 'Avinash R.', city: 'Pune', duration: '6 months', quote: 'I almost stopped at month 2. Glad I didn\'t. My hair is noticeably thicker now.' },
     text: `🙌 You're part of something bigger than you think.
 
 Over 10 lakh men across India are actively working on their hair with Man Matters right now.
@@ -1034,6 +1113,7 @@ Reorder now and keep going. 🛒`
     cohort: 'winback',
     cohortLabel: 'Winback',
     topic: 'Break becoming routine: act now',
+    testimonial: { name: 'Rohan M.', city: 'Bangalore', duration: '5 months', quote: 'Took a break around month 2. Restarted. The difference at month 5 was real.' },
     text: `⏳ You've already invested 35+ days into your hair.
 
 The easiest way to waste that effort? Stopping now.
@@ -1124,6 +1204,7 @@ Not tomorrow. Today.
     cohort: 'winback',
     cohortLabel: 'Winback',
     topic: 'Imagine 66 days from now',
+    testimonial: { name: 'Karthik S.', city: 'Chennai', duration: '6 months', quote: 'At month 6 my barber asked what I was doing differently. That said everything.' },
     text: `🤔 Six months from now, you'll wish one of two things.
 
 "I stayed consistent."
@@ -1302,6 +1383,33 @@ function openModal(day, msgs, phase) {
       group.appendChild(pill);
       group.appendChild(topicEl);
       group.appendChild(bubble);
+
+      if (msg.testimonial) {
+        const t = msg.testimonial;
+        const tBubble = document.createElement('div');
+        tBubble.className = 'testimonial-bubble';
+        tBubble.innerHTML = `
+          <div class="testimonial-img-row">
+            <div class="testimonial-img-half before">
+              <svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="10" r="6" fill="#aaa"/><path d="M4 26c0-5.5 4.5-10 10-10s10 4.5 10 10" fill="#aaa"/></svg>
+              BEFORE
+            </div>
+            <div class="testimonial-img-divider"></div>
+            <div class="testimonial-img-half after">
+              <svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="10" r="6" fill="#4CAF50"/><path d="M4 26c0-5.5 4.5-10 10-10s10 4.5 10 10" fill="#4CAF50"/></svg>
+              AFTER
+            </div>
+          </div>
+          <div class="testimonial-body">
+            <div class="testimonial-name">${t.name}</div>
+            <div class="testimonial-meta">📍 ${t.city} · ${t.duration}</div>
+            <div class="testimonial-quote">"${t.quote}"</div>
+            <div class="testimonial-time">${nextTime()}</div>
+          </div>
+        `;
+        group.appendChild(tBubble);
+      }
+
       chatWindow.appendChild(group);
     });
   }
