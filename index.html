@@ -420,6 +420,23 @@
     .lang-btn:hover { background:var(--bg); }
     .lang-btn.on { background:#111318; color:#fff; border-color:#111318; }
 
+    /* ── STAGE PILLS ─────────────────────────────── */
+    .pill.on.s-all { background: #374151; }
+    .pill.on.s-1   { background: #059669; }
+    .pill.on.s-2   { background: #D97706; }
+    .pill.on.s-3   { background: #DC2626; }
+    /* ── STAGE DOTS ON NODES ────────────────────── */
+    .tl-stage-dots { display:flex; gap:2px; justify-content:center; margin-top:2px; }
+    .s-pip { width:5px; height:5px; border-radius:50%; flex-shrink:0; }
+    .s-pip.s1 { background:#059669; }
+    .s-pip.s2 { background:#D97706; }
+    .s-pip.s3 { background:#DC2626; }
+    .s-pip.dim { opacity:0.2; }
+    /* ── STAGE CHIP IN MODAL ───────────────────── */
+    .m-chip.stage-1 { background:#F0FDF4; color:#059669; border:1px solid #A7F3D0; }
+    .m-chip.stage-2 { background:#FFFBEB; color:#D97706; border:1px solid #FDE68A; }
+    .m-chip.stage-3 { background:#FFF1F2; color:#DC2626; border:1px solid #FECDD3; }
+
     /* ── WA PREVIEW ─────────────────────────────── */
     .wa-header {
       background: #075E54;
@@ -648,6 +665,15 @@
         <button class="pill c-wb"     data-co="winback">Winback</button>
       </div>
     </div>
+    <div class="filter-group">
+      <span class="filter-lbl">Stage</span>
+      <div class="pills" id="stagePills">
+        <button class="pill on s-all" data-stage="all">All stages</button>
+        <button class="pill s-1"      data-stage="1">Stage 1 — Early</button>
+        <button class="pill s-2"      data-stage="2">Stage 2 — Mid</button>
+        <button class="pill s-3"      data-stage="3">Stage 3 — Advanced</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -706,7 +732,39 @@ All three work as a system. Skip one and you slow the others. 🔄
 
 📲 Download the *Man Matters App* → switch on *Habit Tracker* → earn coins on every dose you log. Redeem for up to 30% off your next order. 🎁
 
-Let's go. 💪` },
+Let's go. 💪`,
+    stageVariants: {
+      s1: `📦 Your hair comeback starts today — and you caught this at the right time.
+
+Your Advanced Hair Regrowth Regime is here. Here's how the system works:
+
+✅ *Minoxidil* (twice daily on scalp) — wakes dormant follicles, extends the growth phase
+🍬 *Hair Gummies* (1 daily) — Biotin + Vitamins A, C & E, nourishing follicles from within
+⚡ *Dermaroller* (once a week) — boosts blood flow, drives Minoxidil 40% deeper
+
+All three work as a system. Skip one and you slow the others. 🔄
+
+At *Stage 1*, you have a real advantage. Men who start here typically see first changes at Month 3 and strong density by Month 6. The earlier the start, the stronger the result. 🌱
+
+📲 Download the *Man Matters App* → switch on *Habit Tracker* → earn coins on every dose you log. Redeem for up to 30% off your next order. 🎁
+
+Let's go. 💪`,
+      s3: `📦 Your hair comeback starts today. Stage 3 takes longer — but it absolutely works.
+
+Your Advanced Hair Regrowth Regime is here. Here's how the system works:
+
+✅ *Minoxidil* (twice daily on scalp) — wakes dormant follicles, extends the growth phase
+🍬 *Hair Gummies* (1 daily) — Biotin + Vitamins A, C & E, nourishing follicles from within
+⚡ *Dermaroller* (once a week) — boosts blood flow, drives Minoxidil 40% deeper
+
+All three work as a system. Skip one and you slow the others. 🔄
+
+At *Stage 3*, your realistic timeline is *6–9 months* for visible density. The science is fully on your side — but only if you stay consistent. Zero gaps. The streak you start today is the most important one. 💪
+
+📲 Download the *Man Matters App* → switch on *Habit Tracker* → earn coins on every dose you log. Redeem for up to 30% off your next order. 🎁
+
+Let's go.`
+    } },
 
   { day:0, phase:'activation', channel:'sms', cohort:'all',
     topic:'Kit delivery + App download CTA', goal:'App Download',
@@ -810,7 +868,31 @@ Kya karna hai: *lagate raho*. Band mat karo abhi.
 Jo log yahan ruk jaate hain, unhe kabhi results nahi milte.
 Jo log continue karte hain, unhe Month 3 mein real density dikhti hai.
 
-Process par trust karo. Week 1 complete. 💪` },
+Process par trust karo. Week 1 complete. 💪`,
+    stageVariants: {
+      s1: `🚨 More hair fall this week? Good — it means it's working.
+
+This is the *shedding phase*, and at Stage 1 it's usually lighter than later stages. Your follicles are close to the surface and respond faster. If shedding feels minimal, that's completely normal. 🌱
+
+Minoxidil wakes dormant follicles. Old, weak hairs shed to make room for thicker, stronger ones underneath.
+
+What to do: *keep applying*. Don't stop.
+
+You're on track for first visible changes at Month 3. The shedding phase is almost always the hardest part — and you're through it.
+
+Week 1 done. 💪`,
+      s3: `🚨 More hair fall this week? Good — it means it's working.
+
+This is the *shedding phase*. At Stage 3, shedding can be more pronounced than earlier stages — this is normal and actually means *more dormant follicles are being activated*.
+
+Minoxidil wakes dormant follicles. Old, weak hairs shed to make room for thicker, stronger ones growing underneath. 🌱
+
+What to do: *keep applying*. Don't stop.
+
+Most men who quit, quit right here — especially at Stage 3 where shedding is heavier. The ones who pushed through are the ones who see real improvement from Month 4–5.
+
+Week 1 done. 💪`
+    } },
 
   { day:7, phase:'habit', channel:'push', cohort:'no-habit',
     topic:'7-day habit tracker nudge', goal:'Habit Tracker Activation',
@@ -897,7 +979,35 @@ Aapke follicles reactivate ho rahe hain. 🔬
 
 Jinhe results mile, unmein ek cheez common thi: woh Month 6 tak ruke.
 
-Aap 2 hafte mein hain. Banate raho.` },
+Aap 2 hafte mein hain. Banate raho.`,
+    stageVariants: {
+      s1: `📅 2 weeks in. Here's what's happening under the surface.
+
+You won't see it yet — but your follicles are being reactivated. 🔬
+
+*Your Minoxidil timeline at Stage 1:*
+📅 *Month 1* — Foundation phase. Scalp adjusting, follicles activating.
+🌱 *Month 3* — Hair fall reduces. First fine new hairs appear.
+💪 *Month 6* — Strong, visible density. Stage 1 is where the best results happen.
+
+You're part of 10 lakh+ men across India who trusted Man Matters with their hair. 🙌
+
+Stage 1 men who stayed consistent — their before/afters are the ones you've seen. That's where you're headed.
+
+You're 2 weeks in. Keep building.`,
+      s3: `📅 2 weeks in. Here's what's happening under the surface.
+
+You won't see it yet — but your follicles are being reactivated. 🔬
+
+*Your Minoxidil timeline at Stage 3:*
+📅 *Month 1–2* — Foundation phase. Deeper follicles activating, scalp calibrating.
+🌱 *Month 4–5* — First fine new hairs begin to appear at hairline.
+💪 *Month 6–9* — Visible density improvement. This is the Stage 3 payoff window.
+
+Stage 3 takes more time — but follicles at this stage still absolutely respond to Minoxidil. The one condition: no gaps.
+
+You're 2 weeks in. The foundation is being built right now. Keep going. 💪`
+    } },
 
   { day:14, phase:'reassurance', channel:'push', cohort:'all',
     topic:'2-week streak celebration', goal:'Retention',
@@ -922,7 +1032,22 @@ Men who complete a consultation are *2× more likely to reach Month 3*.
 
 It's FREE. It's 15 minutes. It's built into your plan.
 
-📲 Book now in the Man Matters App → *Consult* section.` },
+📲 Book now in the Man Matters App → *Consult* section.`,
+    stageVariants: {
+      s3: `👨‍⚕️ At Stage 3, a doctor consultation isn't a nice-to-have — it's a real differentiator.
+
+Here's why it matters more at your stage:
+→ Stage 3 sometimes responds better to a *combination approach* (Minoxidil + DHT blockers)
+→ Your doctor can confirm if your current concentration is right for Stage 3
+→ A personalised timeline for *your* stage means no guessing at Month 3, 6, and 9
+→ Men who get a consultation at Stage 3 are *3× more likely to stay consistent*
+
+Your treatment is already in place. A 15-minute call can optimise it.
+
+It's FREE. It's built into your plan.
+
+📲 Book now in the Man Matters App → *Consult* section.`
+    } },
 
   { day:17, phase:'reassurance', channel:'push', cohort:'no-habit',
     topic:'Missing doses intervention', goal:'Habit Tracker Activation',
@@ -956,7 +1081,29 @@ Abhi sirf ek kaam: *wahi karte raho jo kar rahe ho*. 💪
 
 Jo foundation aaj ban rahi hai, uske results Month 3 mein dikhenge.
 
-Day 20 par judgment mat karo. Jinhe results mile, unhone nahi kiya.` },
+Day 20 par judgment mat karo. Jinhe results mile, unhone nahi kiya.`,
+    stageVariants: {
+      s1: `⏳ Day 20. No visible change yet? Exactly where you should be.
+
+At Stage 1, your Month 3 target is fully on track.
+
+Hair grows at roughly *1.5 cm per month*. The work happening now is invisible — but it's real. Your follicles are in the activation window, responding exactly as they should.
+
+Don't judge the treatment at Day 20. Stay the course. 💪
+
+The foundation you're building today delivers your Month 3 results.`,
+      s3: `⏳ Day 20. No visible change yet? At Stage 3, this is 100% expected.
+
+*Day 20 is not a milestone at Stage 3. Month 4 is.*
+
+Hair grows at roughly *1.5 cm per month*. Deeper follicles — which are more affected at Stage 3 — take longer to respond. The invisible work happening right now is building the foundation for Month 4–5.
+
+Here's the Stage 3 trap: most men at this stage quit at Day 20 because nothing visible has happened. That's exactly when you need to stay.
+
+Right now: keep doing exactly what you've been doing. 💪
+
+Your Month 4 results depend on the consistency you build today.`
+    } },
 
   { day:20, phase:'reassurance', channel:'push', cohort:'all',
     topic:'Day 20 reassurance push', goal:'Retention',
@@ -1076,7 +1223,36 @@ Aap Month 1 complete karne ke itne close ho. Mat todo ise.
 Month 3 is where hair fall reduces.
 Month 6 is where people notice.
 
-You're heading there. Keep going. 💪` },
+You're heading there. Keep going. 💪`,
+    stageVariants: {
+      s1: `🎉 Month 1 complete. At Stage 1, you're in the best position of anyone starting this journey.
+
+80% of men who begin hair treatment don't make it to Month 2. You just did.
+
+*What Month 1 built for you at Stage 1:*
+✅ Follicles activated and already responding
+✅ Scalp calibrated — Month 2 compounds what Month 1 started
+✅ Foundation set for Month 3 first visible changes
+✅ Month 6 density within clear reach
+
+Stage 1 men who made it to Month 2 are the ones who see the results you read about.
+
+Keep going. Month 3 is close. 💪`,
+      s3: `🎉 Month 1 complete. At Stage 3, Month 2 is the most critical month you'll face.
+
+80% of men who start don't make it to Month 2. You just did — and at Stage 3, that matters more than any other stage.
+
+*What Month 1 built for you at Stage 3:*
+✅ Deep follicles activated — the slow process is underway
+✅ Scalp adjusted to twice-daily Minoxidil
+✅ The hardest month is behind you
+
+Here's the honest reality: a supply gap at Month 2 undoes almost everything Month 1 built. The dormant follicles that just woke up go back to sleep.
+
+Don't let a logistics gap cost you 30 days of work.
+
+Month 4 is worth it. Keep going. 💪`
+    } },
 
   // ══ PHASE 5: WINBACK D33–D45 ════════════════════════
   { day:33, phase:'winback', channel:'whatsapp', cohort:'winback',
@@ -1105,7 +1281,22 @@ Bina Minoxidil ke, jo follicles active the woh wapas dormant hone lagte hain. Ye
 → Shedding phase dobara nahi hogi.
 → 30 din ka progress abhi bachaya ja sakta hai.
 
-📦 Aaj reorder karo. Wahan se shuru karo jahan chhoda tha. 🌱` },
+📦 Aaj reorder karo. Wahan se shuru karo jahan chhoda tha. 🌱`,
+    stageVariants: {
+      s3: `⏳ It's been 3 days since your kit ran out. At Stage 3, this gap costs more than you think.
+
+At earlier stages, a short pause has some recovery window. At Stage 3, follicles are working harder to respond — and they're the first to go dormant when stimulation stops.
+
+*The Stage 3 gap reality:*
+→ Your follicles needed a full month to reach activation
+→ Without Minoxidil, reversion starts within days — not weeks
+→ A restart at Stage 3 means rebuilding that entire foundation
+→ The window to resume where you left off is *smaller* at Stage 3
+
+You don't need to start over. You just need to restart *now*.
+
+📦 Reorder today. Your Month 4 results are still on the table. 🌱`
+    } },
 
   { day:35, phase:'winback', channel:'whatsapp', cohort:'winback',
     topic:'Social proof + Testimonial (D35)', goal:'Winback',
@@ -1223,7 +1414,32 @@ Aap unke results ke itne paas ho jitna aapko lagta nahi.
 
 Yeh aakhri reminder hai kuch waqt ke liye. Ab faisla aapka hai. 🪞
 
-🛒 *ABHI REORDER KARO*` },
+🛒 *ABHI REORDER KARO*`,
+    stageVariants: {
+      s1: `⏳ You've already invested 30 days into your hair.
+
+At Stage 1, you're leaving real results on the table.
+
+The honest truth: men at Stage 1 who restart within 45 days recover their full momentum faster than any other stage. Your follicles haven't gone dormant yet — they're paused. The window to pick up exactly where you left off is still open.
+
+After this point, the restart cost climbs.
+
+You're in the best position of anyone we're sending this to. Use it.
+
+🛒 *REORDER NOW*`,
+      s3: `⏳ You've already invested 30 days into your hair.
+
+At Stage 3, stopping now means a near-complete restart.
+
+But here's what we know: men who came back at Day 45 and stayed consistent for 6 months — they got results. Not as fast as Stage 1. But real, visible improvement.
+
+It's not too late. But it requires a choice right now.
+
+50,000+ men in Mumbai are staying consistent this month.
+You can still be one of them.
+
+🛒 *REORDER NOW — give Stage 3 a real shot*`
+    } },
 
   { day:45, phase:'winback', channel:'sms', cohort:'winback',
     topic:'Final winback SMS — max discount (D45)', goal:'Winback',
@@ -1239,6 +1455,7 @@ let activeChannel = 'all';
 let activeCohort  = 'all';
 let activePhase   = null;
 let activeLang    = 'en';
+let activeStage   = 'all';
 
 // ─────────────────────────────────────────────────────────
 // HELPERS
@@ -1276,6 +1493,14 @@ function cohortChip(cohort) {
 function channelChip(channel) {
   const icon = { whatsapp:'💬', push:'🔔', sms:'📱' }[channel] || '';
   return `<span class="m-chip chn chn-${channel}">${icon} ${channel.toUpperCase()}</span>`;
+}
+
+function getWAText(msg) {
+  if (activeStage !== 'all' && msg.stageVariants) {
+    const sv = msg.stageVariants[`s${activeStage}`];
+    if (sv) return sv;
+  }
+  return activeLang === 'hi' && msg.textHi ? msg.textHi : msg.text;
 }
 
 // ─────────────────────────────────────────────────────────
@@ -1418,6 +1643,19 @@ function renderTrack(track, cohort, dayMap) {
 
     grp.appendChild(node);
     grp.appendChild(lbl);
+
+    if (displayMsgs.some(m => m.stageVariants)) {
+      const dots = document.createElement('div');
+      dots.className = 'tl-stage-dots';
+      for (const s of ['1','2','3']) {
+        const pip = document.createElement('div');
+        const has = displayMsgs.some(m => m.stageVariants && m.stageVariants[`s${s}`]);
+        pip.className = `s-pip s${s}${has ? '' : ' dim'}`;
+        dots.appendChild(pip);
+      }
+      grp.appendChild(dots);
+    }
+
     track.appendChild(grp);
   });
 }
@@ -1478,12 +1716,18 @@ function renderModalMeta(day, msgs, cohort) {
       <button class="lang-btn${activeLang==='en'?' on':''}" data-lang="en">EN</button>
       <button class="lang-btn${activeLang==='hi'?' on':''}" data-lang="hi">HI&nbsp;—&nbsp;हिंदी</button>
     </div>` : '';
+  const stageLabels = { '1':'Stage 1 — Early', '2':'Stage 2 — Mid', '3':'Stage 3 — Advanced' };
+  const stageCls    = { '1':'stage-1', '2':'stage-2', '3':'stage-3' };
+  const hasStageVar = msgs.some(x => x.stageVariants);
+  const stageChipHTML = (activeStage !== 'all' && hasStageVar)
+    ? `<span class="m-chip ${stageCls[activeStage]}">${stageLabels[activeStage]}</span>` : '';
   modalMeta.innerHTML = `
     <div class="meta-row">
       <span class="m-chip day">Day ${day}</span>
       <span class="m-chip day" style="background:${ph.color}22;color:${ph.color}">${ph.label || m.phase}</span>
       ${cohortChip(cohort)}
       ${[...new Set(msgs.map(x=>x.channel))].map(channelChip).join('')}
+      ${stageChipHTML}
     </div>
     <div class="meta-trigger">
       <span>⚡</span>
@@ -1557,7 +1801,7 @@ function waPreview(msg) {
   win.className = 'chat-win';
   win.innerHTML = `<div class="date-wrap"><div class="date-chip">Day ${msg.day}</div></div>`;
 
-  const waText = activeLang === 'hi' && msg.textHi ? msg.textHi : msg.text;
+  const waText = getWAText(msg);
   const bbl = document.createElement('div');
   bbl.className = 'bubble';
   bbl.innerHTML = `<div class="bubble-sender">Man Matters</div><div class="bubble-text">${fmt(waText)}</div><div class="bubble-time">${nt()}</div>`;
@@ -1677,6 +1921,18 @@ document.getElementById('cohortPills').addEventListener('click', e => {
   document.querySelectorAll('#cohortPills .pill').forEach(b => b.classList.remove('on'));
   btn.classList.add('on');
   applyFilters();
+});
+
+document.getElementById('stagePills').addEventListener('click', e => {
+  const btn = e.target.closest('.pill');
+  if (!btn) return;
+  activeStage = btn.dataset.stage;
+  document.querySelectorAll('#stagePills .pill').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  if (overlay.classList.contains('open')) {
+    renderModalMeta(currentMsgs[0].day, currentMsgs, currentMsgs[0].cohort);
+    renderModalBody(currentTabCh, currentMsgs);
+  }
 });
 
 document.getElementById('phaseStrip').addEventListener('click', e => {
