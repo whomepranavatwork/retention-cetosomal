@@ -408,6 +408,18 @@
     .modal-tab.on.tab-push     { border-bottom-color: var(--push-dark); }
     .modal-tab.on.tab-sms      { border-bottom-color: var(--sms-dark); }
 
+    /* ── LANGUAGE TOGGLE ────────────────────────── */
+    .lang-row { display:flex; align-items:center; gap:6px; margin-top:8px; padding-top:7px; border-top:1px solid var(--border); }
+    .lang-row-lbl { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; color:var(--muted); }
+    .lang-btn {
+      font-size:10px; font-weight:700; padding:2px 9px;
+      border-radius:4px; border:1.5px solid var(--border2);
+      background:var(--surface); color:var(--text2);
+      cursor:pointer; transition:all 0.1s; font-family:inherit;
+    }
+    .lang-btn:hover { background:var(--bg); }
+    .lang-btn.on { background:#111318; color:#fff; border-color:#111318; }
+
     /* ── WA PREVIEW ─────────────────────────────── */
     .wa-header {
       background: #075E54;
@@ -768,7 +780,9 @@ Keep the system going. The compound effect kicks in at Month 3. 💪` },
     topic:'Day 5 consistency nudge', goal:'Habit Formation',
     trigger:'5 days after order_delivered (app users)',
     pushTitle:'🔥 Day 5 streak — keep it alive',
-    pushBody:'Most men quit by week 2. You\'re still here. Log today\'s dose and earn coins.' },
+    pushBody:'Most men quit by week 2. You\'re still here. Log today\'s dose and earn coins.',
+    pushTitleHi:'🔥 Day 5 streak — zinda rakho ise',
+    pushBodyHi:'Zyaatar mard week 2 mein quit karte hain. Tum abhi bhi ho. Aaj dose log karo, coins kamaao.' },
 
   { day:7, phase:'habit', channel:'whatsapp', cohort:'all',
     topic:'Week 1 check-in + Shedding education', goal:'Education',
@@ -784,13 +798,27 @@ What to do: *keep applying*. Don't stop.
 Most men who quit, quit right here — during the shedding phase.
 The ones who stay see real density from Month 3.
 
-Trust the process. Week 1 is done. 💪` },
+Trust the process. Week 1 is done. 💪`,
+    textHi:`🚨 Is hafte zyada baal gire? Achhi baat hai — iska matlab hai kaam ho raha hai.
+
+Yeh *shedding phase* hai — aur yeh positive sign hai.
+
+Minoxidil dormant follicles ko jagaata hai. Purane, kamzor baal pehle girate hain taaki neeche se naye, moote baal aa sakein. 🌱
+
+Kya karna hai: *lagate raho*. Band mat karo abhi.
+
+Jo log yahan ruk jaate hain, unhe kabhi results nahi milte.
+Jo log continue karte hain, unhe Month 3 mein real density dikhti hai.
+
+Process par trust karo. Week 1 complete. 💪` },
 
   { day:7, phase:'habit', channel:'push', cohort:'no-habit',
     topic:'7-day habit tracker nudge', goal:'Habit Tracker Activation',
     trigger:'7 days after order_delivered AND habit_log_count = 0',
     pushTitle:'7 days in — are you tracking your doses?',
-    pushBody:'Log your routine → build your streak → earn coins for 30% off. Takes 10 seconds.' },
+    pushBody:'Log your routine → build your streak → earn coins for 30% off. Takes 10 seconds.',
+    pushTitleHi:'7 din ho gaye — dose track kar rahe ho?',
+    pushBodyHi:'App mein routine log karo → streak banao → 30% off ke liye coins kamaao. 10 second ka kaam.' },
 
   { day:9, phase:'habit', channel:'whatsapp', cohort:'no-habit',
     topic:'Habit Tracker + Rewards (re-engagement)', goal:'Habit Tracker Activation',
@@ -855,13 +883,29 @@ You're part of 10 lakh+ men across India who trusted Man Matters with their hair
 
 The ones who got results had one thing in common: they made it to Month 6.
 
-You're 2 weeks in. Keep building.` },
+You're 2 weeks in. Keep building.`,
+    textHi:`📅 2 hafte ho gaye. Andar jo ho raha hai, abhi dikhega nahi.
+
+Aapke follicles reactivate ho rahe hain. 🔬
+
+*Real Minoxidil timeline:*
+📅 *Month 1* — Foundation phase. Scalp adjust ho raha hai.
+🌱 *Month 3* — Baal girna kam hoga. Naye, patle baal dikhne shuru.
+💪 *Month 6* — Visible density. Mazbooti aur ghanaapan.
+
+10 lakh+ mard India mein Man Matters ke saath apne baal theek kar rahe hain. 🙌
+
+Jinhe results mile, unmein ek cheez common thi: woh Month 6 tak ruke.
+
+Aap 2 hafte mein hain. Banate raho.` },
 
   { day:14, phase:'reassurance', channel:'push', cohort:'all',
     topic:'2-week streak celebration', goal:'Retention',
     trigger:'14 days after order_delivered (app users)',
     pushTitle:'🔥 2 weeks done. You\'re in the top 30%.',
-    pushBody:'70% of men quit before week 3. You\'re still here. Month 3 is where it shows.' },
+    pushBody:'70% of men quit before week 3. You\'re still here. Month 3 is where it shows.',
+    pushTitleHi:'🔥 2 hafte complete. Top 30% mein ho.',
+    pushBodyHi:'70% mard week 3 se pehle quit karte hain. Tum abhi bhi ho. Month 3 mein dikhega.' },
 
   { day:17, phase:'reassurance', channel:'whatsapp', cohort:'no-doctor',
     topic:'Doctor consult — final nudge', goal:'Doctor Activation',
@@ -900,7 +944,19 @@ Right now: keep doing exactly what you've been doing. 💪
 
 The foundation you're building today delivers results at Month 3 and beyond.
 
-Don't judge the treatment at Day 20. The men who got results didn't.` },
+Don't judge the treatment at Day 20. The men who got results didn't.`,
+    textHi:`⏳ Day 20. Abhi koi visible change nahi? Bilkul sahi — yahi hona chahiye.
+
+Baal lagbhag *1.5 cm per month* badhte hain.
+Aapke follicles abhi activation phase mein hain. 🔬
+
+Real results consistent mahine ke baad aate hain — hafte se nahi.
+
+Abhi sirf ek kaam: *wahi karte raho jo kar rahe ho*. 💪
+
+Jo foundation aaj ban rahi hai, uske results Month 3 mein dikhenge.
+
+Day 20 par judgment mat karo. Jinhe results mile, unhone nahi kiya.` },
 
   { day:20, phase:'reassurance', channel:'push', cohort:'all',
     topic:'Day 20 reassurance push', goal:'Retention',
@@ -918,17 +974,12 @@ Don't judge the treatment at Day 20. The men who got results didn't.` },
   { day:22, phase:'conversion', channel:'whatsapp', cohort:'no-rewards',
     topic:'Use coins on reorder — unlock reward loop', goal:'Reward + Reorder',
     trigger:'22 days after order_delivered AND rewards_earned = 0 AND order_count < 2',
-    text:`💰 You've been consistent for 22 days. You haven't claimed a single reward for it.
+    text:`💰 22 days consistent. Not one reward claimed for it yet.
 
-The Man Matters Habit Tracker logs every day you show up and rewards you:
-→ Earn coins for every Minoxidil, Gummies & Dermaroller log
-→ Redeem for *up to 30% off* your next order
+Open the app → log today's doses → earn coins.
+Use them on your next order for up to 30% off.
 
-Your kit runs out in about 8 days. Your next order is coming.
-
-Why not pay less for it?
-
-📲 Open the app → start logging → let coins stack up before you reorder.` },
+Your kit runs out in ~8 days. Reorder's coming either way — may as well pay less. 📲` },
 
   { day:25, phase:'conversion', channel:'whatsapp', cohort:'all',
     topic:'Refill reminder — ~5 days of supply left', goal:'Reorder',
@@ -943,7 +994,20 @@ You've done the hard part: staying consistent for 25 days. 💪
 ❌ You're effectively restarting from scratch 🔄
 
 Refill your *Advanced Hair Growth Regime* now.
-Use your coins at checkout for up to 30% off. 🌱` },
+Use your coins at checkout for up to 30% off. 🌱`,
+    textHi:`⏰ Lagbhag 5 din mein kit khatam ho jayegi. Agar regime ruka, progress bhi rukega.
+
+25 din consistent rahe — yeh aapne kar liya. 💪
+
+Ab stock khatam ki wajah se streak mat todna.
+
+*Kya hota hai jab treatment pause hoti hai:*
+❌ Follicle stimulation turant band
+❌ 2–4 hafte mein progress reverse hona shuru
+❌ Practically scratch se start karna padega 🔄
+
+*Advanced Hair Growth Regime* abhi refill karo.
+Checkout par coins use karo — up to 30% off. 🌱` },
 
   { day:25, phase:'conversion', channel:'push', cohort:'all',
     topic:'5 days left — reorder push', goal:'Reorder',
@@ -954,7 +1018,8 @@ Use your coins at checkout for up to 30% off. 🌱` },
   { day:25, phase:'conversion', channel:'sms', cohort:'all',
     topic:'Reorder SMS with discount code', goal:'Reorder',
     trigger:'25 days after order_delivered AND order_count < 2',
-    text:`[Name], your Minoxidil kit runs out in ~5 days. A supply gap reverses your progress. Reorder now: [LINK] — Use code HAIR30 for 30% off. Man Matters` },
+    text:`[Name], your Minoxidil kit runs out in ~5 days. A supply gap reverses your progress. Reorder now: [LINK] — Use code [DISC_30] for 30% off. Man Matters`,
+    textHi:`[Name], aapki Minoxidil kit ~5 din mein khatam hogi. Supply gap se progress reverse hota hai. Abhi reorder karein: [LINK] — Code [DISC_30] se 30% off. Man Matters` },
 
   { day:28, phase:'conversion', channel:'whatsapp', cohort:'winback',
     topic:'Urgent reorder — 2 days left', goal:'Reorder',
@@ -970,7 +1035,19 @@ This is the moment most men slip — not because they stop caring, but because t
 
 You're this close to Month 1 complete. Don't waste it.
 
-📦 Reorder your *Advanced Hair Growth Regime* now.` },
+📦 Reorder your *Advanced Hair Growth Regime* now.`,
+    textHi:`⚠️ Sirf 2 din ki kit bachi hai.
+
+Yahan pe zyaatar mard slip karte hain — caring band karke nahi, bas time par reorder nahi karke.
+
+*3 din ke gap ka matlab:*
+→ Jo follicles jaag rahe the, woh wapas so jaate hain
+→ Week 2 ki shedding? Dobara shuru
+→ 28 din ki mehnat waste
+
+Aap Month 1 complete karne ke itne close ho. Mat todo ise.
+
+📦 *Advanced Hair Growth Regime* abhi reorder karo.` },
 
   { day:28, phase:'conversion', channel:'push', cohort:'winback',
     topic:'Last chance reorder push', goal:'Reorder',
@@ -981,7 +1058,7 @@ You're this close to Month 1 complete. Don't waste it.
   { day:28, phase:'conversion', channel:'sms', cohort:'winback',
     topic:'Discount code SMS — last chance', goal:'Reorder',
     trigger:'28 days after order_delivered AND order_count < 2',
-    text:`[Name], 2 days of Minoxidil left! A supply gap reverses your 28-day progress. Use HAIR30 for 30% off — reorder: [LINK] — Man Matters` },
+    text:`[Name], 2 days of Minoxidil left! A supply gap reverses your 28-day progress. Use [DISC_30] for 30% off — reorder: [LINK] — Man Matters` },
 
   { day:30, phase:'conversion', channel:'whatsapp', cohort:'all',
     topic:'Month 1 milestone (celebration / final push)', goal:'Retention',
@@ -1017,7 +1094,18 @@ Without Minoxidil stimulation, follicles that were active begin reverting. The p
 → The shedding phase? You won't have to go through it again.
 → Your 30 days of progress isn't lost — yet.
 
-📦 Reorder today. Pick up exactly where you left off. 🌱` },
+📦 Reorder today. Pick up exactly where you left off. 🌱`,
+    textHi:`⏳ Kit khatam hue 3 din ho gaye hain.
+
+Bina Minoxidil ke, jo follicles active the woh wapas dormant hone lagte hain. Yeh process din mein shuru hota hai, hafte mein nahi.
+
+*Zero se nahi karna. Bas restart karna hai.*
+
+→ Aapka scalp already Minoxidil ko pehchaanta hai. Is baar reactivation faster hogi.
+→ Shedding phase dobara nahi hogi.
+→ 30 din ka progress abhi bachaya ja sakta hai.
+
+📦 Aaj reorder karo. Wahan se shuru karo jahan chhoda tha. 🌱` },
 
   { day:35, phase:'winback', channel:'whatsapp', cohort:'winback',
     topic:'Social proof + Testimonial (D35)', goal:'Winback',
@@ -1036,18 +1124,35 @@ Here's the science: follicles need months of stimulation to visibly respond. A p
 You've done the hard part: you started.
 Now do the one thing that separates starters from success stories.
 
-🛒 *Reorder your regime today.*` },
+🛒 *Reorder your regime today.*`,
+    textHi:`🙌 Abhi 10 lakh+ mard India mein apne baalon ka treatment kar rahe hain Man Matters ke saath.
+
+Maharashtra mein akele 3 lakh+ mard is mahine consistent rahe. 📍
+
+Unke paas better genetics nahi the.
+Unke paas zyada time nahi tha.
+Bas woh Day 35 par nahi ruke.
+
+Science kehti hai: follicles ko months of stimulation chahiye visible response ke liye. Abhi break matlab almost scratch se start. 🔄
+
+Aapne mushkil kaam kar liya: aapne shuru kiya.
+Ab woh ek cheez karo jo starters ko success stories se alag karta hai.
+
+🛒 *Aaj apna regime reorder karo.*` },
 
   { day:37, phase:'winback', channel:'push', cohort:'winback',
     topic:'Social proof push (D37)', goal:'Winback',
     trigger:'37 days after order_delivered AND order_count < 2 (app users)',
     pushTitle:'Others are seeing results. Are you?',
-    pushBody:'Men who stayed consistent are at Month 2 this week. Your follicles are waiting. Come back.' },
+    pushBody:'Men who stayed consistent are at Month 2 this week. Your follicles are waiting. Come back.',
+    pushTitleHi:'Doosron ko results dikh rahe hain. Tumhe?',
+    pushBodyHi:'Jo consistent rahe woh is hafte Month 2 mein hain. Tumhare follicles wait kar rahe hain.' },
 
   { day:37, phase:'winback', channel:'sms', cohort:'winback',
     topic:'Winback SMS with offer (D37)', goal:'Winback',
     trigger:'37 days after order_delivered AND order_count < 2',
-    text:`[Name], it's been a week since your kit ran out. Getting back on track now still puts you on schedule for Month 3 results. Use COMEBACK20 for 20% off: [LINK] — Man Matters` },
+    text:`[Name], it's been a week since your kit ran out. Getting back on track now still puts you on schedule for Month 3 results. Use [DISC_20] for 20% off: [LINK] — Man Matters`,
+    textHi:`[Name], kit khatam hue ek hafte ho gaya. Ab bhi wapas aa sakte hain — Month 3 results abhi bhi track par aayenge. Code [DISC_20] se 20% off: [LINK] — Man Matters` },
 
   { day:40, phase:'winback', channel:'whatsapp', cohort:'winback',
     topic:'Reality check + Peer pressure (D40)', goal:'Winback',
@@ -1068,7 +1173,24 @@ The math:
 
 Neither happens without Month 2.
 
-🛒 Reorder now and keep going.` },
+🛒 Reorder now and keep going.`,
+    textHi:`📈 Zyaatar mard apne baalon ki chinta karte hain. Bahut kam kuch karte hain.
+
+Aapne woh step le liya tha.
+
+*Woh mat bano jo 'almost' theek kar sakta tha.*
+
+Bangalore se Pune se Hyderabad — mard is hafte Month 2 complete kar rahe hain. 📍
+
+Jinne Day 40 tak reorder kiya, woh exactly Month 3 results ke track par hain.
+
+Calculation:
+🌱 *Month 3* → real results shuru
+💪 *Month 6* → log notice karte hain
+
+Month 2 ke bina kuch nahi hoga.
+
+🛒 Abhi reorder karo aur aage badho.` },
 
   { day:45, phase:'winback', channel:'whatsapp', cohort:'winback',
     topic:'Final winback + Testimonial (D45)', goal:'Winback',
@@ -1087,12 +1209,27 @@ You're closer to their results than you realise.
 
 This is your last reminder for a while. After this, the decision is yours. 🪞
 
-🛒 *REORDER NOW*` },
+🛒 *REORDER NOW*`,
+    textHi:`⏳ Aapne 30 din apne baalon mein invest kiye hain.
+
+Is sab ko waste karne ka sabse aasaan tarika? Abhi rukna.
+
+Aapke baalon ko nahi pata ki aap busy the. Unhe sirf pata hai ki treatment chali ya nahi. 📉
+
+Jo baat zyaatar log miss karte hain: *follicles ko dobara activate karne mein utna hi waqt lagta hai jitna pehli baar mein laga*. Fast forward nahi hota. Woh hafte zero se wapas kamaane padte hain.
+
+Mumbai mein 50,000+ mard is mahine consistent hain.
+Aap unke results ke itne paas ho jitna aapko lagta nahi.
+
+Yeh aakhri reminder hai kuch waqt ke liye. Ab faisla aapka hai. 🪞
+
+🛒 *ABHI REORDER KARO*` },
 
   { day:45, phase:'winback', channel:'sms', cohort:'winback',
     topic:'Final winback SMS — max discount (D45)', goal:'Winback',
     trigger:'45 days after order_delivered AND order_count < 2',
-    text:`[Name], last chance — use code HAIR35 for 35% off your Minoxidil kit. Your 30 days of progress deserves a fair shot. Reorder: [LINK] — Man Matters` },
+    text:`[Name], last chance — use code [DISC_35] for 35% off your Minoxidil kit. Your 30 days of progress deserves a fair shot. Reorder: [LINK] — Man Matters`,
+    textHi:`[Name], last chance — code [DISC_35] se 35% off Minoxidil kit par. 30 din ki mehnat ko ek fair chance do. Reorder: [LINK] — Man Matters` },
 ];
 
 // ─────────────────────────────────────────────────────────
@@ -1101,6 +1238,7 @@ This is your last reminder for a while. After this, the decision is yours. 🪞
 let activeChannel = 'all';
 let activeCohort  = 'all';
 let activePhase   = null;
+let activeLang    = 'en';
 
 // ─────────────────────────────────────────────────────────
 // HELPERS
@@ -1333,12 +1471,19 @@ function openModal(day, msgs, cohort) {
 function renderModalMeta(day, msgs, cohort) {
   const m = msgs[0];
   const ph = PHASES[m.phase] || {};
+  const hasHi = msgs.some(x => x.textHi || x.pushTitleHi);
+  const langRowHTML = hasHi ? `
+    <div class="lang-row">
+      <span class="lang-row-lbl">Lang</span>
+      <button class="lang-btn${activeLang==='en'?' on':''}" data-lang="en">EN</button>
+      <button class="lang-btn${activeLang==='hi'?' on':''}" data-lang="hi">HI&nbsp;—&nbsp;हिंदी</button>
+    </div>` : '';
   modalMeta.innerHTML = `
     <div class="meta-row">
       <span class="m-chip day">Day ${day}</span>
       <span class="m-chip day" style="background:${ph.color}22;color:${ph.color}">${ph.label || m.phase}</span>
       ${cohortChip(cohort)}
-      ${[...new Set(msgs.map(m=>m.channel))].map(channelChip).join('')}
+      ${[...new Set(msgs.map(x=>x.channel))].map(channelChip).join('')}
     </div>
     <div class="meta-trigger">
       <span>⚡</span>
@@ -1348,7 +1493,15 @@ function renderModalMeta(day, msgs, cohort) {
       <span>🎯</span>
       <span><strong>Goal:</strong> ${m.goal}</span>
     </div>
+    ${langRowHTML}
   `;
+  modalMeta.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeLang = btn.dataset.lang;
+      modalMeta.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('on', b.dataset.lang === activeLang));
+      renderModalBody(currentTabCh, currentMsgs);
+    });
+  });
 }
 
 function renderModalTabs(msgs) {
@@ -1404,9 +1557,10 @@ function waPreview(msg) {
   win.className = 'chat-win';
   win.innerHTML = `<div class="date-wrap"><div class="date-chip">Day ${msg.day}</div></div>`;
 
+  const waText = activeLang === 'hi' && msg.textHi ? msg.textHi : msg.text;
   const bbl = document.createElement('div');
   bbl.className = 'bubble';
-  bbl.innerHTML = `<div class="bubble-sender">Man Matters</div><div class="bubble-text">${fmt(msg.text)}</div><div class="bubble-time">${nt()}</div>`;
+  bbl.innerHTML = `<div class="bubble-sender">Man Matters</div><div class="bubble-text">${fmt(waText)}</div><div class="bubble-time">${nt()}</div>`;
   win.appendChild(bbl);
 
   if (msg.testimonial) {
@@ -1458,8 +1612,8 @@ function pushPreview(msg) {
         <div class="push-app-name">Man Matters</div>
         <div class="push-card-time">now</div>
       </div>
-      <div class="push-title">${msg.pushTitle || msg.topic}</div>
-      <div class="push-body">${msg.pushBody || ''}</div>
+      <div class="push-title">${(activeLang==='hi'&&msg.pushTitleHi)||msg.pushTitle||msg.topic}</div>
+      <div class="push-body">${(activeLang==='hi'&&msg.pushBodyHi)||msg.pushBody||''}</div>
     </div>
   `;
   const closeBtn = document.createElement('button');
@@ -1480,7 +1634,7 @@ function smsPreview(msg) {
       <div class="sms-num">+91 80478 63601</div>
     </div>
     <div class="sms-msgs">
-      <div class="sms-bubble">${fmt(msg.text)}</div>
+      <div class="sms-bubble">${fmt(activeLang==='hi'&&msg.textHi?msg.textHi:msg.text)}</div>
       <div class="sms-time">${nt()}</div>
     </div>
   `;
