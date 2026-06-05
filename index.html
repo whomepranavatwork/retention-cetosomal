@@ -706,19 +706,17 @@ const MESSAGES = [
   { day:0, phase:'activation', channel:'whatsapp', cohort:'all',
     topic:'Welcome + Kit Guide', goal:'Education',
     trigger:'order_delivered event',
-    text:`📦 It's here. Your 30-day head start.
+    text:`📦 The kit that changes everything just landed.
 
-Your Advanced Hair Regrowth Regime — three things that work together as one system:
+Three products. One system. All three need to work together:
 
-✅ *Minoxidil* → twice daily, straight on scalp
-🍬 *Hair Gummies* → 1 daily, no skipping
-⚡ *Dermaroller* → once a week, before Minoxidil
+✅ *Minoxidil* — twice daily, on the scalp
+🍬 *Hair Gummies* — 1 daily
+⚡ *Dermaroller* — once a week, before Minoxidil
 
-Each one multiplies the others. Skip one and you're leaving results on the table. 🔄
+Skip one and you slow all three. Simple as that. 🔄
 
-📲 Download the *Man Matters App* → turn on *Habit Tracker* → earn coins on every dose logged. Up to 30% off your next kit. 🎁
-
-Day 1 starts now. 💪`,
+📲 Download the *Man Matters App* → turn on *Habit Tracker* → earn coins on every dose. Up to 30% off your next kit. 🎁`,
     originalText:`📦 Your hair comeback starts today.
 
 Your Advanced Hair Regrowth Regime is here. Here's how the system works:
@@ -741,17 +739,13 @@ Let's go. 💪` },
   { day:1, phase:'activation', channel:'whatsapp', cohort:'no-doctor',
     topic:'Free doctor consult nudge', goal:'Doctor Activation',
     trigger:'24h after order_delivered AND doctor_consult_completed = false',
-    text:`👨‍⚕️ Most men skip this. Most men also quit early.
+    text:`👨‍⚕️ There's a free expert in your kit — and most men ignore it.
 
-A *FREE doctor consultation* came with your kit. Here's why it actually matters:
+A *doctor consultation* came included with your order. Hair loss has stages. Your treatment should be personalised to yours.
 
-→ Hair loss has stages — your timeline differs at Stage 2 vs Stage 4
-→ Your Minoxidil dose may need adjusting for your specific case
-→ A real expert, not a bot
+15 minutes with a real doctor beats 6 months of guessing.
 
-15 minutes. Already included. Unlocks a personalised plan for the next 6 months.
-
-📲 Man Matters App → *Consult* → book now.`,
+📲 Man Matters App → *Consult* → book now. It's free.`,
     originalText:`👨‍⚕️ One thing most men skip — that makes a huge difference.
 
 A *FREE doctor consultation* came with your order.
@@ -768,23 +762,21 @@ Not a generic chatbot. A real expert reviewing your case.
   { day:1, phase:'activation', channel:'push', cohort:'no-app',
     topic:'App download nudge', goal:'App Download',
     trigger:'24h after order_delivered AND app_install = false',
-    pushTitle:'📦 Kit landed. Start earning from Day 1.',
-    pushBody:'Habit Tracker = coins = 30% off your next kit. Download Man Matters now.',
+    pushTitle:'📦 Kit\'s here. Don\'t start at a disadvantage.',
+    pushBody:'Habit Tracker = coins = 30% off your next kit. 2 minutes to set up. Download Man Matters.',
     originalPushTitle:'📦 Your kit arrived. Track it in the app.',
     originalPushBody:'Download Man Matters → turn on Habit Tracker → earn coins on every dose. 30% off your next order.' },
 
   { day:2, phase:'activation', channel:'whatsapp', cohort:'no-app',
     topic:'App + Habit Tracker + Rewards', goal:'App Download',
     trigger:'48h after order_delivered AND app_install = false',
-    text:`💸 What if your daily routine paid you back?
+    text:`💸 Every dose you log earns you money back.
 
-Every dose you log in *Habit Tracker* earns coins. Stack enough → redeem for up to *30% off* your next order.
+The *Habit Tracker* gives you coins for every application — redeem for up to *30% off* your next order.
 
-You're applying Minoxidil twice a day already. That's 60 logs a month sitting there, earning nothing.
+You're already applying Minoxidil twice a day. 10 seconds to log it. That's it.
 
-Takes 10 seconds to log. The streak builds itself.
-
-📲 Download Man Matters → tap *Habit Tracker* → start earning today.`,
+📲 Download Man Matters → *Habit Tracker* → start earning.`,
     originalText:`💸 Men who use the Habit Tracker pay up to 30% less on their next kit.
 
 The Man Matters Habit Tracker:
@@ -799,8 +791,8 @@ The Man Matters Habit Tracker:
   { day:2, phase:'activation', channel:'push', cohort:'all',
     topic:'Day 2 dose reminder', goal:'Habit Formation',
     trigger:'48h after order_delivered (app users only)',
-    pushTitle:'⚡ Day 2 — don\'t let the streak die young',
-    pushBody:'Log your Minoxidil dose → earn coins → keep the chain going. 10 seconds.',
+    pushTitle:'⚡ Day 2. Don\'t break it now.',
+    pushBody:'Log your Minoxidil dose → earn coins → keep the chain going.',
     originalPushTitle:'⚡ Day 2 — Applied your Minoxidil today?',
     originalPushBody:'2× daily = active follicles. Log it in the app and earn coins. Don\'t skip today.' },
 
@@ -812,15 +804,13 @@ The Man Matters Habit Tracker:
   { day:4, phase:'activation', channel:'whatsapp', cohort:'all',
     topic:'The 3-product system explained', goal:'Education',
     trigger:'4 days after order_delivered',
-    text:`⚡ Day 4. Three products, one rule: use all three.
+    text:`⚡ Day 4. Are you using all three products?
 
-🔬 *Minoxidil* + *Dermaroller* → Minoxidil absorbs 40% deeper through the micro-channels the roller creates
-🍬 *Hair Gummies* → feeds the same follicles Minoxidil just activated
-⚡ Remove one and the whole system slows down
+Here's what most men miss: apply Minoxidil *right after* rolling the Dermaroller. The roller opens up your scalp — Minoxidil goes in 40% deeper during that window. Miss it and you're leaving results behind.
 
-One tip worth knowing: apply Minoxidil *immediately after* rolling. Not 30 minutes later. Right after — that's when the channels are open. 🌱
+The Gummies feed the same roots Minoxidil just activated. All three reinforce each other.
 
-You're in the compound phase now. Consistency from here pays out at Month 3.`,
+Rule: roll → Minoxidil immediately → Gummies. Order matters. 🌱`,
     originalText:`⚡ Day 4. This is where most men start cutting corners. Here's why that's a mistake.
 
 Your regime is a *system*. Each product amplifies the others:
@@ -837,8 +827,8 @@ Keep the system going. The compound effect kicks in at Month 3. 💪` },
   { day:5, phase:'habit', channel:'push', cohort:'all',
     topic:'Day 5 consistency nudge', goal:'Habit Formation',
     trigger:'5 days after order_delivered (app users)',
-    pushTitle:'🔥 5 days in. You\'re ahead of most.',
-    pushBody:'70% lose consistency by day 7. Not you. Log today\'s dose → keep the streak going.',
+    pushTitle:'🔥 Day 5. Most men don\'t make it this far.',
+    pushBody:'Log today → keep the streak → earn coins.',
     originalPushTitle:'🔥 Day 5 streak — keep it alive',
     originalPushBody:'Most men quit by week 2. You\'re still here. Log today\'s dose and earn coins.',
     pushTitleHi:'🔥 Day 5 streak — zinda rakho ise',
@@ -847,13 +837,11 @@ Keep the system going. The compound effect kicks in at Month 3. 💪` },
   { day:7, phase:'habit', channel:'whatsapp', cohort:'all',
     topic:'Week 1 check-in + Shedding education', goal:'Education',
     trigger:'7 days after order_delivered',
-    text:`🚨 More shedding this week? That's actually the treatment working.
+    text:`🚨 Seeing more shedding this week? Good. That's exactly what progress looks like.
 
-*Why it happens:* Minoxidil pushes follicles into an accelerated growth phase — old, weak hairs shed early to make room for stronger ones underneath. 🌱
+Minoxidil pushes out weak, old hairs early — to make room for stronger ones underneath. It looks bad before it looks good. 🌱
 
-→ Don't stop. This is exactly how it's supposed to look.
-→ Most men who quit, quit right at this moment.
-→ The ones who don't? Real density at Month 3.
+Most men who quit, quit right here. The ones who don't see real results at Month 3.
 
 Hardest week is behind you. 💪`,
     originalText:`🚨 More hair fall this week? Good — it means it's working.
@@ -884,8 +872,8 @@ Process par trust karo. Week 1 complete. 💪` },
   { day:7, phase:'habit', channel:'push', cohort:'no-habit',
     topic:'7-day habit tracker nudge', goal:'Habit Tracker Activation',
     trigger:'7 days after order_delivered AND habit_log_count = 0',
-    pushTitle:'7 days in. Your streak is missing.',
-    pushBody:'Turn on Habit Tracker → log doses → earn coins for 30% off. 10 seconds is all it takes.',
+    pushTitle:'7 days in. Still no tracking?',
+    pushBody:'Habit Tracker takes 10 seconds. Log → earn coins → 30% off your next kit.',
     originalPushTitle:'7 days in — are you tracking your doses?',
     originalPushBody:'Log your routine → build your streak → earn coins for 30% off. Takes 10 seconds.',
     pushTitleHi:'7 din ho gaye — dose track kar rahe ho?',
@@ -894,16 +882,14 @@ Process par trust karo. Week 1 complete. 💪` },
   { day:9, phase:'habit', channel:'whatsapp', cohort:'no-habit',
     topic:'Habit Tracker + Rewards (re-engagement)', goal:'Habit Tracker Activation',
     trigger:'9 days after order_delivered AND habit_log_count = 0',
-    text:`⚠️ Not logging your doses? Here's what it's costing you.
+    text:`⚠️ Missing doses is the #1 reason hair treatments don't work.
 
-Inconsistency is the #1 reason hair treatments fail — not the product.
+Not the product — the gaps.
 
-The *Habit Tracker* makes it effortless:
-→ One reminder at your set time 🔔
-→ 10 seconds to log. Never lose your streak.
-→ Coins for every consistent day → *up to 30% off* your next kit 💰
-
-Your results are built one consistent day at a time. The app makes each day easier.
+The *Habit Tracker* fixes that:
+→ Daily reminder at your time 🔔
+→ 10 seconds to log
+→ Coins for every day → *up to 30% off* your next kit 💰
 
 📲 Open Man Matters → *Habit Tracker* → log today.`,
     originalText:`⚠️ Most men fail at hair growth at exactly Day 9. Here's why.
@@ -923,20 +909,16 @@ It's won by the most consistent routine.
   { day:10, phase:'habit', channel:'whatsapp', cohort:'all',
     topic:'Dermaroller deep-dive education', goal:'Education',
     trigger:'10 days after order_delivered',
-    text:`⚡ Day 10 — time to talk about the *Dermaroller*.
+    text:`⚡ Your Dermaroller is doing more than you think.
 
-This is the one most men underuse. Here's what it actually does:
+Those tiny needles create micro-channels in your scalp — letting Minoxidil absorb *40% deeper*. More absorption = more reach to the follicles.
 
-🔬 Creates micro-channels in your scalp → Minoxidil absorbs *40% deeper*
-🩸 Boosts blood flow → more oxygen and nutrients reaching your follicles
-💡 The effect lasts for hours after you roll
+*Three rules:*
+→ Once a week, always BEFORE Minoxidil
+→ Light pressure — roll vertically, then horizontally
+→ Apply Minoxidil within 5 minutes of rolling
 
-*The only three rules:*
-→ Once a week, BEFORE Minoxidil 🗓️
-→ Roll vertically, then horizontally — light pressure
-→ Apply Minoxidil within 5 minutes
-
-One weekly step that makes everything else work significantly harder. 🌱`,
+That last step is the one most people miss. Don't skip it. 🌱`,
     originalText:`⚡ Day 10. Time to bring in your secret weapon: the *Dermaroller*.
 
 🔬 *Stimulates follicles* — tiny needles activate dormant roots for thicker regrowth
@@ -960,8 +942,8 @@ Don't skip dermaroller day. 🌱` },
   { day:12, phase:'habit', channel:'push', cohort:'no-rewards',
     topic:'Unclaimed rewards nudge', goal:'Reward Activation',
     trigger:'12 days after order_delivered AND rewards_earned = 0',
-    pushTitle:'🎁 Coins building up. No one claiming them.',
-    pushBody:'Log doses → earn coins → 30% off your next kit. Open Habit Tracker now.',
+    pushTitle:'🎁 Your coins are sitting unclaimed.',
+    pushBody:'Log doses → claim coins → 30% off your next kit. Open Habit Tracker.',
     originalPushTitle:'🎁 You have unclaimed coins',
     originalPushBody:'Log your doses in Habit Tracker → earn coins → save up to 30% on your next kit.' },
 
@@ -969,18 +951,17 @@ Don't skip dermaroller day. 🌱` },
   { day:14, phase:'reassurance', channel:'whatsapp', cohort:'all',
     topic:'2-week milestone + Results timeline', goal:'Retention',
     trigger:'14 days after order_delivered',
-    text:`📅 2 weeks in. Here's an honest progress report.
+    text:`📅 2 weeks down. Honest truth: you won't see anything yet.
 
-You won't see anything visible yet. That's normal. Here's what's actually happening:
+And that's exactly right.
 
-Your follicles are shifting from dormant to active. Minoxidil extends the growth phase — the results are microscopic right now, but they're real.
+Minoxidil builds from the inside out. The results are happening — they just haven't reached the surface yet.
 
-*Actual Minoxidil timeline:*
-📅 *Month 1* → Foundation. Shedding may happen. Normal.
-🌱 *Month 3* → Shedding reduces. Fine new hairs appear.
-💪 *Month 6* → Visible density. Thickness people notice.
+Month 1 → foundation
+Month 3 → new hairs appear
+Month 6 → thickness people notice
 
-Men who made it to Month 6 saw it at Day 14 too. They just kept going. 🙌`,
+Men who made it to Month 6 were exactly where you are at Day 14. They just kept going. 🙌`,
     originalText:`📅 2 weeks in. Here's what's happening under the surface.
 
 You won't see it yet. But your follicles are being reactivated. 🔬
@@ -1013,8 +994,8 @@ Aap 2 hafte mein hain. Banate raho.` },
   { day:14, phase:'reassurance', channel:'push', cohort:'all',
     topic:'2-week streak celebration', goal:'Retention',
     trigger:'14 days after order_delivered (app users)',
-    pushTitle:'🔥 2 weeks done. Rare company.',
-    pushBody:'Most men quit before week 3. You made it. Month 3 is where it gets visible. Keep going.',
+    pushTitle:'🔥 2 weeks. You beat 70% already.',
+    pushBody:'Most men quit before here. Month 3 is where it pays off. Stay the course.',
     originalPushTitle:'🔥 2 weeks done. You\'re in the top 30%.',
     originalPushBody:'70% of men quit before week 3. You\'re still here. Month 3 is where it shows.',
     pushTitleHi:'🔥 2 hafte complete. Top 30% mein ho.',
@@ -1023,15 +1004,11 @@ Aap 2 hafte mein hain. Banate raho.` },
   { day:17, phase:'reassurance', channel:'whatsapp', cohort:'no-doctor',
     topic:'Doctor consult — final nudge', goal:'Doctor Activation',
     trigger:'17 days after order_delivered AND doctor_consult_completed = false',
-    text:`👨‍⚕️ Day 17 — the consultation you haven't booked yet.
+    text:`👨‍⚕️ You've applied Minoxidil 30+ times. Do you know if the dose is right for you?
 
-By now you've applied Minoxidil 30+ times. A doctor can tell you something important: is the *concentration right* for your hair loss stage?
+A doctor can tell you in 15 minutes. Hair loss has stages — the right plan for Stage 2 looks different from Stage 5. One call gets you clarity for the next 6 months.
 
-→ Stage 2 and Stage 5 respond to different protocols
-→ One 15-minute call calibrates your next 5 months
-→ Men who consult are 2× more likely to reach Month 3
-
-FREE. Already part of your plan. No excuse not to.
+Free. Included. 15 minutes.
 
 📲 Man Matters App → *Consult* → book today.`,
     originalText:`👨‍⚕️ Still haven't spoken to a doctor? Here's why it matters more now.
@@ -1051,23 +1028,21 @@ It's FREE. It's 15 minutes. It's built into your plan.
   { day:17, phase:'reassurance', channel:'push', cohort:'no-habit',
     topic:'Missing doses intervention', goal:'Habit Tracker Activation',
     trigger:'17 days after order_delivered AND habit_log_count < 7',
-    pushTitle:'⚠️ 17 days in, no streak?',
-    pushBody:'Irregular application slows results significantly. Turn on Habit Tracker → daily reminders → stay on track.',
+    pushTitle:'⚠️ 17 days in. Still not tracking?',
+    pushBody:'Missed doses = slower results. Habit Tracker → 10-second daily log → stay on track.',
     originalPushTitle:'⚠️ 17 days in — missing doses?',
     originalPushBody:'Irregular use slows results. Turn on Habit Tracker for daily reminders + coin rewards.' },
 
   { day:20, phase:'reassurance', channel:'whatsapp', cohort:'all',
     topic:'Day 20 — no results yet is normal', goal:'Retention',
     trigger:'20 days after order_delivered',
-    text:`⏳ Day 20. Nothing visible yet?
+    text:`⏳ Day 20 and nothing visible yet?
 
-Good. That's exactly where you should be.
+That's exactly where you should be.
 
-Hair grows at 1–1.5 cm per month. Your follicles are still in the reactivation phase — the surface hasn't caught up yet. Think of it as building a foundation you can't see from outside. 🔬
+Hair grows about 1 cm a month. What Minoxidil is building right now won't reach the surface for weeks. You're doing it right — it just hasn't shown up yet.
 
-*The only right move at Day 20:* keep going.
-
-The men who make it to Month 3 looked exactly like you do right now. They just didn't stop. 💪`,
+Don't quit at Day 20. Nobody who got results did. 💪`,
     originalText:`⏳ Day 20. No visible change yet? Good. That's exactly where you should be.
 
 Hair grows at roughly *1.5 cm per month*.
@@ -1096,8 +1071,8 @@ Day 20 par judgment mat karo. Jinhe results mile, unhone nahi kiya.` },
   { day:20, phase:'reassurance', channel:'push', cohort:'all',
     topic:'Day 20 reassurance push', goal:'Retention',
     trigger:'20 days after order_delivered (app users)',
-    pushTitle:'Day 20 — no change yet? Exactly right.',
-    pushBody:'Visible response takes 90 days. You\'re on track. Log today\'s dose and keep the foundation building.',
+    pushTitle:'Day 20. Nothing visible yet? Perfect.',
+    pushBody:'You\'re on track. Results take 90 days to surface. Log today\'s dose.',
     originalPushTitle:'Day 20 — no visible change? Normal.',
     originalPushBody:'Follicles take 90 days to visibly respond. Your job: stay consistent. Log today\'s dose.' },
 
@@ -1106,20 +1081,20 @@ Day 20 par judgment mat karo. Jinhe results mile, unhone nahi kiya.` },
     topic:'8 days of supply left', goal:'Reorder',
     trigger:'22 days after order_delivered AND order_count < 2',
     pushTitle:'⏰ ~8 days of kit left',
-    pushBody:'22 days of progress at stake. Don\'t let a reorder slip undo it. Stock up now.',
+    pushBody:'Stock up now. Don\'t let a reorder slip undo 22 days of work.',
     originalPushTitle:'⏰ ~8 days of kit left',
     originalPushBody:'Don\'t let a supply gap undo 22 days of progress. Reorder now before stock runs out.' },
 
   { day:22, phase:'conversion', channel:'whatsapp', cohort:'no-rewards',
     topic:'Use coins on reorder — unlock reward loop', goal:'Reward + Reorder',
     trigger:'22 days after order_delivered AND rewards_earned = 0 AND order_count < 2',
-    text:`💰 22 days of consistent applications — and no coins claimed yet.
+    text:`💰 22 days in — and your coins are just sitting there.
 
-Every dose log earns coins. Coins mean up to 30% off your next order. You've been leaving them on the table since Day 1.
+Log today's doses → claim your coins → apply at checkout. Up to 30% off.
 
-Your kit's running low anyway — reorder's coming. May as well pay less for it.
+Your kit runs out in ~8 days. Reorder's coming. May as well pay less for it.
 
-📲 Open app → log today → check your coins → apply at checkout. 🎁`,
+📲 App → log → check coin balance → save on reorder. 🎁`,
     originalText:`💰 22 days consistent. Not one reward claimed for it yet.
 
 Open the app → log today's doses → earn coins.
@@ -1130,18 +1105,13 @@ Your kit runs out in ~8 days. Reorder's coming either way — may as well pay le
   { day:25, phase:'conversion', channel:'whatsapp', cohort:'all',
     topic:'Refill reminder — ~5 days of supply left', goal:'Reorder',
     trigger:'25 days after order_delivered AND order_count < 2',
-    text:`⏰ ~5 days of kit left. This is where progress gets protected — or lost.
+    text:`⏰ 5 days of kit left. Don't let a reorder slip undo 25 days of work.
 
-You've been consistent for 25 days. Here's what breaks when the supply stops:
+Once Minoxidil stops, follicles start going dormant again — within days, not weeks. A gap now means going backwards.
 
-❌ Follicle stimulation halts on day one
-❌ Progress starts reversing within 2–4 weeks
-❌ Effectively restarting from Day 1 🔄
+You've done the hard part: 25 days consistent. The next step is just placing an order.
 
-There's no "pause" mode in hair regrowth. The biology doesn't wait.
-
-📦 *Refill your Advanced Hair Growth Regime now.*
-Use your coins at checkout — up to 30% off. 🌱`,
+📦 *Refill now. Use your coins for up to 30% off.* 🌱`,
     originalText:`⏰ Running out in ~5 days. If your regime stops, so does your progress.
 
 You've done the hard part: staying consistent for 25 days. 💪
@@ -1170,8 +1140,8 @@ Checkout par coins use karo — up to 30% off. 🌱` },
   { day:25, phase:'conversion', channel:'push', cohort:'all',
     topic:'5 days left — reorder push', goal:'Reorder',
     trigger:'25 days after order_delivered AND order_count < 2 (app users)',
-    pushTitle:'⏳ ~5 days of Minoxidil left',
-    pushBody:'Stopping = follicles go dormant again. Reorder now. Protect 25 days of work.',
+    pushTitle:'⏳ 5 days left. Don\'t let a gap reset this.',
+    pushBody:'A supply break reverses progress fast. Reorder now. Protect 25 days of work.',
     originalPushTitle:'⏳ ~5 days of Minoxidil left',
     originalPushBody:'A supply gap resets follicle progress. Reorder now, stay on track for Month 3 results.' },
 
@@ -1184,17 +1154,13 @@ Checkout par coins use karo — up to 30% off. 🌱` },
   { day:28, phase:'conversion', channel:'whatsapp', cohort:'winback',
     topic:'Urgent reorder — 2 days left', goal:'Reorder',
     trigger:'28 days after order_delivered AND order_count < 2',
-    text:`⚠️ 2 days left.
+    text:`⚠️ 2 days of kit left. Don't slip now.
 
-Most men who don't reorder here say they'll get to it later. Hair doesn't wait for later.
+You're 2 days from Month 1 complete. A supply gap here reverses everything you've built.
 
-What stops in 48 hours without a reorder:
-→ Active follicle stimulation
-→ 28 days of progress you built
+One order. That's it.
 
-You're this close to Month 1 complete. One order. That's it.
-
-📦 *Reorder your Advanced Hair Growth Regime now.*`,
+📦 *Reorder now.*`,
     originalText:`⚠️ 2 days of kit left.
 
 This is the moment most men slip — not because they stop caring, but because they don't reorder in time.
@@ -1223,8 +1189,8 @@ Aap Month 1 complete karne ke itne close ho. Mat todo ise.
   { day:28, phase:'conversion', channel:'push', cohort:'winback',
     topic:'Last chance reorder push', goal:'Reorder',
     trigger:'28 days after order_delivered AND order_count < 2 (app users)',
-    pushTitle:'⚠️ 2 days of kit left',
-    pushBody:'Your 28-day streak is on the line. Reorder before you run out — don\'t reset what you built.',
+    pushTitle:'⚠️ 2 days of kit left.',
+    pushBody:'Reorder before you run out. 28 days of work is on the line.',
     originalPushTitle:'⚠️ 2 days of kit remaining',
     originalPushBody:'Reorder now to avoid a gap. A gap resets your follicle progress. 28-day streak on the line.' },
 
@@ -1236,20 +1202,19 @@ Aap Month 1 complete karne ke itne close ho. Mat todo ise.
   { day:30, phase:'conversion', channel:'whatsapp', cohort:'all',
     topic:'Month 1 milestone (celebration / final push)', goal:'Retention',
     trigger:'30 days after order_delivered. If order_count >= 2: celebration variant; if < 2: urgency variant',
-    text:`🎉 Month 1 complete. You're in the top 20%.
+    text:`🎉 Month 1 done. Most men never make it here.
 
-80% of men who start hair treatment don't make it to Month 2. You just did.
+80% quit before Month 2. You just made it.
 
-*What Month 1 built:*
-✅ Follicles activated and in growth phase
-✅ Scalp adapted to Minoxidil — responses are stronger now
+*What you built:*
+✅ Follicles activated
+✅ Scalp adjusted to Minoxidil
 ✅ Shedding phase behind you
-✅ Foundation set for results at Month 3
 
-Month 3 → hair fall visibly reduces.
+Month 3 → visible improvement.
 Month 6 → people start noticing.
 
-You're 30 days into a 6-month journey. The hardest part is behind you. 💪`,
+The hard part is behind you. Keep going. 💪`,
     originalText:`🎉 Month 1 complete. You're officially in the minority.
 
 80% of men who start hair treatment don't make it to Month 2. You just did.
@@ -1269,19 +1234,11 @@ You're heading there. Keep going. 💪` },
   { day:33, phase:'winback', channel:'whatsapp', cohort:'winback',
     topic:'Gap warning — re-engagement (D33)', goal:'Winback',
     trigger:'33 days after order_delivered AND order_count < 2',
-    text:`⏳ 3 days since your kit ran out.
+    text:`⏳ 3 days without Minoxidil.
 
-Your follicles are starting to go back to sleep — but they're not gone yet.
+Your follicles are slowly going back to sleep — but you haven't lost what you built. Restart now and you're back on track fast. No shedding phase to repeat.
 
-*You don't need to start over. You need to restart.*
-
-→ Your scalp already knows Minoxidil. Reactivation is faster the second time.
-→ 30 days of foundation work is still there — it just needs to be re-activated.
-→ No shedding phase to repeat.
-
-Restart now and you'll be back on track within a week. ⏱️
-
-📦 Reorder today. Pick up right where you left off. 🌱`,
+📦 Reorder today. Pick up where you left off. 🌱`,
     originalText:`⏳ It's been 3 days since your kit ran out.
 
 Here's what's happening to your follicles right now:
@@ -1311,17 +1268,13 @@ Bina Minoxidil ke, jo follicles active the woh wapas dormant hone lagte hain. Ye
     topic:'Social proof + Testimonial (D35)', goal:'Winback',
     trigger:'35 days after order_delivered AND order_count < 2',
     testimonial: { name:'Avinash R.', city:'Pune', duration:'6 months', quote:'I almost stopped at month 2. Glad I didn\'t. My hair is noticeably thicker now.' },
-    text:`🙌 10 lakh+ men across India are on this same journey right now.
+    text:`🙌 10 lakh men are on this journey right now. The ones seeing results all have one thing in common: they didn't stop at Day 35.
 
-Most had exactly your timeline. Most who saw results just kept going past Day 35.
-
-*The biology:* follicles need continuous stimulation. A gap doesn't pause progress — it actively reverses it. The longer the gap, the closer you get to starting from zero.
-
-You started something real. Don't let a short pause become a month-long setback.
+A short gap becomes a long one fast.
 
 *"I almost stopped at month 2. Glad I didn't. My hair is noticeably thicker now." — Avinash R., Pune*
 
-🛒 *Reorder your regime today.*`,
+🛒 *Reorder today. You're closer than you think.*`,
     originalText:`🙌 Over 10 lakh men across India are on their hair journey with Man Matters right now.
 
 In Maharashtra alone, 3 lakh+ men stayed consistent this month. 📍
@@ -1354,8 +1307,8 @@ Ab woh ek cheez karo jo starters ko success stories se alag karta hai.
   { day:37, phase:'winback', channel:'push', cohort:'winback',
     topic:'Social proof push (D37)', goal:'Winback',
     trigger:'37 days after order_delivered AND order_count < 2 (app users)',
-    pushTitle:'Others from Day 1 are at Month 2. You?',
-    pushBody:'Men who reordered by now are on track for Month 3. Your restart window is still open.',
+    pushTitle:'Day 37. Others from Day 1 just hit Month 2.',
+    pushBody:'Your restart window is still open. Come back.',
     originalPushTitle:'Others are seeing results. Are you?',
     originalPushBody:'Men who stayed consistent are at Month 2 this week. Your follicles are waiting. Come back.',
     pushTitleHi:'Doosron ko results dikh rahe hain. Tumhe?',
@@ -1370,19 +1323,13 @@ Ab woh ek cheez karo jo starters ko success stories se alag karta hai.
   { day:40, phase:'winback', channel:'whatsapp', cohort:'winback',
     topic:'Reality check + Peer pressure (D40)', goal:'Winback',
     trigger:'40 days after order_delivered AND order_count < 2',
-    text:`📈 The men seeing results at Month 3 are the ones who reordered by Day 40.
+    text:`📈 Day 40. The reorder window is still open — barely.
 
-That window is today.
+The men seeing results at Month 3 are the ones who came back this week.
 
-This isn't pressure — it's just the math:
-🌱 *Month 3* → real results visible
-💪 *Month 6* → density people notice
+Month 3 → results begin. Month 6 → people notice. Neither happens without Month 2.
 
-Neither exists without Month 2. And Month 2 doesn't exist without a reorder.
-
-You already did the hardest thing: you started. The second order is just logistics.
-
-🛒 Reorder now and keep your Month 3 appointment. 📅`,
+🛒 *Reorder now.* 📅`,
     originalText:`📈 Most men worry about their hair. Very few actually do something about it.
 
 You already took that step.
@@ -1422,15 +1369,13 @@ Month 2 ke bina kuch nahi hoga.
     topic:'Final winback + Testimonial (D45)', goal:'Winback',
     testimonial: { name:'Rohan M.', city:'Bangalore', duration:'5 months', quote:'Took a break at month 2. Restarted. The difference at month 5 was real.' },
     trigger:'45 days after order_delivered AND order_count < 2',
-    text:`⏳ Last message. After this, the inbox goes quiet.
+    text:`⏳ Last one from us. Then we go quiet.
 
-You invested 30 days building a follicle foundation. That head start fades the longer the gap gets. Restarting costs exactly as many weeks as you've been away.
+30 days of foundation work is sitting there, waiting to be picked up. The longer the gap, the further back you start.
 
 *"Took a break at month 2. Restarted. The difference at month 5 was real." — Rohan M., Bangalore*
 
-One last window to pick up where you left off.
-
-🛒 *REORDER NOW*`,
+🛒 *REORDER NOW — before the window closes.*`,
     originalText:`⏳ You've already invested 30 days into your hair.
 
 The easiest way to waste that effort? Stopping now.
